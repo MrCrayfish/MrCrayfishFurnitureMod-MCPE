@@ -1,7 +1,6 @@
 #pragma once
 
 #include "FurnitureTiles.h"
-#include "../item/TableItem.h"
 
 class TableTile : public FurnitureTiles {
 public:
@@ -14,8 +13,7 @@ public:
 	virtual int getResource(int, Random*);
 	virtual bool use(Player*, int, int, int);
 
-	bool isWood();
-
 private:
-	TextureUVCoordinateSet stone_tex;
+	TextureUVCoordinateSet primary_texture;
+	TextureUVCoordinateSet secondary_texture;
 };

@@ -5,6 +5,4 @@
 class WoodenTableTile : public TableTile {
 public:
     WoodenTableTile(int);
-
-    virtual bool isWood();
 };

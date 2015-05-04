@@ -26,19 +26,19 @@ class Tessellator;
 
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool sth) {
-	if(tile->renderType >= 100) FurnitureRenderer::render(self, self->region, tile, pos);
-	_TileTessellator$tessellateInWorld(self, tile, pos, sth);
+    if(tile->renderType >= 100) FurnitureRenderer::render(self, self->region, tile, pos);
+    _TileTessellator$tessellateInWorld(self, tile, pos, sth);
 }
 
 static void (*_StartMenuScreen$render)(Touch::StartMenuScreen*, int, int, float);
 static void StartMenuScreen$render(Touch::StartMenuScreen* self, int x, int y, float scale) {
-	_StartMenuScreen$render(self, x, y, scale);
-	self->_screenRenderer.drawString(self->_minecraftClient->_font, "MrCrayfish's Furniture Mod", 1, 1, Color::WHITE);
+    _StartMenuScreen$render(self, x, y, scale);
+    self->_screenRenderer.drawString(self->_minecraftClient->_font, "MrCrayfish's Furniture Mod", 1, 1, Color::WHITE);
 }
 
 void initTileItems() {
-    FurnitureTileItems::tileItemTableWood = new FurnitureTileItems(TableTile::_woodId);
-    FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(TableTile::_stoneId);
+    FurnitureTileItems::tileItemTableWood = new FurnitureTileItems(WoodenTableTile::_id);
+    FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(StoneTableTile::_id);
     FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(ChairTile::_woodId);
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(ChairTile::_stoneId);
 }
@@ -47,8 +47,8 @@ static void (*_Tile$initTiles)();
 static void Tile$initTiles() {
     _Tile$initTiles();
 
-	FurnitureTiles::tileTableWood = new TableTile(TableTile::_woodId, &Material::wood);
-	FurnitureTiles::tileTableStone = new TableTile(TableTile::_stoneId, &Material::stone);
+    FurnitureTiles::tileTableWood = new WoodenTableTile(WoodenTableTile::_id);
+    FurnitureTiles::tileTableStone = new StoneTableTile(StoneTableTile::_id);
     FurnitureTiles::tileChairWood = new ChairTile(ChairTile::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new ChairTile(ChairTile::_stoneId, &Material::stone);
 
@@ -57,17 +57,17 @@ static void Tile$initTiles() {
 
 static void (*_Item$initItems)();
 static void Item$initItems() {
-	FurnitureItems::itemTableWood = new TableItem(TableItem::_woodId, "itemTableWood", true);
-	FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
+    FurnitureItems::itemTableWood = new TableItem(TableItem::_woodId, "itemTableWood", true);
+    FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
     FurnitureItems::itemChairWood = new ChairItem(ChairItem::_woodId, "itemChairWood", true);
     FurnitureItems::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemChairStone", false);
 
-	_Item$initItems();
+    _Item$initItems();
 }
 
 static void (*_Item$initCreativeItems)();
 static void Item$initCreativeItems() {
-	_Item$initCreativeItems();
+    _Item$initCreativeItems();
 
     Item::addCreativeItem(FurnitureItems::itemTableWood, 0);
     Item::addCreativeItem(FurnitureItems::itemTableStone, 0);

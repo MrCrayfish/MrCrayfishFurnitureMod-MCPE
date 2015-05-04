@@ -14,6 +14,5 @@ public:
 	virtual bool use(Player*, int, int, int);
 
 private:
-	TextureUVCoordinateSet primary_texture;
-	TextureUVCoordinateSet secondary_texture;
+	TextureUVCoordinateSet secondary_tex;
 };

@@ -7,7 +7,7 @@ void FurnitureRenderer::render(TileTessellator* tess, TileSource* region, Tile* 
 
 	switch(tile->renderType) {
 	case FurnitureShape::TABLE:
-		renderTable(tess, tile, pos);
+		renderTable(tess, (TableTile*) tile, pos);
 		break;
 	case FurnitureShape::CHAIR:
 		renderChair(tess, tile, pos);
@@ -17,17 +17,17 @@ void FurnitureRenderer::render(TileTessellator* tess, TileSource* region, Tile* 
 	}
 }
 
-void FurnitureRenderer::renderTable(TileTessellator* tess, Tile* tile, const TilePos& pos) {
-	int x = pos.x, y = pos.y, z = pos.z;
+void FurnitureRenderer::renderTable(TileTessellator* tess, TableTile* tile, const TilePos& pos) {
+        int x = pos.x, y = pos.y, z = pos.z;
 
-	int forwardId = region->getTile(x + 1, y, z).id;
-	int backId = region->getTile(x - 1, y, z).id;
-	int leftId = region->getTile(x, y, z - 1).id;
-	int rightId = region->getTile(x, y, z + 1).id;
-    bool forward = forwardId == TableTile::_woodId || forwardId == TableTile::_stoneId;
-    bool back = backId == TableTile::_woodId || backId == TableTile::_stoneId;
-    bool left = leftId == TableTile::_woodId || leftId == TableTile::_stoneId;
-    bool right = rightId == TableTile::_woodId || rightId == TableTile::_stoneId;
+        int forwardId = region->getTile(x + 1, y, z).id;
+        int backId = region->getTile(x - 1, y, z).id;
+        int leftId = region->getTile(x, y, z - 1).id;
+        int rightId = region->getTile(x, y, z + 1).id;
+        bool forward = forwardId == WoodenTableTile::_id || forwardId == StoneTableTile::_id;
+        bool back = backId == WoodenTableTile::_id || backId == StoneTableTile::_id;
+        bool left = leftId == WoodenTableTile::_id || leftId == StoneTableTile::_id;
+        bool right = rightId == WoodenTableTile::_id || rightId == StoneTableTile::_id;
 
 	if(forward && right && !left && !back) {
 		tess->setRenderBounds(0.175, 0.0, 0.175, 0.425, 0.9, 0.425);
@@ -67,12 +67,7 @@ void FurnitureRenderer::renderTable(TileTessellator* tess, Tile* tile, const Til
 	}
 
 	tess->useForcedUV = true;
-
-	if(tile == FurnitureTiles::tileTableWood) {
-		tess->forcedUV = tile->getTextureUVCoordinateSet("log", 0);
-	} else {
-		tess->forcedUV = tile->getTextureUVCoordinateSet("cobblestone", 0);
-	}
+        tess->forcedUV = tile->secondary_tex;
 
 	tess->setRenderBounds(0.0, 0.9, 0.0, 1.0, 1.0, 1.0);
 	tess->tessellateBlockInWorld(tile, pos);
@@ -81,10 +76,10 @@ void FurnitureRenderer::renderTable(TileTessellator* tess, Tile* tile, const Til
 }
 
 void FurnitureRenderer::renderChair(TileTessellator* tess, Tile* tile, const TilePos& pos) {
-    int x = pos.x, y = pos.y, z = pos.z;
+        int x = pos.x, y = pos.y, z = pos.z;
 	int data = region->getData(x, y, z);
 
-    tess->useForcedUV = true;
+        tess->useForcedUV = true;
 
 	if(tile == FurnitureTiles::tileChairWood) {
 		tess->forcedUV = tile->getTextureUVCoordinateSet("planks", 0);

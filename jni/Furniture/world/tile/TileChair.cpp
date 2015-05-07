@@ -11,8 +11,8 @@ TileChair::TileChair(int id, Material const* material) : FurnitureTiles(id, mate
 	(isWood())? setNameId("tileChairWood") : setNameId("tileChairStone");
 	(isWood())? setSoundType(Tile::SOUND_WOOD) : setSoundType(Tile::SOUND_STONE);
 	(isWood())? setDestroyTime(1.0F) : setDestroyTime(1.5F);
-	tex = (isWood())? getTextureUVCoordinateSet("planks", 0) : getTextureUVCoordinateSet("stone", 0);
-	secondary_tex = (isWood())? getTextureUVCoordinateSet("log", 0) : getTextureUVCoordinateSet("cobblestone", 0);
+	tex = (isWood())? getTextureUVCoordinateSet("planks", 0) : getTextureUVCoordinateSet("cobblestone", 0);
+	secondary_tex = (isWood())? getTextureUVCoordinateSet("log", 0) : getTextureUVCoordinateSet("stone", 0);
 }
 
 bool TileChair::isWood() {

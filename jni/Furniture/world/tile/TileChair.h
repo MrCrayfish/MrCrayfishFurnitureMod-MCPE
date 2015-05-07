@@ -3,12 +3,12 @@
 #include "FurnitureTiles.h"
 #include "../item/ChairItem.h"
 
-class ChairTile : public FurnitureTiles {
+class TileChair : public FurnitureTiles {
 public:
 	static int _woodId;
 	static int _stoneId;
 
-	ChairTile(int, Material const*);
+	TileChair(int, Material const*);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);
@@ -17,5 +17,5 @@ public:
 	bool isWood();
 
 private:
-	TextureUVCoordinateSet stone_tex;
+	TextureUVCoordinateSet secondary_tex;
 };

@@ -14,8 +14,8 @@ class Tessellator;
 #include "Furniture/render/tile/FurnitureRenderer.h"
 #include "Furniture/world/tile/item/FurnitureTileItems.h"
 
-#include "Furniture/world/tile/TableTile.h"
-#include "Furniture/world/tile/ChairTile.h"
+#include "Furniture/world/tile/TileTable.h"
+#include "Furniture/world/tile/TileChair.h"
 
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
@@ -37,20 +37,20 @@ static void StartMenuScreen$render(Touch::StartMenuScreen* self, int x, int y, f
 }
 
 void initTileItems() {
-    FurnitureTileItems::tileItemTableWood = new FurnitureTileItems(WoodenTableTile::_id);
-    FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(StoneTableTile::_id);
-    FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(ChairTile::_woodId);
-    FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(ChairTile::_stoneId);
+    FurnitureTileItems::tileItemTableWood = new FurnitureTileItems(TileTable::_woodId);
+    FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(TileTable::_stoneId);
+    FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(TileChair::_woodId);
+    FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(TileChair::_stoneId);
 }
 
 static void (*_Tile$initTiles)();
 static void Tile$initTiles() {
     _Tile$initTiles();
 
-    FurnitureTiles::tileTableWood = new WoodenTableTile(WoodenTableTile::_id);
-    FurnitureTiles::tileTableStone = new StoneTableTile(StoneTableTile::_id);
-    FurnitureTiles::tileChairWood = new ChairTile(ChairTile::_woodId, &Material::wood);
-    FurnitureTiles::tileChairStone = new ChairTile(ChairTile::_stoneId, &Material::stone);
+    FurnitureTiles::tileTableWood = new TileTable(TileTable::_woodId, &Material::wood);
+    FurnitureTiles::tileTableStone = new TileTable(TileTable::_stoneId, &Material::stone);
+    FurnitureTiles::tileChairWood = new TileChair(TileChair::_woodId, &Material::wood);
+    FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
 
     initTileItems();
 }

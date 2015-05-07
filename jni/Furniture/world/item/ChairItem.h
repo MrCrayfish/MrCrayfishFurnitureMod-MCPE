@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/ChairTile.h"
+#include "../tile/TileChair.h"
 
 class ChairItem : public PlaceableItem {
 public:

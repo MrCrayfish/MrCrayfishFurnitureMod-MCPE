@@ -20,6 +20,8 @@ class Tessellator;
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
 
+#include "MCPE/language/I18n.h"
+
 #define LOG_TAG "furniturepe"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__))
 
@@ -75,7 +77,22 @@ static void Item$initCreativeItems() {
     Item::addCreativeItem(FurnitureItems::itemChairStone, 0);
 }
 
+static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
 
+static std::string I18n$get(std::string const& key, std::vector<std::string,std::allocator<std::string>> const& a) {
+	if(key == "item.itemTableWood.name") {
+		return "Wooden Table";
+	} else if(key == "item.itemTableStone.name") {
+		return "Stone Table";
+	} else if(key == "item.itemChairWood.name") {
+		return "Wooden Chair";
+	} else if(key == "item.itemChairStone.name") {
+		return "Stone Chair";
+	} else if(key == "item.itemCabinet.name") {
+		return "Cabinet";
+	}
+	return _I18n$get(key, a);
+};
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	FurnitureItems::registerTextures();
@@ -85,6 +102,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
+	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 
 
 	return JNI_VERSION_1_2;

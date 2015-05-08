@@ -70,7 +70,7 @@ void FurnitureRenderer::renderTable(TileTessellator* tess, TileTable* tile, cons
 		tess->tessellateBlockInWorld(tile, pos);
 	}
 
-    tess->forcedUV = tile->getTexture(1,0);
+    //tess->forcedUV = tile->getTexture(1,0);
 
 	tess->setRenderBounds(0.0, 0.9, 0.0, 1.0, 1.0, 1.0);
 	tess->tessellateBlockInWorld(tile, pos);
@@ -100,7 +100,7 @@ void FurnitureRenderer::renderChair(TileTessellator* tess, TileChair* tile, cons
 	tess->setRenderBounds(0.8, 0.6, 0.1, 0.9, 1.2, 0.9);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
-	tess->forcedUV = tile->getTexture(1,0);
+	//tess->forcedUV = tile->getTexture(1,0);
 
 	// Base
 	tess->setRenderBounds(0.1, 0.5, 0.1, 0.9, 0.6, 0.9);

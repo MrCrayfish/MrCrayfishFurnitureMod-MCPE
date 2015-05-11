@@ -89,7 +89,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string,std:
 	} else if(key == "item.itemChairStone.name") {
 		return "Stone Chair";
 	} else if(key == "item.itemCabinet.name") {
-		return "Cabinet";
+		return "Cabinetz R cool";
 	}
 	return _I18n$get(key, a);
 };

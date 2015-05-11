@@ -5,5 +5,5 @@
 class RenderTable : public BlockRender {
 public:
 	RenderTable();
-	void render(TileTessellator*, TileSource*, FurnitureTiles*, const TilePos&);
+	virtual void render(TileTessellator*, TileSource*, FurnitureTiles*, const TilePos&);
 };

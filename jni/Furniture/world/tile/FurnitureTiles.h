@@ -13,4 +13,6 @@ public:
 	static FurnitureTiles* tileChairStone;
 
 	FurnitureTiles(int, Material const*);
+
+	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 };

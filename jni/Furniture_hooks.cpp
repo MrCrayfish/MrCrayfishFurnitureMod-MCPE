@@ -11,14 +11,16 @@ class Tessellator;
 #include "MCPE/client/gui/screens/touch/StartMenuScreen.h"
 #include "MCPE/SharedConstants.h"
 
-#include "Furniture/render/tile/FurnitureRenderer.h"
+#include "Furniture/render/tile/RenderManager.h"
 #include "Furniture/world/tile/item/FurnitureTileItems.h"
 
 #include "Furniture/world/tile/TileTable.h"
 #include "Furniture/world/tile/TileChair.h"
-
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
+
+#include "Furniture/render/tile/renders/RenderTable.h"
+#include "Furniture/render/tile/renders/RenderChair.h"
 
 #include "MCPE/language/I18n.h"
 
@@ -28,7 +30,7 @@ class Tessellator;
 
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool sth) {
-    if(tile->renderType >= 100) FurnitureRenderer::render(self, self->region, tile, pos);
+    RenderManager::render(tile->id, self, self->region, tile, pos);
     _TileTessellator$tessellateInWorld(self, tile, pos, sth);
 }
 
@@ -45,6 +47,13 @@ void initTileItems() {
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(TileChair::_stoneId);
 }
 
+void initRenders() {
+    RenderManager::registerRender(TileTable::_woodId, new RenderTable());
+    RenderManager::registerRender(TileTable::_stoneId, new RenderTable());
+    RenderManager::registerRender(TileChair::_woodId, new RenderChair());
+    RenderManager::registerRender(TileChair::_stoneId, new RenderChair());
+}
+
 static void (*_Tile$initTiles)();
 static void Tile$initTiles() {
     _Tile$initTiles();
@@ -55,6 +64,7 @@ static void Tile$initTiles() {
     FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
 
     initTileItems();
+    initRenders();
 }
 
 static void (*_Item$initItems)();
@@ -80,30 +90,30 @@ static void Item$initCreativeItems() {
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
 
 static std::string I18n$get(std::string const& key, std::vector<std::string,std::allocator<std::string>> const& a) {
-	if(key == "item.itemTableWood.name") {
-		return "Wooden Table";
-	} else if(key == "item.itemTableStone.name") {
-		return "Stone Table";
-	} else if(key == "item.itemChairWood.name") {
-		return "Wooden Chair";
-	} else if(key == "item.itemChairStone.name") {
-		return "Stone Chair";
-	} else if(key == "item.itemCabinet.name") {
-		return "Cabinetz R cool";
-	}
-	return _I18n$get(key, a);
+    if(key == "item.itemTableWood.name") {
+        return "Wooden Table";
+    } else if(key == "item.itemTableStone.name") {
+        return "Stone Table";
+    } else if(key == "item.itemChairWood.name") {
+        return "Wooden Chair";
+    } else if(key == "item.itemChairStone.name") {
+        return "Stone Chair";
+    } else if(key == "item.itemCabinet.name") {
+        return "Cabinet";
+    }
+    return _I18n$get(key, a);
 };
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-	FurnitureItems::registerTextures();
-	
-	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
-	MSHookFunction((void*) &Touch::StartMenuScreen::render, (void*) &StartMenuScreen$render, (void**) &_StartMenuScreen$render);
-	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
-	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
-	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
-	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
+    FurnitureItems::registerTextures();
+    
+    MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
+    MSHookFunction((void*) &Touch::StartMenuScreen::render, (void*) &StartMenuScreen$render, (void**) &_StartMenuScreen$render);
+    MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
+    MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
+    MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
+    MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 
 
-	return JNI_VERSION_1_2;
+    return JNI_VERSION_1_2;
 }

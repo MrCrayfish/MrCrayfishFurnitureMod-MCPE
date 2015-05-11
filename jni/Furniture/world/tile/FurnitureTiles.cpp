@@ -9,3 +9,7 @@ FurnitureTiles::FurnitureTiles(int id, Material const* material) : Tile(id, mate
 	init();
 	category = 1;
 }
+
+const TextureUVCoordinateSet& FurnitureTiles::getTexture(signed char side, int data) {
+	return tex;
+}

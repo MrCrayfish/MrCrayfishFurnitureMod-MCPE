@@ -11,13 +11,13 @@ class Tessellator;
 #include "MCPE/client/gui/screens/touch/StartMenuScreen.h"
 #include "MCPE/SharedConstants.h"
 
-#include "Furniture/render/tile/RenderManager.h"
 #include "Furniture/world/tile/item/FurnitureTileItems.h"
 
 #include "Furniture/world/tile/TileTable.h"
 #include "Furniture/world/tile/TileChair.h"
 #include "Furniture/world/tile/TileToilet.h"
 
+#include "Furniture/render/tile/RenderDispatcher.h"
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
 #include "Furniture/world/item/ToiletItem.h"
@@ -34,8 +34,8 @@ class Tessellator;
 
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool sth) {
-    if(!RenderManager::render(tile->id, self, self->region, tile, pos))
-		_TileTessellator$tessellateInWorld(self, tile, pos, sth);
+    if(!RenderDispatcher::dispatch(tile->id, self, self->region, tile, pos))
+	_TileTessellator$tessellateInWorld(self, tile, pos, sth);
 }
 
 static void (*_StartMenuScreen$render)(Touch::StartMenuScreen*, int, int, float);
@@ -49,15 +49,15 @@ void initTileItems() {
     FurnitureTileItems::tileItemTableStone = new FurnitureTileItems(TileTable::_stoneId);
     FurnitureTileItems::tileItemChairWood = new FurnitureTileItems(TileChair::_woodId);
     FurnitureTileItems::tileItemChairStone = new FurnitureTileItems(TileChair::_stoneId);
-	FurnitureTileItems::tileItemToilet = new FurnitureTileItems(TileToilet::_id);
+    FurnitureTileItems::tileItemToilet = new FurnitureTileItems(TileToilet::_id);
 }
 
 void initRenders() {
-    RenderManager::registerRender(TileTable::_woodId, new RenderTable());
-    RenderManager::registerRender(TileTable::_stoneId, new RenderTable());
-    RenderManager::registerRender(TileChair::_woodId, new RenderChair());
-    RenderManager::registerRender(TileChair::_stoneId, new RenderChair());
-	RenderManager::registerRender(TileToilet::_id, new RenderToilet());
+    RenderDispatcher::registerRender(TileTable::_woodId, new RenderTable());
+    RenderDispatcher::registerRender(TileTable::_stoneId, new RenderTable());
+    RenderDispatcher::registerRender(TileChair::_woodId, new RenderChair());
+    RenderDispatcher::registerRender(TileChair::_stoneId, new RenderChair());
+    RenderDispatcher::registerRender(TileToilet::_id, new RenderToilet());
 }
 
 static void (*_Tile$initTiles)();
@@ -68,7 +68,7 @@ static void Tile$initTiles() {
     FurnitureTiles::tileTableStone = new TileTable(TileTable::_stoneId, &Material::stone);
     FurnitureTiles::tileChairWood = new TileChair(TileChair::_woodId, &Material::wood);
     FurnitureTiles::tileChairStone = new TileChair(TileChair::_stoneId, &Material::stone);
-	FurnitureTiles::tileToilet = new TileToilet(TileToilet::_id, &Material::stone);
+    FurnitureTiles::tileToilet = new TileToilet(TileToilet::_id, &Material::stone);
 
     initTileItems();
     initRenders();
@@ -80,7 +80,7 @@ static void Item$initItems() {
     FurnitureItems::itemTableStone = new TableItem(TableItem::_stoneId, "itemTableStone", false);
     FurnitureItems::itemChairWood = new ChairItem(ChairItem::_woodId, "itemChairWood", true);
     FurnitureItems::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemChairStone", false);
-	FurnitureItems::itemToilet = new ToiletItem(ToiletItem::_id, "itemToilet");
+    FurnitureItems::itemToilet = new ToiletItem(ToiletItem::_id, "itemToilet");
 
     _Item$initItems();
 }
@@ -93,7 +93,7 @@ static void Item$initCreativeItems() {
     Item::addCreativeItem(FurnitureItems::itemTableStone, 0);
     Item::addCreativeItem(FurnitureItems::itemChairWood, 0);
     Item::addCreativeItem(FurnitureItems::itemChairStone, 0);
-	Item::addCreativeItem(FurnitureItems::itemToilet, 0);
+    Item::addCreativeItem(FurnitureItems::itemToilet, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string,std::allocator<std::string>> const&);
@@ -109,7 +109,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string,std:
         return "Stone Chair";
     } else if(key == "item.itemCabinet.name") {
         return "Cabinet";
-    }	else if(key == "item.itemToilet.name") {
+    } else if(key == "item.itemToilet.name") {
         return "Toilet";
     }
     return _I18n$get(key, a);

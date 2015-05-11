@@ -4,6 +4,7 @@ FurnitureItems* FurnitureItems::itemTableWood = NULL;
 FurnitureItems* FurnitureItems::itemTableStone = NULL;
 FurnitureItems* FurnitureItems::itemChairWood = NULL;
 FurnitureItems* FurnitureItems::itemChairStone = NULL;
+FurnitureItems* FurnitureItems::itemToilet = NULL;
 
 TextureAtlas* FurnitureItems::_atlas = NULL;
 
@@ -29,4 +30,5 @@ void FurnitureItems::registerTextures() {
 	textureConverter["itemTableStone"] = "apple_golden";
     textureConverter["itemChairWood"] = "arrow";
     textureConverter["itemChairStone"] = "axe";
+	textureConverter["itemToilet"] = "axe";
 }

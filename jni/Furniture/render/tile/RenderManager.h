@@ -13,5 +13,5 @@ class RenderManager {
 public:
 	static std::map<int, BlockRender*> renderMap;
 	static void registerRender(int id, BlockRender* render);
-	static void render(int id, TileTessellator*, TileSource*, Tile*, const TilePos&);
+	static bool render(int id, TileTessellator*, TileSource*, Tile*, const TilePos&);
 };

@@ -4,7 +4,6 @@ RenderChair::RenderChair() : BlockRender() {}
 
 void RenderChair::render(TileTessellator* tess, TileSource* region, FurnitureTiles* tile, const TilePos& pos) {
     int x = pos.x, y = pos.y, z = pos.z;
-	int data = region->getData(x, y, z);
 
 	tess->forcedUV = tile->getTexture(0,0);
 

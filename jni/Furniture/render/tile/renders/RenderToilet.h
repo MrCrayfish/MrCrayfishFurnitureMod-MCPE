@@ -5,5 +5,5 @@
 class RenderToilet : public BlockRender {
 public:
 	RenderToilet();
-	void render(TileTessellator*, TileSource*, FurnitureTiles*, const TilePos&);
+	virtual void render(TileTessellator*, TileSource*, FurnitureTiles*, const TilePos&);
 };

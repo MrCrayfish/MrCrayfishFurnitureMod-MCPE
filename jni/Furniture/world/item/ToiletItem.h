@@ -1,11 +1,11 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/TileToilet.h"
+#include "../tile/ToiletTile.h"
 
 class ToiletItem : public PlaceableItem {
 public:
     static int _id;
 
-    ToiletItem(int, std::string);
+    ToiletItem(int);
 };

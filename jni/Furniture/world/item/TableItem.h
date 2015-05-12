@@ -1,12 +1,14 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/TileTable.h"
+#include "material/ItemMaterial.h"
 
 class TableItem : public PlaceableItem {
 public:
 	static int _woodId;
 	static int _stoneId;
 
-	TableItem(int, std::string, bool);
+	TableItem(int, std::string, std::string, ItemMaterial, int);
+
+	ItemMaterial material;
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BlockRender.h"
+#include "BlockRenderer.h"
 
 #include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/level/TileSource.h"
@@ -11,7 +11,7 @@
 
 class RenderDispatcher {
 public:
-	static std::map<int, BlockRender*> renderMap;
-	static void registerRender(int id, BlockRender* render);
-	static bool dispatch(int id, TileTessellator*, TileSource*, Tile*, const TilePos&);
+	static std::map<int, BlockRenderer*> rendererMap;
+	static void registerRenderer(int, BlockRenderer*);
+	static bool dispatch(int, TileTessellator*, TileSource*, Tile*, const TilePos&);
 };

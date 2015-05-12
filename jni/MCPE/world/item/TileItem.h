@@ -2,9 +2,9 @@
 
 #include "Item.h"
 
-class TileItem {
+class TileItem : public Item {
 public:
-	char filler_tileitem[84];
-	// constructor
+	char filler_tileitem[12];
+
 	TileItem(int);
 };

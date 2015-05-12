@@ -1,6 +1,6 @@
 #include "PlaceableItem.h"
 
-PlaceableItem::PlaceableItem(int id, int placed) : FurnitureItems(id) {
+PlaceableItem::PlaceableItem(int id, int placed) : FurnitureItem(id) {
 	this->placed = placed;
 }
 

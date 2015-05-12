@@ -1,12 +1,12 @@
 #pragma once
 
-#include "FurnitureItems.h"
+#include "FurnitureItem.h"
 #include "MCPE/world/Facing.h"
 #include "MCPE/world/entity/player/Player.h"
 #include "MCPE/world/level/TileSource.h"
 #include "MCPE/world/item/ItemInstance.h"
 
-class PlaceableItem : public FurnitureItems {
+class PlaceableItem : public FurnitureItem {
 public:
 	PlaceableItem(int, int);
 

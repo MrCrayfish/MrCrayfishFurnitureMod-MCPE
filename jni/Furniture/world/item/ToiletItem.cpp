@@ -2,7 +2,7 @@
 
 int ToiletItem::_id = 470;
 
-ToiletItem::ToiletItem(int id, std::string tex) : PlaceableItem(id, TileToilet::_id) {
-	setNameID(tex);
-	setIcon(tex, 0);
+ToiletItem::ToiletItem(int id) : PlaceableItem(id, ToiletTile::_id) {
+	setNameID("toiletItem");
+	setIcon("shovel", 0);
 }

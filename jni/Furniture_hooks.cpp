@@ -80,19 +80,13 @@ static void Item$initCreativeItems() {
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
 static std::string I18n$get(std::string const& key, std::vector<std::string, std::allocator<std::string>> const& a) {
-	if(key == "item.woodTableItem.name") {
-	    return "Wooden Table";
-	} else if(key == "item.stoneTableItem.name") {
-	    return "Stone Table";
-	} else if(key == "item.woodChairItem.name") {
-	    return "Wooden Chair";
-	} else if(key == "item.stoneChairItem.name") {
-	    return "Stone Chair";
-	} else if(key == "item.toiletItem.name") {
-	    return "Toilet";
-	} else if(key == "item.cabinetItem.name") {
-	    return "Cabinet";
-	}
+	if(key == "item.woodTableItem.name") return "Wooden Table";
+	if(key == "item.stoneTableItem.name") return "Stone Table";
+	if(key == "item.woodChairItem.name") return "Wooden Chair";
+	if(key == "item.stoneChairItem.name") return "Stone Chair";
+	if(key == "item.toiletItem.name") return "Toilet";
+	if(key == "item.cabinetItem.name") return "Cabinet";
+	
 	return _I18n$get(key, a);
 };
 

@@ -56,7 +56,7 @@ void TableRenderer::render(TileTessellator* tess, TileSource* region, FurnitureT
 		tess->tessellateBlockInWorld(tile, pos);
 	}
 
-	 tess->forcedUV = tile->getTexture(1,0);
+	tess->forcedUV = tile->getTexture(1,0);
 
 	tess->setRenderBounds(0.0, 0.9, 0.0, 1.0, 1.0, 1.0);
 	tess->tessellateBlockInWorld(tile, pos);

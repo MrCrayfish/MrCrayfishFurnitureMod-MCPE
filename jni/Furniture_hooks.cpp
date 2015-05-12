@@ -50,7 +50,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
 	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
 	FurnitureTile::tileChairWood = new ChairTile(ChairTile::_woodId, "woodChairTile", woodAttributes, ChairItem::_woodId);
-	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairItem", stoneAttributes, ChairItem::_stoneId);
+	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
 
 	initRenderers();

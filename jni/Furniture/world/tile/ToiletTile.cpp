@@ -11,7 +11,7 @@ ToiletTile::ToiletTile(int id, Material const* material) : FurnitureTile(id, mat
 	setDestroyTime(1.0F);
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	stone_tex = getTextureUVCoordinateSet("stone", 0);
-	water_tex = getTextureUVCoordinateSet("water_still", 0);
+	water_tex = getTextureUVCoordinateSet("still_water", 0);
 }
 
 void ToiletTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {

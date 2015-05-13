@@ -38,8 +38,10 @@ void ToiletRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessell
 	this->setRotatedBounds(tess, data, 0.7, 0.4, 0.51, 0.8, 1.15, 0.61);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
+	tess->forcedUV = tile->getTextureUVCoordinateSet("still_water", 0);
+	// Toilet water
 	this->setRotatedBounds(tess, data, 0.4F, 0.4F, 0.4F, 0.7F, 0.401F, 0.6F);
-	tess->renderFaceUp(tile, {x, y, z}, tile->getTextureUVCoordinateSet("still_water", 0));
+	tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	tess->useForcedUV = false;
 }

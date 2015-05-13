@@ -1,3 +1,6 @@
 #include "BlockRenderer.h"
 
-void BlockRenderer::render(TileTessellator* tess, TileSource* region, FurnitureTile* tile, const TilePos&) {}
+BlockRenderer::BlockRenderer() {}
+BlockRenderer::~BlockRenderer() {}
+
+void BlockRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {}

@@ -3,13 +3,13 @@
 #include "../../../world/tile/TableTile.h"
 
 
-void TableRenderer::render(TileTessellator* tess, TileSource* region, FurnitureTile* tile, const TilePos& pos) {
+void TableRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
-	int forwardId = region->getTile(x + 1, y, z).id;
-	int backId = region->getTile(x - 1, y, z).id;
-	int leftId = region->getTile(x, y, z - 1).id;
-	int rightId = region->getTile(x, y, z + 1).id;
+	int forwardId = tess->region->getTile(x + 1, y, z).id;
+	int backId = tess->region->getTile(x - 1, y, z).id;
+	int leftId = tess->region->getTile(x, y, z - 1).id;
+	int rightId = tess->region->getTile(x, y, z + 1).id;
 	bool forward = forwardId == TableTile::_woodId || forwardId == TableTile::_stoneId;
 	bool back = backId == TableTile::_woodId || backId == TableTile::_stoneId;
 	bool left = leftId == TableTile::_woodId || leftId == TableTile::_stoneId;

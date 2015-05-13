@@ -28,7 +28,7 @@
 
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool b) {
-	if(!RenderDispatcher::dispatch(tile->id, self, self->region, tile, pos))
+	if(!RenderDispatcher::dispatch(tile->id, pos, tile, self))
 		_TileTessellator$tessellateInWorld(self, tile, pos, b);
 }
 

@@ -7,6 +7,7 @@
 
 class BlockRenderer {
 public:
+	BlockRenderer();
 	virtual ~BlockRenderer();
-	virtual void render(TileTessellator*, TileSource*, FurnitureTile*, const TilePos&) = 0;
+	virtual void render(const TilePos&, FurnitureTile*, TileTessellator*) = 0;
 };

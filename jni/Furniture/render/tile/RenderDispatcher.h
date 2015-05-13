@@ -13,5 +13,5 @@ class RenderDispatcher {
 public:
 	static std::map<int, BlockRenderer*> rendererMap;
 	static void registerRenderer(int, BlockRenderer*);
-	static bool dispatch(int, TileTessellator*, TileSource*, Tile*, const TilePos&);
+	static bool dispatch(int, const TilePos&, Tile*, TileTessellator*);
 };

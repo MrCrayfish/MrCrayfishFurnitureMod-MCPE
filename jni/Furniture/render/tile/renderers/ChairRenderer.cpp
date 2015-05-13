@@ -1,6 +1,6 @@
 #include "ChairRenderer.h"
 
-void ChairRenderer::render(TileTessellator* tess, TileSource* region, FurnitureTile* tile, const TilePos& pos) {
+void ChairRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
 	tess->useForcedUV = true;

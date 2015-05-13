@@ -27,7 +27,7 @@ public:
 		std::string stepSound;
 
 	
-		SoundType();
+		SoundType() {};
 		SoundType(std::string const&, float, float);
 	};
 
@@ -144,6 +144,7 @@ public:
 	virtual void getSpawnResourcesAuxValue(int); // 72
 	virtual Tile* init(); // 73
 
+	void addAABB(const AABB&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
 	void popResource(TileSource*, int, int, int, ItemInstance const&);
 	TextureUVCoordinateSet getTextureUVCoordinateSet(const std::string&, int);
 	Tile* setCategory(int);

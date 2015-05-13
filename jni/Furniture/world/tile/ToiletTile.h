@@ -14,5 +14,6 @@ public:
 	virtual bool use(Player*, int, int, int);
 	virtual void addAABBs(TileSource*, int, int, int, AABB const*, std::vector<AABB, std::allocator<AABB>>&);
 private:
-	TextureUVCoordinateSet secondary_tex;
+	TextureUVCoordinateSet stone_tex;
+	TextureUVCoordinateSet water_tex;
 };

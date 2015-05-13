@@ -40,6 +40,7 @@ void ToiletRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessell
 	tess->setRenderBounds(0.7, 0.4, 0.51, 0.8, 1.15, 0.61);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
+	tess->forcedUV = tile->getTexture(2, 0);
 	// TODO: This toilet has no water
 
 	tess->useForcedUV = false;

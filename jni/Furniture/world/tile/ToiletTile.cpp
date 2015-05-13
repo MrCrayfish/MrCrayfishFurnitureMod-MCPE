@@ -10,7 +10,8 @@ ToiletTile::ToiletTile(int id, Material const* material) : FurnitureTile(id, mat
 	setSoundType(Tile::SOUND_STONE);
 	setDestroyTime(1.0F);
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
-	secondary_tex = getTextureUVCoordinateSet("stone", 0);
+	stone_tex = getTextureUVCoordinateSet("stone", 0);
+	water_tex = getTextureUVCoordinateSet("water_still", 0);
 }
 
 void ToiletTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
@@ -19,7 +20,14 @@ void ToiletTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* p
 }
 
 const TextureUVCoordinateSet& ToiletTile::getTexture(signed char side, int data) {
-	return (side == 0)? tex : secondary_tex;
+	switch(side) {
+	case 0:
+		return tex;
+	case 1:
+		return stone_tex;
+	case 2:
+		return water_tex;
+	}
 }
 
 bool ToiletTile::use(Player* player, int x, int y, int z) {

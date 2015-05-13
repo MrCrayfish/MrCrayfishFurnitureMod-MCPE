@@ -4,6 +4,5 @@
 
 class TableRenderer : public BlockRenderer {
 public:
-	TableRenderer() : BlockRenderer() {};
 	virtual void render(const TilePos&, FurnitureTile*, TileTessellator*);
 };

@@ -16,11 +16,8 @@ ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attribute
 }
 
 void ChairTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	AABB shape;
-	shape.set(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F);
-	addAABB(shape.move(x, y, z), posAABB, pool);
-	shape.set(0.8F, 0.6F, 0.1F, 0.9F, 1.2F, 0.9F); // TODO: rotate back rest AABB
-	addAABB(shape.move(x, y, z), posAABB, pool);
+	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F).move(x, y, z), posAABB, pool);
+	addAABB(AABB(0.8F, 0.6F, 0.1F, 0.9F, 1.2F, 0.9F).move(x, y, z), posAABB, pool); // TODO: rotate back rest AABB
 }
 
 const TextureUVCoordinateSet& ChairTile::getTexture(signed char side, int data) {

@@ -15,11 +15,8 @@ ToiletTile::ToiletTile(int id, Material const* material) : FurnitureTile(id, mat
 }
 
 void ToiletTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	AABB shape;
-	shape.set(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F);
-	addAABB(shape.move(x, y, z), posAABB, pool);
-	shape.set(0.6F, 0.6F, 0.0F, 1.0F, 1.1F, 1.0F); // TODO: Rotate back AABB
-	addAABB(shape.move(x, y, z), posAABB, pool);
+	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 0.6F, 1.0F).move(x, y, z), posAABB, pool);
+	addAABB(AABB(0.6F, 0.6F, 0.0F, 1.0F, 1.1F, 1.0F).move(x, y, z), posAABB, pool); // TODO: Rotate back AABB
 }
 
 const TextureUVCoordinateSet& ToiletTile::getTexture(signed char side, int data) {

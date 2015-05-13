@@ -2,6 +2,7 @@
 
 void ChairRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
+	int data = tess->region->getData(x, y, z);
 
 	tess->useForcedUV = true;
 	tess->forcedUV = tile->getTexture(0, 0);
@@ -17,8 +18,7 @@ void ChairRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessella
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	// Back Rest
-	// TODO: Make a RenderHelper to auto rotate block bounds
-	tess->setRenderBounds(0.8, 0.6, 0.1, 0.9, 1.2, 0.9);
+	this->setRotatedBounds(tess, data, 0.8, 0.6, 0.1, 0.9, 1.2, 0.9);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	tess->forcedUV = tile->getTexture(1, 0);

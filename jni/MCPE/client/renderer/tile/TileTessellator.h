@@ -8,6 +8,7 @@ class Tile;
 class TileSource;
 #include "../texture/TextureUVCoordinateSet.h"
 #include "../../../world/phys/AABB.h"
+#include "../../../world/phys/Vec3.h"
 #include "../../../CommonTypes.h"
 
 class TileTessellator {
@@ -31,6 +32,7 @@ public:
 
     bool tessellateInWorld(Tile*, TilePos const&, bool);
     bool tessellateBlockInWorld(Tile*, TilePos const&);
+    void renderFaceUp(Tile*, const Vec3&, const TextureUVCoordinateSet&);
     void tessellateTorch(Tile*, float, float, float, float, float);
     void tex1(unsigned int);
     DataID getData(TilePos const&) const;

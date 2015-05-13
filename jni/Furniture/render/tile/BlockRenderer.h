@@ -8,4 +8,6 @@
 class BlockRenderer {
 public:
 	virtual void render(const TilePos&, FurnitureTile*, TileTessellator*) = 0;
+
+	void setRotatedBounds(TileTessellator*, int, float, float, float, float, float, float);
 };

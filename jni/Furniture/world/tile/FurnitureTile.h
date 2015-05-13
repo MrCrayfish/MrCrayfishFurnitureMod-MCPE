@@ -3,6 +3,8 @@
 #include "MCPE/world/item/TileItem.h"
 #include "MCPE/world/level/tile/Tile.h"
 
+#include "../../util/CollisionHelper.h"
+
 class FurnitureTile : public Tile {
 public:
 	static FurnitureTile* tileTableWood;

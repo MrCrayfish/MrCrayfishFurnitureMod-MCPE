@@ -2,7 +2,7 @@
 
 #include "../BlockRenderer.h"
 
-class CabinetRenderer : public BlockRenderer {
+class DoorbellRenderer : public BlockRenderer {
 public:
 	virtual void render(const TilePos&, FurnitureTile*, TileTessellator*);
 };

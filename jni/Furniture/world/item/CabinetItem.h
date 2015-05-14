@@ -7,5 +7,5 @@ class CabinetItem : public PlaceableItem {
 public:
     static int _id;
 
-    CabinetItem(int, std::string);
+    CabinetItem(int);
 };

@@ -19,7 +19,7 @@ const TextureUVCoordinateSet& DoorbellTile::getTexture(signed char side, int dat
 }
 
 bool DoorbellTile::use(Player* player, int x, int y, int z) {
-	Level::level->playSound(x, y, z, "fire.fire", 100, 100); //Cant add its own sounds!
+	player->level->playSound("fire.fire", x, y, z, 100, 100); //Cant add its own sounds!
 	return true;
 }
 

@@ -4,5 +4,5 @@ int CabinetItem::_id = 464;
 
 CabinetItem::CabinetItem(int id) : PlaceableItem(id, CabinetTile::_id) {
 	setNameID("cabinetItem");
-	setIcon("cabinetItem", 1);
+	setIcon("cabinetItem", 0);
 }

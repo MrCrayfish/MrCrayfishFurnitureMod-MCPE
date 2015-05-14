@@ -15,8 +15,8 @@
 #include "Furniture/render/tile/renderers/ChairRenderer.h"
 #include "Furniture/render/tile/renderers/TableRenderer.h"
 #include "Furniture/render/tile/renderers/ToiletRenderer.h"
-#include "Furniture/render/tile/renderers/ToiletRenderer.h"
-#include "Furniture/render/tile/renderers/ToiletRenderer.h"
+#include "Furniture/render/tile/renderers/CabinetRenderer.h"
+#include "Furniture/render/tile/renderers/DoorbellRenderer.h"
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
@@ -46,7 +46,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ChairTile::_stoneId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
-	RenderDispatcher::registerRenderer(DorbellTile::_id, new DoorbellRenderer());
+	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
 }
 
 static void (*_Tile$initTiles)();

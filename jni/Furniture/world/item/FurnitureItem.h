@@ -9,6 +9,8 @@ public:
 	static FurnitureItem* itemChairWood;
 	static FurnitureItem* itemChairStone;
 	static FurnitureItem* itemToilet;
+	static FurnitureItem* itemCabinet;
+	static FurnitureItem* itemDoorbell;
 
 	FurnitureItem(int);
 };

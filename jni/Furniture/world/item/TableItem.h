@@ -8,7 +8,7 @@ public:
 	static int _woodId;
 	static int _stoneId;
 
-	TableItem(int, std::string, std::string, ItemMaterial, int);
+	TableItem(int, std::string, ItemMaterial, int);
 
 	ItemMaterial material;
 };

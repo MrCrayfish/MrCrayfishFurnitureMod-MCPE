@@ -95,7 +95,7 @@ static bool (*_LiquidTileDynamic$_isWaterBlocking)(LiquidTileDynamic*, TileSourc
 static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSource* region, const TilePos& pos) {
 	Tile* tile = region->getTilePtr(pos.x, pos.y, pos.z);
 	if(tile == FurnitureTile::tileTableWood ||
-     tile == FurnitureTile::tileTableStone ||
+     	tile == FurnitureTile::tileTableStone ||
 	tile == FurnitureTile::tileChairWood ||
 	tile == FurnitureTile::tileChairStone ||
 	tile == FurnitureTile::tileToilet)

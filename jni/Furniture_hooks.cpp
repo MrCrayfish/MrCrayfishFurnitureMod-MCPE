@@ -5,6 +5,7 @@
 #include <substrate.h>
 
 #include "MCPE/world/level/tile/Tile.h"
+#include "MCPE/world/level/tile/LiquidTileDynamic.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/world/item/Item.h"
 #include "MCPE/client/renderer/tile/TileTessellator.h"
@@ -88,7 +89,20 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.cabinetItem.name") return "Cabinet";
 	
 	return _I18n$get(key, a);
-};
+}
+
+static bool (*_LiquidTileDynamic$_isWaterBlocking)(TileSource*, const TilePos&);
+static bool LiquidTileDynamic$_isWaterBlocking(TileSource* region, const TilePos& pos) {
+	switch(region->getTile(pos.x, pos.y, pos.z).id) {
+	case TableTile::_woodId:
+	case TableTile::_stoneId:
+	case ChairTile::_woodId:
+	case ChairTile::_stoneId:
+	case ToiletTile::_id:
+		return true;
+	}
+	return _LiquidTileDynamic$_isWaterBlocking(region, pos);
+}
 
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
@@ -98,7 +112,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
-
+	MSHookFunction((void*) &LiquidTileDynamic::_isWaterBlocking, (void*) &LiquidTileDynamic$_isWaterBlocking, (void**) &_LiquidTileDynamic$_isWaterBlocking);
 
 	return JNI_VERSION_1_2;
 }

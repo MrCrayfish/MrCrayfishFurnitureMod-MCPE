@@ -6,6 +6,8 @@ void ToiletRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessell
 	
 	tess->useForcedUV = true;
 
+	tess->tex1(tess->getLightColor(pos));
+
 	tess->forcedUV = tile->getTextureUVCoordinateSet("quartz_block", 0);
 	// bottom
 	this->setRotatedBounds(tess, data, 0.2, 0.0, 0.25, 0.9, 0.3, 0.75);

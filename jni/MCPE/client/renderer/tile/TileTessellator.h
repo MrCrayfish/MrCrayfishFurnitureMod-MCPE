@@ -36,7 +36,7 @@ public:
     void tessellateTorch(Tile*, float, float, float, float, float);
     void tex1(unsigned int);
     DataID getData(TilePos const&) const;
-    long getLightColor(TilePos const&);
+    unsigned int getLightColor(TilePos const&);
 
     void setRenderBounds(float, float, float, float, float, float);
 };

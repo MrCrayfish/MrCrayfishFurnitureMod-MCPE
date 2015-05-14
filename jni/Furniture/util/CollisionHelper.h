@@ -4,5 +4,5 @@
 
 class CollisionHelper {
 public:
-	static AABB& getRotatedCollisionBox(int, float, float, float, float);
+	static AABB& getRotatedCollisionBox(int, float, float, float, float, float, float);
 };

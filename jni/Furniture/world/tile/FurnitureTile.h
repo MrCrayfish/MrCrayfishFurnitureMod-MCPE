@@ -2,6 +2,7 @@
 
 #include "MCPE/world/item/TileItem.h"
 #include "MCPE/world/level/tile/Tile.h"
+#include "MCPE/world/level/TileSource.h"
 
 #include "../../util/CollisionHelper.h"
 

@@ -4,6 +4,8 @@
 
 #include "FurnitureTile.h"
 
+#include "MCPE/world/entity/Mob.h"
+
 class RotatableTile : public FurnitureTile {
 public:
 	RotatableTile(int, const Material*);

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "FurnitureItem.h"
+
+#include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/Facing.h"
 #include "MCPE/world/entity/player/Player.h"
 #include "MCPE/world/level/TileSource.h"

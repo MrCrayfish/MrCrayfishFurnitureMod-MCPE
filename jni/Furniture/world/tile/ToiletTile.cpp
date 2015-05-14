@@ -2,7 +2,7 @@
 
 int ToiletTile::_id = 210;
 
-ToiletTile::ToiletTile(int id, Material const* material) : FurnitureTile(id, material) {
+ToiletTile::ToiletTile(int id, Material const* material) : RotatableTile(id, material) {
 	Tile::solid[id] = false;
 	Tile::lightBlock[id] = 0;
 

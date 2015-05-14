@@ -1,10 +1,7 @@
 #pragma once
 
-class TileSource;
+#include "../Mob.h"
 
-class Player {
+class Player : public Mob {
 public:
-	// TODO: add my complete Entity struct and make this extend entity
-	char filler[48];
-	TileSource& region;
 };

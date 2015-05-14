@@ -1,9 +1,9 @@
 #pragma once
 
-#include "FurnitureTile.h"
+#include "RotatableTile.h"
 #include "attributes/FurnitureTileAttributes.h"
 
-class ChairTile : public FurnitureTile {
+class ChairTile : public RotatableTile {
 public:
 	static int _woodId;
 	static int _stoneId;

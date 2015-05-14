@@ -22,3 +22,7 @@ const TextureUVCoordinateSet& TableTile::getTexture(signed char side, int data) 
 bool TableTile::use(Player* player, int x, int y, int z) {
 	return false;
 }
+
+int TableTile::getResource(int data, Random* rand) {
+	return droppedItem;
+}

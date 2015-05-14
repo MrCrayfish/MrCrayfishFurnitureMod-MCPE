@@ -91,17 +91,16 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	return _I18n$get(key, a);
 }
 
-static bool (*_LiquidTileDynamic$_isWaterBlocking)(TileSource*, const TilePos&);
-static bool LiquidTileDynamic$_isWaterBlocking(TileSource* region, const TilePos& pos) {
-	switch(region->getTile(pos.x, pos.y, pos.z).id) {
-	case TableTile::_woodId:
-	case TableTile::_stoneId:
-	case ChairTile::_woodId:
-	case ChairTile::_stoneId:
-	case ToiletTile::_id:
+static bool (*_LiquidTileDynamic$_isWaterBlocking)(LiquidTileDynamic*, TileSource*, const TilePos&);
+static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSource* region, const TilePos& pos) {
+	Tile* tile = region->getTilePtr(pos.x, pos.y, pos.z);
+	if(tile == FurnitureTile::tileTableWood ||
+     tile == FurnitureTile::tileTableStone ||
+	tile == FurnitureTile::tileChairWood ||
+	tile == FurnitureTile::tileChairStone ||
+	tile == FurnitureTile::tileToilet)
 		return true;
-	}
-	return _LiquidTileDynamic$_isWaterBlocking(region, pos);
+	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
 }
 
 

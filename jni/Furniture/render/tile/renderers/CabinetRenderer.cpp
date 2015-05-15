@@ -17,11 +17,11 @@ void CabinetRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessel
 
 	//Knob
 	tess->forcedUV = tile->getTexture(2, 0);
-	this->setRotatedBounds(tess, data, -0.1F, 0.375F, 0.125F, -0.5F, 0.75F, 0.1875F);
+	this->setRotatedBounds(tess, data, -0.1F, 0.375F, 0.125F, -0.05F, 0.75F, 0.1875F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
-	this->setRotatedBounds(tess, data, -0.1F, 0.375F, 0.1875F, -0.5F, 0.4375F, 0.25F);
+	this->setRotatedBounds(tess, data, -0.1F, 0.375F, 0.1875F, -0.05F, 0.4375F, 0.25F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
-	this->setRotatedBounds(tess, data, -0.1F, 0.6875F, 0.1875F, -0.5F, 0.75F, 0.25F);
+	this->setRotatedBounds(tess, data, -0.1F, 0.6875F, 0.1875F, -0.05F, 0.75F, 0.25F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	
 	tess->useForcedUV = false;

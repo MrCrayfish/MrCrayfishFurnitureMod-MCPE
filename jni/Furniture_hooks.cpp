@@ -3,6 +3,7 @@
 #include <android/log.h>
 #include <stdlib.h>
 #include <substrate.h>
+#include <vector>
 
 #include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/level/tile/LiquidTileDynamic.h"
@@ -10,6 +11,7 @@
 #include "MCPE/world/item/Item.h"
 #include "MCPE/client/renderer/tile/TileTessellator.h"
 #include "MCPE/locale/I18n.h"
+#include "MCPE/world/entity/Motive.h"
 
 #include "Furniture/render/tile/RenderDispatcher.h"
 #include "Furniture/render/tile/renderers/ChairRenderer.h"
@@ -32,6 +34,10 @@
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
+
+void initMod() {
+	Motive::initCustomMotives();
+}
 
 static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
 static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool b) {
@@ -132,15 +138,24 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
 }
 
+static std::vector<const Motive*> (*_Motive$getAllMotivesAsList)();
+static std::vector<const Motive*> Motive$getAllMotivesAsList() {
+	std::vector<const Motive*> retval = _Motive$getAllMotivesAsList();
+	retval.push_back(Motive::Furniture);
+	return retval;
+}
+
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-	
+	initMod();
+
 	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidTileDynamic::_isWaterBlocking, (void*) &LiquidTileDynamic$_isWaterBlocking, (void**) &_LiquidTileDynamic$_isWaterBlocking);
+	MSHookFunction((void*) &Motive::getAllMotivesAsList, (void*) &Motive$getAllMotivesAsList, (void**) &_Motive$getAllMotivesAsList);
 
 	return JNI_VERSION_1_2;
 }

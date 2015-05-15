@@ -2,7 +2,7 @@
 
 int CabinetTile::_id = 204;
 
-CabinetTile::CabinetTile(int id, Material const* material) : FurnitureTile(id, material) {
+CabinetTile::CabinetTile(int id, Material const* material) : RotatableTile(id, material) {
 	Tile::lightBlock[id] = 0;
 	
 	setNameId("tileCabinet");

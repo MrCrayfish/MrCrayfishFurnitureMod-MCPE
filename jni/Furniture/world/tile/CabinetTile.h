@@ -1,9 +1,9 @@
 #pragma once
 
-#include "FurnitureTile.h"
+#include "RotatableTile.h"
 #include "../item/CabinetItem.h"
 
-class CabinetTile : public FurnitureTile {
+class CabinetTile : public RotatableTile {
 public:
 	static int _id;
 	

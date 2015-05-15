@@ -15,14 +15,20 @@
 #include "Furniture/render/tile/renderers/ChairRenderer.h"
 #include "Furniture/render/tile/renderers/TableRenderer.h"
 #include "Furniture/render/tile/renderers/ToiletRenderer.h"
+#include "Furniture/render/tile/renderers/CabinetRenderer.h"
+#include "Furniture/render/tile/renderers/DoorbellRenderer.h"
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
 #include "Furniture/world/tile/ToiletTile.h"
+#include "Furniture/world/tile/CabinetTile.h"
+#include "Furniture/world/tile/DoorbellTile.h"
 #include "Furniture/world/item/FurnitureItem.h"
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
 #include "Furniture/world/item/ToiletItem.h"
+#include "Furniture/world/item/CabinetItem.h"
+#include "Furniture/world/item/DoorbellItem.h"
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
@@ -39,6 +45,8 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ChairTile::_woodId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ChairTile::_stoneId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
+	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
+	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -53,17 +61,21 @@ static void Tile$initTiles() {
 	FurnitureTile::tileChairWood = new ChairTile(ChairTile::_woodId, "woodChairTile", woodAttributes, ChairItem::_woodId);
 	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
+	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
+	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
 
 	initRenderers();
 }
 
 static void (*_Item$initItems)();
 static void Item$initItems() {
-	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "woodTableItem", "apple", ItemMaterial::WOOD, TableTile::_woodId);
-	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "stoneTableItem", "arrow", ItemMaterial::STONE, TableTile::_stoneId);
-	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "woodChairItem", "axe", ItemMaterial::WOOD, ChairTile::_woodId);
-	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "stoneChairItem", "emerald", ItemMaterial::STONE, ChairTile::_stoneId);
+	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "woodTableItem", ItemMaterial::WOOD, TableTile::_woodId);
+	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "stoneTableItem", ItemMaterial::STONE, TableTile::_stoneId);
+	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "woodChairItem", ItemMaterial::WOOD, ChairTile::_woodId);
+	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "stoneChairItem", ItemMaterial::STONE, ChairTile::_stoneId);
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
+	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
+	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
 
 	_Item$initItems();
 }
@@ -77,16 +89,30 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemChairWood, 0);
 	Item::addCreativeItem(FurnitureItem::itemChairStone, 0);
 	Item::addCreativeItem(FurnitureItem::itemToilet, 0);
+	Item::addCreativeItem(FurnitureItem::itemCabinet, 0);
+	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
 static std::string I18n$get(std::string const& key, std::vector<std::string, std::allocator<std::string>> const& a) {
 	if(key == "item.woodTableItem.name") return "Wooden Table";
 	if(key == "item.stoneTableItem.name") return "Stone Table";
+	if(key == "item.woodCoffeeTableItem.name") return "Wooden Coffee Table";
+	if(key == "item.stoneCoffeeTableItem.name") return "Stone Coffee Table";
 	if(key == "item.woodChairItem.name") return "Wooden Chair";
 	if(key == "item.stoneChairItem.name") return "Stone Chair";
 	if(key == "item.toiletItem.name") return "Toilet";
+	if(key == "item.bathItem.name") return "Bath";
+	if(key == "item.showerItem.name") return "Shower";
+	if(key == "item.showerHeadItem.name") return "Shower Head";
 	if(key == "item.cabinetItem.name") return "Cabinet";
+	if(key == "item.doorbellItem.name") return "Doorbell";
+	if(key == "item.bedsideCabinetItem.name") return "Bedside Cabinet";
+	if(key == "item.tvItem.name") return "TV";
+	if(key == "item.fridgeItem.name") return "Fridge";
+	if(key == "item.ovenItem.name") return "Oven";
+	if(key == "item.blenderItem.name") return "Blender";
+	if(key == "item.lampItem.name") return "Lamp";
 	
 	return _I18n$get(key, a);
 }
@@ -96,10 +122,13 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 	Tile* tile = region->getTilePtr(pos.x, pos.y, pos.z);
 	if(tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
-	tile == FurnitureTile::tileChairWood ||
-	tile == FurnitureTile::tileChairStone ||
-	tile == FurnitureTile::tileToilet)
-		return true;
+		tile == FurnitureTile::tileChairWood ||
+		tile == FurnitureTile::tileChairStone ||
+		tile == FurnitureTile::tileToilet ||
+		tile == FurnitureTile::tileCabinet ||
+		tile == FurnitureTile::tileDoorbell)
+			return true;
+	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
 }
 

@@ -79,6 +79,9 @@ static void Tile$initTiles() {
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
 	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
 	FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
+	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
+	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
+	FurnitureTile::tileLamp = new MicrowaveTile(MicrowaveTile::_id, &Material::stone);
 
 	initRenderers();
 }
@@ -94,6 +97,9 @@ static void Item$initItems() {
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
 	FurnitureItem::itemBin = new BinItem(BinItem::_id);
 	FurnitureItem::itemLamp = new LampItem(LampItem::_id);
+	FurnitureItem::itemChoppingBoard = new ChoppingBoardItem(ChoppingBoardItem::_id);
+	FurnitureItem::itemToaster = new ToasterItem(ToasterItem::_id);
+	FurnitureItem::itemMicrowave = new MicrowaveItem(MicrowaveItem::_id);
 
 	_Item$initItems();
 }
@@ -111,6 +117,9 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
 	Item::addCreativeItem(FurnitureItem::itemBin, 0);
 	Item::addCreativeItem(FurnitureItem::itemLamp, 0);
+	Item::addCreativeItem(FurnitureItem::itemChoppingBoard, 0);
+	Item::addCreativeItem(FurnitureItem::itemToaster, 0);
+	Item::addCreativeItem(FurnitureItem::itemMicrowave, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);

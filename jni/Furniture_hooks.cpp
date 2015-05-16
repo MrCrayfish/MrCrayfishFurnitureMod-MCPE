@@ -132,6 +132,11 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.fridgeItem.name") return "Fridge";
 	if(key == "item.ovenItem.name") return "Oven";
 	if(key == "item.blenderItem.name") return "Blender";
+	if(key == "item.choppingBoardItem.name") return "Chopping Board";
+	if(key == "item.toasterItem.name") return "Toaster";
+	if(key == "item.microwaveItem.name") return "Microwave";
+	if(key == "item.counterItem.name") return "Counter";
+	if(key == "item.blenderItem.name") return "Counter (Sink)";
 	if(key == "item.lampItem.name") return "Lamp";
 	if(key == "item.binItem.name") return "Bin";
 	

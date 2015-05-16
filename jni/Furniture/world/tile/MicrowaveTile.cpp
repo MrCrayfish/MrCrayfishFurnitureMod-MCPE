@@ -25,7 +25,7 @@ bool MicrowaveTile::use(Player* player, int x, int y, int z) {
 	if(hasBread) {
 		//Pickup bread
 		return true;
-	} else { //Ah whatever, get carried item not now
+	} else {
 		//Put bread
 		return true;
 	}

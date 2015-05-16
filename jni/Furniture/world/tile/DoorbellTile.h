@@ -7,7 +7,7 @@
 #include "MCPE/world/level/TileSource.h"
 #include "../../util/CollisionHelper.h"
 
-class DoorbellTile : public FurnitureTile {
+class DoorbellTile : public RotatableTile {
 public:
 	static int _id;
 	

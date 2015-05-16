@@ -2,7 +2,7 @@
 
 int DoorbellTile::_id = 205;
 
-DoorbellTile::DoorbellTile(int id, Material const* material) : FurnitureTile(id, material) {
+DoorbellTile::DoorbellTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("log", 0);
 	secondary_tex = getTextureUVCoordinateSet("iron_block", 0);
 	

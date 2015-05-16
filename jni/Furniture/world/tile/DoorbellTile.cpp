@@ -8,7 +8,6 @@ DoorbellTile::DoorbellTile(int id, Material const* material) : FurnitureTile(id,
 	
 	setNameId("tileDoorbell");
 	setSoundType(Tile::SOUND_WOOD);
-	//setShape(0.375F, 0.25F, 0.0F, 0.625F, 0.75F, 0.1F);
 	Tile::solid[id] = false;
 	Tile::lightBlock[id] = 0;
 }
@@ -42,4 +41,8 @@ void DoorbellTile::tick(TileSource* region, int x, int y, int z, Random* rand) {
 
 int DoorbellTile::getResource(int data, Random* rand) {
 	return DoorbellItem::_id;
+}
+
+void DoorbellTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.375, 0.25, 0, 0.625, 0.75, 0.1).move(x, y, z), posAABB, pool);
 }

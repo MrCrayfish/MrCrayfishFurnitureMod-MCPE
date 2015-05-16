@@ -2,8 +2,8 @@
 
 #include "MCPE/CommonTypes.h"
 #include "TileTickingQueue.h"
+#include "TilePos.h"
 class Tile;
-class TileSource;
 
 class TileSource {
 public:

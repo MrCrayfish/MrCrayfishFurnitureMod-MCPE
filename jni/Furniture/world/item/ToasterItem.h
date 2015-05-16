@@ -1,11 +1,11 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/ChoppingBoardTile.h"
+#include "../tile/ToasterTile.h"
 
-class ChoppingBoardItem : public PlaceableItem {
+class ToasterItem : public PlaceableItem {
 public:
     static int _id;
 
-    ChoppingBoardItem(int);
+    ToasterItem(int);
 };

@@ -1,8 +1,8 @@
-#include "ChoppingBoardItem.h"
+#include "ToasterItem.h"
 
-int ChoppingBoardItem::_id = 465;
+int ToasterItem::_id = 465;
 
-ChoppingBoardItem::ChoppingBoardItem(int id) : PlaceableItem(id, ChoppingBoardTile::_id) {
+ToasterItem::ToasterItem(int id) : PlaceableItem(id, ToasterTile::_id) {
 	setNameID("choppingBoardItem");
 	setIcon("choppingBoardItem", 0);
 }

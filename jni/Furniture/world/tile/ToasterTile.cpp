@@ -1,6 +1,6 @@
 #include "ToasterTile.h"
 
-int ToasterTile::_id = 205;
+int ToasterTile::_id = 209;
 
 ToasterTile::ToasterTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);

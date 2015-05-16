@@ -9,6 +9,9 @@ FurnitureTile* FurnitureTile::tileCabinet = NULL;
 FurnitureTile* FurnitureTile::tileDoorbell = NULL;
 FurnitureTile* FurnitureTile::tileBin = NULL;
 FurnitureTile* FurnitureTile::tileLamp = NULL;
+FurnitureTile* FurnitureTile::tileChoppingBoard = NULL;
+FurnitureTile* FurnitureTile::tileToaster = NULL;
+FurnitureTile* FurnitureTile::tileMicrowave = NULL;
 
 FurnitureTile::FurnitureTile(int id, Material const* material) : Tile(id, material) {
 	init();

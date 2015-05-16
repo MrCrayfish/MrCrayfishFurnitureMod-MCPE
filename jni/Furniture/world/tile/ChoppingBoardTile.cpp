@@ -1,6 +1,6 @@
 #include "ChoppingBoardTile.h"
 
-int ChoppingBoardTile::_id = 205;
+int ChoppingBoardTile::_id = 208;
 
 ChoppingBoardTile::ChoppingBoardTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("planks", 0);

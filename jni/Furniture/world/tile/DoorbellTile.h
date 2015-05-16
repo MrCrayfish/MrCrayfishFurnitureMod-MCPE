@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FurnitureTile.h"
+#include "RotatableTile.h"
 #include "../item/DoorbellItem.h"
 
 #include "MCPE/world/level/Level.h"

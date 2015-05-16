@@ -19,7 +19,7 @@ const TextureUVCoordinateSet& DoorbellTile::getTexture(signed char side, int dat
 }
 
 bool DoorbellTile::use(Player* player, int x, int y, int z) {
-	player->region->setTileAndData(x, y, z, {this->id, player->region->getData(x, y, z) | 8}, 0);
+	player->region.setTileAndData(x, y, z, {this->id, player->region.getData(x, y, z) | 8}, 0);
 	//player->level->playSound("fire.fire", x, y, z, 100, 100); //Cant add its own sounds!
 	return true;
 }
@@ -29,7 +29,7 @@ int DoorbellTile::getTickDelay() {
 }
 
 void DoorbellTile::tick(TileSource* region, int x, int y, int z, Random* rand) {
-	player->region->setTileAndData(x, y, z, {player->region->getData(x, y, z) & 7}, 0);
+	region->setTileAndData(x, y, z, {this->id, region->getData(x, y, z) & 7}, 0);
 }
 
 int DoorbellTile::getResource(int data, Random* rand) {

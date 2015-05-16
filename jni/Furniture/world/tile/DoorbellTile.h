@@ -12,6 +12,8 @@ public:
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);
 	virtual bool use(Player*, int, int, int);
+	virtual int getTickDelay();
+	virtual void tick(TileSource*, int, int, int, Random*);
 	
 private:
 	TextureUVCoordinateSet secondary_tex;

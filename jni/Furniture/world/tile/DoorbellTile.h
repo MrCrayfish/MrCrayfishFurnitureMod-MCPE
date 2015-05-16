@@ -3,6 +3,9 @@
 #include "FurnitureTile.h"
 #include "../item/DoorbellItem.h"
 
+#include "MCPE/world/level/Level.h"
+#include "MCPE/world/level/TileSource.h"
+
 class DoorbellTile : public FurnitureTile {
 public:
 	static int _id;

@@ -29,6 +29,9 @@
 #include "Furniture/world/tile/DoorbellTile.h"
 #include "Furniture/world/tile/BinTile.h"
 #include "Furniture/world/tile/LampTile.h"
+#include "Furniture/world/tile/ChoppingBoardTile.h"
+#include "Furniture/world/tile/ToasterTile.h"
+#include "Furniture/world/tile/MicrowaveTile.h"
 #include "Furniture/world/item/FurnitureItem.h"
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
@@ -37,6 +40,10 @@
 #include "Furniture/world/item/DoorbellItem.h"
 #include "Furniture/world/item/BinItem.h"
 #include "Furniture/world/item/LampItem.h"
+#include "Furniture/world/item/ChoppingBoardItem.h"
+#include "Furniture/world/item/ToasterItem.h"
+#include "Furniture/world/item/MicrowaveItem.h"
+#include "Furniture/world/item/KnifeItem.h"
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
@@ -79,9 +86,9 @@ static void Tile$initTiles() {
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
 	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
 	FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
-	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
-	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
-	FurnitureTile::tileLamp = new MicrowaveTile(MicrowaveTile::_id, &Material::stone);
+	FurnitureTile::tileChoppingBoard = new ChoppingBoardTile(ChoppingBoardTile::_id, &Material::wood);
+	FurnitureTile::tileToaster = new ToasterTile(ToasterTile::_id, &Material::metal); 
+	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::stone);
 
 	initRenderers();
 }
@@ -100,6 +107,7 @@ static void Item$initItems() {
 	FurnitureItem::itemChoppingBoard = new ChoppingBoardItem(ChoppingBoardItem::_id);
 	FurnitureItem::itemToaster = new ToasterItem(ToasterItem::_id);
 	FurnitureItem::itemMicrowave = new MicrowaveItem(MicrowaveItem::_id);
+	FurnitureItem::itemKnife = new KnifeItem(KnifeItem::_id);
 
 	_Item$initItems();
 }
@@ -120,6 +128,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemChoppingBoard, 0);
 	Item::addCreativeItem(FurnitureItem::itemToaster, 0);
 	Item::addCreativeItem(FurnitureItem::itemMicrowave, 0);
+	Item::addCreativeItem(FurnitureItem::itemKnife, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
@@ -145,7 +154,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.toasterItem.name") return "Toaster";
 	if(key == "item.microwaveItem.name") return "Microwave";
 	if(key == "item.counterItem.name") return "Counter";
-	if(key == "item.blenderItem.name") return "Counter (Sink)";
+	if(key == "item.sinkCounterItem.name") return "Counter (Sink)";
 	if(key == "item.lampItem.name") return "Lamp";
 	if(key == "item.binItem.name") return "Bin";
 	
@@ -163,7 +172,10 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileCabinet ||
 		tile == FurnitureTile::tileDoorbell ||
 		tile == FurnitureTile::tileBin ||
-		tile == FurnitureTile::tileLamp)
+		tile == FurnitureTile::tileLamp ||
+		tile == FurnitureTile::tileChoppingBoard ||
+		tile == FurnitureTile::tileToaster ||
+		tile == FurnitureTile::tileMicrowave)
 			return true;
 	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);

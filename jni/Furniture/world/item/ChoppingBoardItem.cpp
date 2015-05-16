@@ -1,6 +1,6 @@
 #include "ChoppingBoardItem.h"
 
-int ChoppingBoardItem::_id = 465;
+int ChoppingBoardItem::_id = 468;
 
 ChoppingBoardItem::ChoppingBoardItem(int id) : PlaceableItem(id, ChoppingBoardTile::_id) {
 	setNameID("choppingBoardItem");

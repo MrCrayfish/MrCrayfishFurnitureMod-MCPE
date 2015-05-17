@@ -24,7 +24,7 @@ void MicrowaveRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTess
 	this->setRotatedBounds(tess, data, 0.75F, 0.0F, 0.125F, 0.8125F, 0.5F, 0.75F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
-	tess->forcedUV = tile->getTexture(2, 0);
+	tess->forcedUV = tile->getTexture(0, 0);
 	this->setRotatedBounds(tess, data, 0.1875F, 0.0625F, 0.125F, 0.25F, 0.125F, 0.6875F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	this->setRotatedBounds(tess, data, 0.1875F, 0.375F, 0.125F, 0.25F, 0.4375F, 0.6875F);
@@ -34,7 +34,7 @@ void MicrowaveRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTess
 	this->setRotatedBounds(tess, data, 0.1875F, 0.125F, 0.625F, 0.25F, 0.375F, 0.6875F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 
-	tess->forcedUV = tile->getTexture(0, 0);
+	tess->forcedUV = tile->getTexture(2, 0);
 	this->setRotatedBounds(tess, data, 0.1875F, 0.0F, 0.0625F, 0.25F, 0.0625F, 0.75F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
 	this->setRotatedBounds(tess, data, 0.1875F, 0.4375F, 0.0625F, 0.25F, 0.5F, 0.75F);

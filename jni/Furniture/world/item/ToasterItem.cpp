@@ -4,5 +4,5 @@ int ToasterItem::_id = 469;
 
 ToasterItem::ToasterItem(int id) : PlaceableItem(id, ToasterTile::_id) {
 	setNameID("toasterItem");
-	setIcon("choppingBoardItem", 0);
+	setIcon("toasterItem", 0);
 }

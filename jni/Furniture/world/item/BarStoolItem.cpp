@@ -4,5 +4,5 @@ int BarStoolItem::_id = 473;
 
 BarStoolItem::BarStoolItem(int id) : PlaceableItem(id, BarStoolTile::_id) {
 	setNameID("barStoolItem");
-	setIcon("choppingBoardItem", 0);
+	setIcon("barStoolItem", 0);
 }

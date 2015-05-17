@@ -1,6 +1,6 @@
 #include "CounterTile.h"
 
-int CounterTile::_id = 211;
+int CounterTile::_id = 213;
 
 CounterTile::CounterTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);

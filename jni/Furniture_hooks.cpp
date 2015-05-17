@@ -24,6 +24,7 @@
 #include "Furniture/render/tile/renderers/ChoppingBoardRenderer.h"
 #include "Furniture/render/tile/renderers/ToasterRenderer.h"
 #include "Furniture/render/tile/renderers/MicrowaveRenderer.h"
+#include "Furniture/render/tile/renderers/BarStoolRenderer.h"
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
@@ -35,6 +36,7 @@
 #include "Furniture/world/tile/ChoppingBoardTile.h"
 #include "Furniture/world/tile/ToasterTile.h"
 #include "Furniture/world/tile/MicrowaveTile.h"
+#include "Furniture/world/tile/BarStoolTile.h"
 #include "Furniture/world/item/FurnitureItem.h"
 #include "Furniture/world/item/TableItem.h"
 #include "Furniture/world/item/ChairItem.h"
@@ -47,6 +49,7 @@
 #include "Furniture/world/item/ToasterItem.h"
 #include "Furniture/world/item/MicrowaveItem.h"
 #include "Furniture/world/item/KnifeItem.h"
+#include "Furniture/world/item/BarStoolItem.h"
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
@@ -74,6 +77,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ChoppingBoardTile::_id, new ChoppingBoardRenderer());
 	RenderDispatcher::registerRenderer(ToasterTile::_id, new ToasterRenderer());
 	RenderDispatcher::registerRenderer(MicrowaveTile::_id, new MicrowaveRenderer());
+	RenderDispatcher::registerRenderer(BarStoolTile::_id, new BarStoolRenderer());
 }
 
 static void (*_Tile$initTiles)();
@@ -95,6 +99,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileChoppingBoard = new ChoppingBoardTile(ChoppingBoardTile::_id, &Material::wood);
 	FurnitureTile::tileToaster = new ToasterTile(ToasterTile::_id, &Material::metal); 
 	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::stone);
+	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
 
 	initRenderers();
 }
@@ -114,6 +119,7 @@ static void Item$initItems() {
 	FurnitureItem::itemToaster = new ToasterItem(ToasterItem::_id);
 	FurnitureItem::itemMicrowave = new MicrowaveItem(MicrowaveItem::_id);
 	FurnitureItem::itemKnife = new KnifeItem(KnifeItem::_id);
+	FurnitureItem::itemBarStool = new BarStoolItem(BarStoolItem::_id);
 
 	_Item$initItems();
 }
@@ -135,6 +141,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemToaster, 0);
 	Item::addCreativeItem(FurnitureItem::itemMicrowave, 0);
 	Item::addCreativeItem(FurnitureItem::itemKnife, 0);
+	Item::addCreativeItem(FurnitureItem::itemBarStool, 0);
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
@@ -163,6 +170,8 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.sinkCounterItem.name") return "Counter (Sink)";
 	if(key == "item.lampItem.name") return "Lamp";
 	if(key == "item.binItem.name") return "Bin";
+	if(key == "item.barStoolItem.name") return "Bar Stool";
+	if(key == "item.knifeItem.name") return "Knife";
 	
 	return _I18n$get(key, a);
 }

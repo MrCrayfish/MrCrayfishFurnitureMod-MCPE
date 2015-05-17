@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MCPE/world/level/item/Item.h"
+#include "FurnitureItem.h"
 
-class KnifeItem : public Item {
+class KnifeItem : public FurnitureItem {
 public:
     static int _id;
 

@@ -21,6 +21,9 @@
 #include "Furniture/render/tile/renderers/DoorbellRenderer.h"
 #include "Furniture/render/tile/renderers/BinRenderer.h"
 #include "Furniture/render/tile/renderers/LampRenderer.h"
+#include "Furniture/render/tile/renderers/ChoppingBoardRenderer.h"
+#include "Furniture/render/tile/renderers/ToasterRenderer.h"
+#include "Furniture/render/tile/renderers/MicrowaveRenderer.h"
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
@@ -68,6 +71,9 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
 	RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
 	RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
+	RenderDispatcher::registerRenderer(ChoppingBoardTile::_id, new ChoppingBoardRenderer());
+	RenderDispatcher::registerRenderer(ToasterTile::_id, new ToasterRenderer());
+	RenderDispatcher::registerRenderer(MicrowaveTile::_id, new MicrowaveRenderer());
 }
 
 static void (*_Tile$initTiles)();

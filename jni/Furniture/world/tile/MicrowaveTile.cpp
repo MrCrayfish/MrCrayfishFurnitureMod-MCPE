@@ -1,6 +1,6 @@
 #include "MicrowaveTile.h"
 
-int MicrowaveTile::_id = 210;
+int MicrowaveTile::_id = 211;
 
 MicrowaveTile::MicrowaveTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);

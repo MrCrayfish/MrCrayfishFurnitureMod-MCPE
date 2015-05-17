@@ -11,23 +11,23 @@ void ToasterRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessel
 	if(data == 8) data = 0;
 
 	tess->forcedUV = tile->getTexture(0, 0);
-	tess->setRotatedBounds(tess, data, 0.34375F, 0.0F, 0.21875F, 0.40625F, 0.4F, 0.78125F);
+	this->setRotatedBounds(tess, data, 0.34375F, 0.0F, 0.21875F, 0.40625F, 0.4F, 0.78125F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
-    tess->setRotatedBounds(tess, data, 0.59375F, 0.0F, 0.21875F, 0.65625F, 0.4F, 0.78125F);
+    this->setRotatedBounds(tess, data, 0.59375F, 0.0F, 0.21875F, 0.65625F, 0.4F, 0.78125F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
-    tess->setRotatedBounds(tess, data, 0.46875F, 0.0F, 0.28125F, 0.53125F, 0.4F, 0.71875F);
+    this->setRotatedBounds(tess, data, 0.46875F, 0.0F, 0.28125F, 0.53125F, 0.4F, 0.71875F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
-    tess->setRotatedBounds(tess, data, 0.40625F, 0.0F, 0.21875F, 0.59375F, 0.4F, 0.28125F);
+    this->setRotatedBounds(tess, data, 0.40625F, 0.0F, 0.21875F, 0.59375F, 0.4F, 0.28125F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
-    tess->setRotatedBounds(tess, data, 0.40625F, 0.0F, 0.71875F, 0.59375F, 0.4F, 0.78125F);
+    this->setRotatedBounds(tess, data, 0.40625F, 0.0F, 0.71875F, 0.59375F, 0.4F, 0.78125F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
 
     tess->forcedUV = tile->getTexture(1, 0);
-    tess->setRotatedBounds(tess, data, 0.3125F, 0.0F, 0.1875F, 0.6875F, 0.0625F, 0.8125F);
+    this->setRotatedBounds(tess, data, 0.3125F, 0.0F, 0.1875F, 0.6875F, 0.0625F, 0.8125F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
 
     tess->forcedUV = tile->getTexture(2, 0);
-    tess->setRotatedBounds(tess, data, 0.4375F, 0.25F, 0.15625F, 0.5625F, 0.3F, 0.21875F);
+    this->setRotatedBounds(tess, data, 0.4375F, 0.25F, 0.15625F, 0.5625F, 0.3F, 0.21875F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
 
 	tess->useForcedUV = false;

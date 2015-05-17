@@ -35,3 +35,7 @@ bool ChoppingBoardTile::use(Player* player, int x, int y, int z) {
 int ChoppingBoardTile::getResource(int data, Random* rand) {
 	return ChoppingBoardItem::_id;
 }
+
+void ChoppingBoardTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.25F, 0.0F, 0.0625F, 0.8125F, 0.0625F, 0.9375F).move(x, y, z), posAABB, pool);
+}

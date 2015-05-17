@@ -52,7 +52,9 @@ void MicrowaveRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTess
 	  //render an item. (How?)
 	}
 
-	tess->forcedUV = tile->getTexture(2, 0);
+	tess->forcedUV = tile->getTexture(1, 0);
 	this->setRotatedBounds(tess, data, 0.265625F, 0.0625F, 0.1875F, 0.625F, 0.125F, 0.640625F);
 	tess->tessellateBlockInWorld(tile, {x, y, z});
+	
+	tess->useForcedUV = false;
 }

@@ -26,14 +26,14 @@ void CounterRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessel
         tess->tessellateBlockInWorld(tile, {x, y, z});
       }
     }
-    if ((this->getTilePtr(x, y, z - 1) == tile))
+    if ((ts->getTilePtr(x, y, z - 1) == tile))
     {
-      if (data == 2 && (!(ts->getTilePtr(ts, x + 1, y, z) == tile)))
+      if (data == 2 && (!(ts->getTilePtr(x + 1, y, z) == tile)))
       {
         this->setRotatedBounds(tess, data, 0.125F, 0.0F, 0.125F, 1.0F, 0.875F, 1.0F);
         tess->tessellateBlockInWorld(tile, {x, y, z});
       }
-      else if ((data == 3) && (!(ts->getTilePtr(ts, x - 1, y, z) == tile)))
+      else if ((data == 3) && (!(ts->getTilePtr(x - 1, y, z) == tile)))
       {
         this->setRotatedBounds(tess, data, 0.125F, 0.0F, 0.0F, 1.0F, 0.875F, 0.875F);
         tess->tessellateBlockInWorld(tile, {x, y, z});
@@ -51,7 +51,7 @@ void CounterRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessel
     }
 
     tess->forcedUV = tile->getTexture(1, 0);
-    this->setRotatedBounds(0.0F, 0.875F, 0.0F, 1.0F, 1.0F, 1.0F);
+    this->setRotatedBounds(tess, data, 0.0F, 0.875F, 0.0F, 1.0F, 1.0F, 1.0F);
     tess->tessellateBlockInWorld(tile, {x, y, z});
 	
 	tess->useForcedUV = false;

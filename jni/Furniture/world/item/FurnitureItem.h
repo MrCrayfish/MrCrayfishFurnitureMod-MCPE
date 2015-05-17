@@ -18,6 +18,7 @@ public:
 	static FurnitureItem* itemMicrowave;
 	static FurnitureItem* itemKnife;
 	static FurnitureItem* itemBarStool;
-
+	static FurnitureItem* itemCounter;
+	
 	FurnitureItem(int);
 };

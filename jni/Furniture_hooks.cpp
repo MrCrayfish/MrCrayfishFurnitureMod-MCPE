@@ -200,7 +200,7 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileLamp ||
 		tile == FurnitureTile::tileChoppingBoard ||
 		tile == FurnitureTile::tileToaster ||
-		tile == FurnitureTile::tileMicrowave
+		tile == FurnitureTile::tileMicrowave ||
 		tile == FurnitureTile::tileCounter)
 			return true;
 	

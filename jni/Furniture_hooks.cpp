@@ -13,9 +13,11 @@
 #include "MCPE/locale/I18n.h"
 #include "MCPE/world/entity/Motive.h"
 
+/* Renders */
 #include "Furniture/render/tile/RenderDispatcher.h"
 #include "Furniture/render/tile/renderers/ChairRenderer.h"
 #include "Furniture/render/tile/renderers/TableRenderer.h"
+#include "Furniture/render/tile/renderers/CoffeeTableRenderer.h"
 #include "Furniture/render/tile/renderers/ToiletRenderer.h"
 #include "Furniture/render/tile/renderers/CabinetRenderer.h"
 #include "Furniture/render/tile/renderers/DoorbellRenderer.h"
@@ -26,8 +28,11 @@
 #include "Furniture/render/tile/renderers/MicrowaveRenderer.h"
 #include "Furniture/render/tile/renderers/BarStoolRenderer.h"
 #include "Furniture/render/tile/renderers/CounterRenderer.h"
+
+/* Tiles */
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
+#include "Furniture/world/tile/CoffeeTableTile.h"
 #include "Furniture/world/tile/ChairTile.h"
 #include "Furniture/world/tile/ToiletTile.h"
 #include "Furniture/world/tile/CabinetTile.h"
@@ -39,8 +44,11 @@
 #include "Furniture/world/tile/MicrowaveTile.h"
 #include "Furniture/world/tile/BarStoolTile.h"
 #include "Furniture/world/tile/CounterTile.h"
+
+/* Items */
 #include "Furniture/world/item/FurnitureItem.h"
 #include "Furniture/world/item/TableItem.h"
+#include "Furniture/world/item/CoffeeTableItem.h"
 #include "Furniture/world/item/ChairItem.h"
 #include "Furniture/world/item/ToiletItem.h"
 #include "Furniture/world/item/CabinetItem.h"
@@ -53,6 +61,7 @@
 #include "Furniture/world/item/KnifeItem.h"
 #include "Furniture/world/item/BarStoolItem.h"
 #include "Furniture/world/item/CounterItem.h"
+
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
 
@@ -70,6 +79,8 @@ static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile,
 void initRenderers() {
 	RenderDispatcher::registerRenderer(TableTile::_woodId, new TableRenderer());
 	RenderDispatcher::registerRenderer(TableTile::_stoneId, new TableRenderer());
+	RenderDispatcher::registerRenderer(CoffeeTableTile::_woodId, new CoffeeTableRenderer());
+	RenderDispatcher::registerRenderer(CoffeeTableTile::_stoneId, new CoffeeTableRenderer());
 	RenderDispatcher::registerRenderer(ChairTile::_woodId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ChairTile::_stoneId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
@@ -93,6 +104,8 @@ static void Tile$initTiles() {
 
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
 	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
+	FurnitureTile::tileCoffeeTableWood = new CoffeeTableTile(CoffeeTableTile::_woodId, "woodCoffeeTableTile", woodAttributes, CoffeeTableItem::_woodId);
+	FurnitureTile::tileCoffeeTableStone = new CoffeeTableTile(CoffeeTableTile::_stoneId, "stoneCoffeeTableTile", stoneAttributes, CoffeeTableItem::_stoneId);
 	FurnitureTile::tileChairWood = new ChairTile(ChairTile::_woodId, "woodChairTile", woodAttributes, ChairItem::_woodId);
 	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
@@ -113,6 +126,8 @@ static void (*_Item$initItems)();
 static void Item$initItems() {
 	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "woodTableItem", ItemMaterial::WOOD, TableTile::_woodId);
 	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "stoneTableItem", ItemMaterial::STONE, TableTile::_stoneId);
+	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "woodCoffeeTableItem", ItemMaterial::WOOD, CoffeeTableTile::_woodId);
+	FurnitureItem::itemCoffeeTableStone = new CoffeeTableItem(CoffeeTableItem::_stoneId, "stoneCoffeeTableItem", ItemMaterial::STONE, CoffeeTableTile::_stoneId);
 	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "woodChairItem", ItemMaterial::WOOD, ChairTile::_woodId);
 	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "stoneChairItem", ItemMaterial::STONE, ChairTile::_stoneId);
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
@@ -136,6 +151,8 @@ static void Item$initCreativeItems() {
 
 	Item::addCreativeItem(FurnitureItem::itemTableWood, 0);
 	Item::addCreativeItem(FurnitureItem::itemTableStone, 0);
+	Item::addCreativeItem(FurnitureItem::itemCoffeeTableWood, 0);
+	Item::addCreativeItem(FurnitureItem::itemCoffeeTableStone, 0);
 	Item::addCreativeItem(FurnitureItem::itemChairWood, 0);
 	Item::addCreativeItem(FurnitureItem::itemChairStone, 0);
 	Item::addCreativeItem(FurnitureItem::itemToilet, 0);
@@ -191,6 +208,8 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 	Tile* tile = region->getTilePtr(pos.x, pos.y, pos.z);
 	if(tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
+		tile == FurnitureTile::tileCoffeeTableWood ||
+     	tile == FurnitureTile::tileCoffeeTableStone ||
 		tile == FurnitureTile::tileChairWood ||
 		tile == FurnitureTile::tileChairStone ||
 		tile == FurnitureTile::tileToilet ||

@@ -10,6 +10,8 @@ class FurnitureTile : public Tile {
 public:
 	static FurnitureTile* tileTableWood;
 	static FurnitureTile* tileTableStone;
+	static FurnitureTile* tileCoffeeTableWood;
+	static FurnitureTile* tileCoffeeTableStone;
 	static FurnitureTile* tileChairWood;
 	static FurnitureTile* tileChairStone;
 	static FurnitureTile* tileToilet;

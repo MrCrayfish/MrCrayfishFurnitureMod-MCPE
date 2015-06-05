@@ -1,6 +1,6 @@
 #include "CabinetTile.h"
 
-int CabinetTile::_id = 204;
+int CabinetTile::_id = 220;
 
 CabinetTile::CabinetTile(int id, Material const* material) : RotatableTile(id, material) {
 	Tile::lightBlock[id] = 0;

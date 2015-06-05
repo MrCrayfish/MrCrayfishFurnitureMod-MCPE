@@ -1,6 +1,6 @@
 #include "DoorbellTile.h"
 
-int DoorbellTile::_id = 205;
+int DoorbellTile::_id = 219;
 
 DoorbellTile::DoorbellTile(int id, Material const* material) : RotatableTile(id, material) {
 	tex = getTextureUVCoordinateSet("log", 0);

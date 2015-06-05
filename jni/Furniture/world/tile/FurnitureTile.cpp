@@ -2,6 +2,8 @@
 
 FurnitureTile* FurnitureTile::tileTableWood = NULL;
 FurnitureTile* FurnitureTile::tileTableStone = NULL;
+FurnitureTile* FurnitureTile::tileCoffeeTableWood = NULL;
+FurnitureTile* FurnitureTile::tileCoffeeTableStone = NULL;
 FurnitureTile* FurnitureTile::tileChairWood = NULL;
 FurnitureTile* FurnitureTile::tileChairStone = NULL;
 FurnitureTile* FurnitureTile::tileToilet = NULL;

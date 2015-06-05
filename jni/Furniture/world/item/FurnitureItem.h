@@ -6,6 +6,8 @@ class FurnitureItem : public Item {
 public:
 	static FurnitureItem* itemTableWood;
 	static FurnitureItem* itemTableStone;
+	static FurnitureItem* itemCoffeeTableWood;
+	static FurnitureItem* itemCoffeeTableStone;
 	static FurnitureItem* itemChairWood;
 	static FurnitureItem* itemChairStone;
 	static FurnitureItem* itemToilet;

@@ -1,7 +1,6 @@
 #include "CoffeeTableRenderer.h"
 
-#include "../../../world/tile/CoffeeTableTile.h"
-
+#include "Furniture/world/tile/CoffeeTableTile.h"
 
 void CoffeeTableRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;

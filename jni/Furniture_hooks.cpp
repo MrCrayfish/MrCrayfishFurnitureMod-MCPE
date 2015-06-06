@@ -5,6 +5,9 @@
 #include <substrate.h>
 #include <vector>
 
+#define  LOG_TAG    "FurnitureMod-MCPE" 
+#define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+
 #include "MCPE/world/level/tile/Tile.h"
 #include "MCPE/world/level/tile/LiquidTileDynamic.h"
 #include "MCPE/world/material/Material.h"
@@ -77,6 +80,7 @@ static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile,
 }
 
 void initRenderers() {
+	ALOG("Loading Renders");
 	RenderDispatcher::registerRenderer(TableTile::_woodId, new TableRenderer());
 	RenderDispatcher::registerRenderer(TableTile::_stoneId, new TableRenderer());
 	RenderDispatcher::registerRenderer(CoffeeTableTile::_woodId, new CoffeeTableRenderer());
@@ -93,6 +97,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(MicrowaveTile::_id, new MicrowaveRenderer());
 	RenderDispatcher::registerRenderer(BarStoolTile::_id, new BarStoolRenderer());
 	RenderDispatcher::registerRenderer(CounterTile::_id, new CounterRenderer());
+	ALOG("Finished Loading Renders");
 }
 
 static void (*_Tile$initTiles)();
@@ -102,6 +107,7 @@ static void Tile$initTiles() {
 	FurnitureTileAttributes woodAttributes(&Material::wood, "planks", "log", Tile::SOUND_WOOD, 1.0F);
 	FurnitureTileAttributes stoneAttributes(&Material::stone, "stone", "cobblestone", Tile::SOUND_STONE, 1.5F);
 
+	ALOG("Loading Tiles");
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
 	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
 	FurnitureTile::tileCoffeeTableWood = new CoffeeTableTile(CoffeeTableTile::_woodId, "woodCoffeeTableTile", woodAttributes, CoffeeTableItem::_woodId);
@@ -118,12 +124,14 @@ static void Tile$initTiles() {
 	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::metal);
 	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
 	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, &Material::stone);
+	ALOG("Finished Loading Tiles");
 
 	initRenderers();
 }
 
 static void (*_Item$initItems)();
 static void Item$initItems() {
+	ALOG("Loading Items");
 	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "woodTableItem", ItemMaterial::WOOD, TableTile::_woodId);
 	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "stoneTableItem", ItemMaterial::STONE, TableTile::_stoneId);
 	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "woodCoffeeTableItem", ItemMaterial::WOOD, CoffeeTableTile::_woodId);
@@ -141,6 +149,7 @@ static void Item$initItems() {
 	FurnitureItem::itemKnife = new KnifeItem(KnifeItem::_id);
 	FurnitureItem::itemBarStool = new BarStoolItem(BarStoolItem::_id);
 	FurnitureItem::itemCounter = new CounterItem(CounterItem::_id);
+	ALOG("Finished Loading Items");
 
 	_Item$initItems();
 }
@@ -149,6 +158,7 @@ static void (*_Item$initCreativeItems)();
 static void Item$initCreativeItems() {
 	_Item$initCreativeItems();
 
+	ALOG("Adding Creative Items");
 	Item::addCreativeItem(FurnitureItem::itemTableWood, 0);
 	Item::addCreativeItem(FurnitureItem::itemTableStone, 0);
 	Item::addCreativeItem(FurnitureItem::itemCoffeeTableWood, 0);
@@ -166,6 +176,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemKnife, 0);
 	Item::addCreativeItem(FurnitureItem::itemBarStool, 0);
 	Item::addCreativeItem(FurnitureItem::itemCounter, 0);
+	ALOG("Finished Adding Creative Items");
 }
 
 static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);

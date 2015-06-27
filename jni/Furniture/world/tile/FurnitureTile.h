@@ -16,6 +16,7 @@ public:
 	static FurnitureTile* tileChairStone;
 	static FurnitureTile* tileToilet;
 	static FurnitureTile* tileCabinet;
+	static FurnitureTile* tileKitchenCabinet:
 	static FurnitureTile* tileDoorbell;
 	static FurnitureTile* tileBin;
 	static FurnitureTile* tileLamp;

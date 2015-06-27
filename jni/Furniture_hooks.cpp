@@ -39,6 +39,7 @@
 #include "Furniture/world/tile/ChairTile.h"
 #include "Furniture/world/tile/ToiletTile.h"
 #include "Furniture/world/tile/CabinetTile.h"
+#include "Furniture/world/tile/KitchenCabinetTile.h"
 #include "Furniture/world/tile/DoorbellTile.h"
 #include "Furniture/world/tile/BinTile.h"
 #include "Furniture/world/tile/LampTile.h"
@@ -55,6 +56,7 @@
 #include "Furniture/world/item/ChairItem.h"
 #include "Furniture/world/item/ToiletItem.h"
 #include "Furniture/world/item/CabinetItem.h"
+#include "Furniture/world/item/KitchenCabinetItem.h"
 #include "Furniture/world/item/DoorbellItem.h"
 #include "Furniture/world/item/BinItem.h"
 #include "Furniture/world/item/LampItem.h"
@@ -89,6 +91,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(ChairTile::_stoneId, new ChairRenderer());
 	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
 	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
+	RenderDispatcher::registerRenderer(KitchenCabinetTile::_id, new CabinetRenderer());
 	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
 	RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
 	RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
@@ -116,6 +119,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
 	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
+	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, &Material;::stone);
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
 	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
 	FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
@@ -140,6 +144,7 @@ static void Item$initItems() {
 	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "stoneChairItem", ItemMaterial::STONE, ChairTile::_stoneId);
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
+	FurnitureItem::itemKitchenCabinet = new KitchenCabinetItem(KitchenCabinetItem::_id);
 	FurnitureItem::itemDoorbell = new DoorbellItem(DoorbellItem::_id);
 	FurnitureItem::itemBin = new BinItem(BinItem::_id);
 	FurnitureItem::itemLamp = new LampItem(LampItem::_id);
@@ -167,6 +172,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemChairStone, 0);
 	Item::addCreativeItem(FurnitureItem::itemToilet, 0);
 	Item::addCreativeItem(FurnitureItem::itemCabinet, 0);
+	Item::addCreativeItem(FurnitureItem::itemKitchenCabinet, 0);
 	Item::addCreativeItem(FurnitureItem::itemDoorbell, 0);
 	Item::addCreativeItem(FurnitureItem::itemBin, 0);
 	Item::addCreativeItem(FurnitureItem::itemLamp, 0);

@@ -8,6 +8,7 @@ FurnitureItem* FurnitureItem::itemChairWood = NULL;
 FurnitureItem* FurnitureItem::itemChairStone = NULL;
 FurnitureItem* FurnitureItem::itemToilet = NULL;
 FurnitureItem* FurnitureItem::itemCabinet = NULL;
+FurnitureItem* FurnitureItem::itemKitchenCabinet = NULL;
 FurnitureItem* FurnitureItem::itemDoorbell = NULL;
 FurnitureItem* FurnitureItem::itemBin = NULL;
 FurnitureItem* FurnitureItem::itemLamp = NULL;

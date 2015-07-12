@@ -16,7 +16,7 @@ public:
 	static FurnitureTile* tileChairStone;
 	static FurnitureTile* tileToilet;
 	static FurnitureTile* tileCabinet;
-	static FurnitureTile* tileKitchenCabinet:
+	static FurnitureTile* tileKitchenCabinet;
 	static FurnitureTile* tileDoorbell;
 	static FurnitureTile* tileBin;
 	static FurnitureTile* tileLamp;
@@ -25,6 +25,8 @@ public:
 	static FurnitureTile* tileMicrowave;
 	static FurnitureTile* tileBarStool;
 	static FurnitureTile* tileCounter;
+	static FurnitureTile* tileCookieJar;
+	static FurnitureTile* tileOven;
 	
 	FurnitureTile(int, Material const*);
 };

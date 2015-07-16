@@ -31,6 +31,8 @@
 #include "Furniture/render/tile/renderers/MicrowaveRenderer.h"
 #include "Furniture/render/tile/renderers/BarStoolRenderer.h"
 #include "Furniture/render/tile/renderers/CounterRenderer.h"
+#include "Furniture/render/tile/renderers/CookieJarRenderer.h"
+#include "Furniture/render/tile/renderers/OvenRenderer.h"
 
 /* Tiles */
 #include "Furniture/world/tile/FurnitureTile.h"
@@ -48,6 +50,8 @@
 #include "Furniture/world/tile/MicrowaveTile.h"
 #include "Furniture/world/tile/BarStoolTile.h"
 #include "Furniture/world/tile/CounterTile.h"
+#include "Furniture/world/tile/CookieJarTile.h"
+#include "Furniture/world/tile/OvenTile.h"
 
 /* Items */
 #include "Furniture/world/item/FurnitureItem.h"
@@ -66,6 +70,8 @@
 #include "Furniture/world/item/KnifeItem.h"
 #include "Furniture/world/item/BarStoolItem.h"
 #include "Furniture/world/item/CounterItem.h"
+#include "Furniture/world/item/CookieJarItem.h"
+#include "Furniture/world/item/OvenItem.h"
 
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
@@ -100,6 +106,8 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(MicrowaveTile::_id, new MicrowaveRenderer());
 	RenderDispatcher::registerRenderer(BarStoolTile::_id, new BarStoolRenderer());
 	RenderDispatcher::registerRenderer(CounterTile::_id, new CounterRenderer());
+	RenderDispatcher::registerRenderer(CookieJarTile::_id, new CookieJarRenderer());
+	RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
 	ALOG("Finished Loading Renders");
 }
 
@@ -119,7 +127,7 @@ static void Tile$initTiles() {
 	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
 	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
 	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
-	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, &Material;::stone);
+	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, &Material::stone);
 	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
 	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
 	FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
@@ -128,6 +136,8 @@ static void Tile$initTiles() {
 	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::metal);
 	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
 	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, &Material::stone);
+	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, &Material::glass);
+	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::stone);
 	ALOG("Finished Loading Tiles");
 
 	initRenderers();
@@ -154,6 +164,8 @@ static void Item$initItems() {
 	FurnitureItem::itemKnife = new KnifeItem(KnifeItem::_id);
 	FurnitureItem::itemBarStool = new BarStoolItem(BarStoolItem::_id);
 	FurnitureItem::itemCounter = new CounterItem(CounterItem::_id);
+	FurnitureItem::itemCookieJar = new CookieJarItem(CookieJarItem::_id);
+	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	ALOG("Finished Loading Items");
 
 	_Item$initItems();
@@ -182,6 +194,8 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemKnife, 0);
 	Item::addCreativeItem(FurnitureItem::itemBarStool, 0);
 	Item::addCreativeItem(FurnitureItem::itemCounter, 0);
+	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
+	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	ALOG("Finished Adding Creative Items");
 }
 
@@ -216,6 +230,8 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.basinItem.name") return "Basin";
 	if(key == "item.cupItem.name") return "Cup";
 	if(key == "item.knifeItem.name") return "Knife";
+	if(key == "item.cookieJarItem.name") return "Cookie Jar";
+	if(key == "item.ovenItem.name") return "Oven";
 	
 	return _I18n$get(key, a);
 }
@@ -237,6 +253,8 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileChoppingBoard ||
 		tile == FurnitureTile::tileToaster ||
 		tile == FurnitureTile::tileMicrowave ||
+		tile == FurnitureTile::tileCookieJar ||
+		tile == FurnitureTile::tileOven ||
 		tile == FurnitureTile::tileCounter)
 			return true;
 	

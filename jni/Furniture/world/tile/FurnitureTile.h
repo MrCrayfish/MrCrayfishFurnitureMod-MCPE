@@ -27,6 +27,7 @@ public:
 	static FurnitureTile* tileCounter;
 	static FurnitureTile* tileCookieJar;
 	static FurnitureTile* tileOven;
+	static FurnitureTile* tilePlate;
 	
 	FurnitureTile(int, Material const*);
 };

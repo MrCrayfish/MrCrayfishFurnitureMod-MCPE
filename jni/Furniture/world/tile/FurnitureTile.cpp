@@ -19,10 +19,11 @@ FurnitureTile* FurnitureTile::tileBarStool = NULL;
 FurnitureTile* FurnitureTile::tileCounter = NULL;
 FurnitureTile* FurnitureTile::tileCookieJar = NULL;
 FurnitureTile* FurnitureTile::tileOven = NULL;
+FurnitureTile* FurnitureTile::tilePlate = NULL;
 
 FurnitureTile::FurnitureTile(int id, Material const* material) : Tile(id, material) {
 	init();
 	category = 1;
-
+	
 	new TileItem(id - 256);
 }

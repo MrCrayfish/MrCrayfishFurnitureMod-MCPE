@@ -20,6 +20,7 @@ FurnitureItem* FurnitureItem::itemBarStool = NULL;
 FurnitureItem* FurnitureItem::itemCounter = NULL;
 FurnitureItem* FurnitureItem::itemCookieJar = NULL;
 FurnitureItem* FurnitureItem::itemOven = NULL;
+FurnitureItem* FurnitureItem::itemPlate = NULL;
 
 FurnitureItem::FurnitureItem(int id) : Item(id - 256) {
 	creativeCategory = 4;

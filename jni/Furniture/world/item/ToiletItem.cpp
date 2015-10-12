@@ -4,5 +4,5 @@ int ToiletItem::_id = 470;
 
 ToiletItem::ToiletItem(int id) : PlaceableItem(id, ToiletTile::_id) {
 	setNameID("toiletItem");
-	setIcon("toiletItem", 0);
+	setIcon("itemtoilet", 0);
 }

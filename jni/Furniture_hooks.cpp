@@ -33,6 +33,7 @@
 #include "Furniture/render/tile/renderers/CounterRenderer.h"
 #include "Furniture/render/tile/renderers/CookieJarRenderer.h"
 #include "Furniture/render/tile/renderers/OvenRenderer.h"
+#include "Furniture/render/tile/renderers/PlateRenderer.h"
 
 /* Tiles */
 #include "Furniture/world/tile/FurnitureTile.h"
@@ -52,6 +53,7 @@
 #include "Furniture/world/tile/CounterTile.h"
 #include "Furniture/world/tile/CookieJarTile.h"
 #include "Furniture/world/tile/OvenTile.h"
+#include "Furniture/world/tile/PlateTile.h"
 
 /* Items */
 #include "Furniture/world/item/FurnitureItem.h"
@@ -72,10 +74,10 @@
 #include "Furniture/world/item/CounterItem.h"
 #include "Furniture/world/item/CookieJarItem.h"
 #include "Furniture/world/item/OvenItem.h"
+#include "Furniture/world/item/PlateItem.h"
 
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
-
 
 void initMod() {
 	Motive::initCustomMotives();
@@ -108,16 +110,17 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(CounterTile::_id, new CounterRenderer());
 	RenderDispatcher::registerRenderer(CookieJarTile::_id, new CookieJarRenderer());
 	RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
+	RenderDispatcher::registerRenderer(PlateTile::_id, new PlateRenderer());
 	ALOG("Finished Loading Renders");
 }
 
 static void (*_Tile$initTiles)();
 static void Tile$initTiles() {
 	_Tile$initTiles();
-
+	
 	FurnitureTileAttributes woodAttributes(&Material::wood, "planks", "log", Tile::SOUND_WOOD, 1.0F);
 	FurnitureTileAttributes stoneAttributes(&Material::stone, "stone", "cobblestone", Tile::SOUND_STONE, 1.5F);
-
+	
 	ALOG("Loading Tiles");
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
 	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
@@ -136,22 +139,23 @@ static void Tile$initTiles() {
 	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::metal);
 	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
 	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, &Material::stone);
-	FurnitureTile::tileCookieJar = new CookieJarTile(CookieJarTile::_id, &Material::glass);
+	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, &Material::glass);
 	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::stone);
+	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, &Material::glass);
 	ALOG("Finished Loading Tiles");
-
+	
 	initRenderers();
 }
 
 static void (*_Item$initItems)();
 static void Item$initItems() {
 	ALOG("Loading Items");
-	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "woodTableItem", ItemMaterial::WOOD, TableTile::_woodId);
-	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "stoneTableItem", ItemMaterial::STONE, TableTile::_stoneId);
-	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "woodCoffeeTableItem", ItemMaterial::WOOD, CoffeeTableTile::_woodId);
-	FurnitureItem::itemCoffeeTableStone = new CoffeeTableItem(CoffeeTableItem::_stoneId, "stoneCoffeeTableItem", ItemMaterial::STONE, CoffeeTableTile::_stoneId);
-	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "woodChairItem", ItemMaterial::WOOD, ChairTile::_woodId);
-	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "stoneChairItem", ItemMaterial::STONE, ChairTile::_stoneId);
+	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "itemtablewood", ItemMaterial::WOOD, TableTile::_woodId);
+	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "itemtablestone", ItemMaterial::STONE, TableTile::_stoneId);
+	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "itemcoffeetablewood", ItemMaterial::WOOD, CoffeeTableTile::_woodId);
+	FurnitureItem::itemCoffeeTableStone = new CoffeeTableItem(CoffeeTableItem::_stoneId, "itemcoffeetablestone", ItemMaterial::STONE, CoffeeTableTile::_stoneId);
+	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "itemchairwood", ItemMaterial::WOOD, ChairTile::_woodId);
+	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemchairstone", ItemMaterial::STONE, ChairTile::_stoneId);
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemKitchenCabinet = new KitchenCabinetItem(KitchenCabinetItem::_id);
@@ -166,8 +170,9 @@ static void Item$initItems() {
 	FurnitureItem::itemCounter = new CounterItem(CounterItem::_id);
 	FurnitureItem::itemCookieJar = new CookieJarItem(CookieJarItem::_id);
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
+	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
 	ALOG("Finished Loading Items");
-
+	
 	_Item$initItems();
 }
 
@@ -196,6 +201,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCounter, 0);
 	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
+	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
 	ALOG("Finished Adding Creative Items");
 }
 
@@ -232,6 +238,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	if(key == "item.knifeItem.name") return "Knife";
 	if(key == "item.cookieJarItem.name") return "Cookie Jar";
 	if(key == "item.ovenItem.name") return "Oven";
+	if(key == "item.plateItem.name") return "Plate";
 	
 	return _I18n$get(key, a);
 }
@@ -255,7 +262,8 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tileMicrowave ||
 		tile == FurnitureTile::tileCookieJar ||
 		tile == FurnitureTile::tileOven ||
-		tile == FurnitureTile::tileCounter)
+		tile == FurnitureTile::tileCounter ||
+		tile == FurnitureTile::tilePlate)
 			return true;
 	
 	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
@@ -271,7 +279,7 @@ static std::vector<const Motive*> Motive$getAllMotivesAsList() {
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	initMod();
-
+	
 	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);

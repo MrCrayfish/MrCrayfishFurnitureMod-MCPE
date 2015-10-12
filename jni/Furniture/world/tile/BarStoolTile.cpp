@@ -7,7 +7,6 @@ BarStoolTile::BarStoolTile(int id, Material const* material) : FurnitureTile(id,
 	secondary_tex = getTextureUVCoordinateSet("stained_clay", 9);
 	terciary_tex = getTextureUVCoordinateSet("quartz_block", 0);
 	quartenary_tex = getTextureUVCoordinateSet("stone", 0);
-
 	
 	setNameId("tileBarStool");
 	setSoundType(Tile::SOUND_WOOD);

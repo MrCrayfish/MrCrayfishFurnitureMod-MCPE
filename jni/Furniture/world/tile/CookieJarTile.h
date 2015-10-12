@@ -6,8 +6,7 @@
 class CookieJarTile: public FurnitureTile {
 public:
 	static int _id;
-	static float _destroyTime;
 	
 	CookieJarTile(int, Material const*);
-	virtual int getResource(int, Random*);
+	virtual int getResource(int, Random*);	
 };

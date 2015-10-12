@@ -24,6 +24,7 @@ public:
 	static FurnitureItem* itemCounter;
 	static FurnitureItem* itemCookieJar;
 	static FurnitureItem* itemOven;
+	static FurnitureItem* itemPlate;
 	
 	FurnitureItem(int);
 };

@@ -4,5 +4,5 @@
 
 class ChairRenderer : public BlockRenderer {
 public:
-	virtual void render(const TilePos&, FurnitureTile*, TileTessellator*);
+	virtual void render(const TilePos&, FurnitureTile*, BlockTessellator*);
 };

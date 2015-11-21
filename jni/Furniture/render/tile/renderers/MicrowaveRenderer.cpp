@@ -1,6 +1,6 @@
 #include "MicrowaveRenderer.h"
 
-void MicrowaveRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
+void MicrowaveRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
 	int data = tess->region->getData(x, y, z);

@@ -12,7 +12,7 @@
 #include "MCPE/world/level/tile/LiquidTileDynamic.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/world/item/Item.h"
-#include "MCPE/client/renderer/tile/TileTessellator.h"
+#include "MCPE/client/renderer/block/BlockTessellator.h"
 #include "MCPE/locale/I18n.h"
 #include "MCPE/world/entity/Motive.h"
 
@@ -83,10 +83,10 @@ void initMod() {
 	Motive::initCustomMotives();
 }
 
-static void (*_TileTessellator$tessellateInWorld)(TileTessellator*, Tile*, const TilePos&, bool);
-static void TileTessellator$tessellateInWorld(TileTessellator* self, Tile* tile, const TilePos& pos, bool b) {
+static void (*_BlockTessellator$tessellateInWorld)(BlockTessellator*, Tile*, const TilePos&, bool);
+static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Tile* tile, const TilePos& pos, bool b) {
 	if(!RenderDispatcher::dispatch(tile->id, pos, tile, self))
-		_TileTessellator$tessellateInWorld(self, tile, pos, b);
+		_BlockTessellator$tessellateInWorld(self, tile, pos, b);
 }
 
 void initRenderers() {
@@ -280,7 +280,7 @@ static std::vector<const Motive*> Motive$getAllMotivesAsList() {
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	initMod();
 	
-	MSHookFunction((void*) &TileTessellator::tessellateInWorld, (void*) &TileTessellator$tessellateInWorld, (void**) &_TileTessellator$tessellateInWorld);
+	MSHookFunction((void*) &BlockTessellator::tessellateInWorld, (void*) &BlockTessellator$tessellateInWorld, (void**) &_BlockTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
 	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);

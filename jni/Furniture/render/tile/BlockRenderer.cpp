@@ -5,7 +5,7 @@ int const BlockRenderer::DOWN = 1;
 int const BlockRenderer::LEFT = 2;
 int const BlockRenderer::RIGHT = 3;
 
-void BlockRenderer::setRotatedBounds(TileTessellator* tess, int data, float x1, float y1, float z1, float x2, float y2, float z2) {
+void BlockRenderer::setRotatedBounds(BlockTessellator* tess, int data, float x1, float y1, float z1, float x2, float y2, float z2) {
 	switch (data) {
 	case 1:
 	{

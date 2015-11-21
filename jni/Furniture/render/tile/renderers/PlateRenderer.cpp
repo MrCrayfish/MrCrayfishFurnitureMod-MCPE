@@ -1,6 +1,6 @@
 #include "PlateRenderer.h"
 
-void PlateRenderer::render(const TilePos& pos, FurnitureTile* tile, TileTessellator* tess) {
+void PlateRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
 	

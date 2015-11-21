@@ -1,1 +1,4 @@
-jni/Furniture_hooks.cpp
+/gen
+/bin
+/libs
+/obj

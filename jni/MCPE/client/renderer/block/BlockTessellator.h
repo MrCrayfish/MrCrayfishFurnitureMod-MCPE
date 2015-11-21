@@ -11,7 +11,7 @@ class TileSource;
 #include "../../../world/phys/Vec3.h"
 #include "../../../CommonTypes.h"
 
-class TileTessellator {
+class BlockTessellator {
 public:
     // fields
     bool forceOpaque;

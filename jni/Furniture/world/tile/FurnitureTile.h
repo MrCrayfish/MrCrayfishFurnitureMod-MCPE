@@ -1,12 +1,12 @@
 #pragma once
 
 #include "MCPE/world/item/TileItem.h"
-#include "MCPE/world/level/tile/Tile.h"
-#include "MCPE/world/level/TileSource.h"
+#include "MCPE/world/level/tile/Block.h"
+#include "MCPE/world/level/BlockSource.h"
 
 #include "../../util/CollisionHelper.h"
 
-class FurnitureTile : public Tile {
+class FurnitureTile : public Block {
 public:
 	static FurnitureTile* tileTableWood;
 	static FurnitureTile* tileTableStone;
@@ -29,5 +29,5 @@ public:
 	static FurnitureTile* tileOven;
 	static FurnitureTile* tilePlate;
 	
-	FurnitureTile(int, Material const*);
+	FurnitureTile(const std::string&, int, Material const*);
 };

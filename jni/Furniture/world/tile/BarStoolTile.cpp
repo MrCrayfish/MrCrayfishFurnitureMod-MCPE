@@ -2,16 +2,16 @@
 
 int BarStoolTile::_id = 212;
 
-BarStoolTile::BarStoolTile(int id, Material const* material) : FurnitureTile(id, material) {
+BarStoolTile::BarStoolTile(int id, Material const* material) : FurnitureTile("blockBarStool", id, material) {
 	tex = getTextureUVCoordinateSet("wool", 0);
 	secondary_tex = getTextureUVCoordinateSet("stained_clay", 9);
 	terciary_tex = getTextureUVCoordinateSet("quartz_block", 0);
 	quartenary_tex = getTextureUVCoordinateSet("stone", 0);
 	
-	setNameId("tileBarStool");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& BarStoolTile::getTexture(signed char side, int data) {

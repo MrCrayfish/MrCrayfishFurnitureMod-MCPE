@@ -2,15 +2,15 @@
 
 int MicrowaveTile::_id = 211;
 
-MicrowaveTile::MicrowaveTile(int id, Material const* material) : RotatableTile(id, material) {
+MicrowaveTile::MicrowaveTile(int id, Material const* material) : RotatableTile("blockMicrowave", id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	terciary_tex = getTextureUVCoordinateSet("wool", 15);
 
-	setNameId("tileMicrowave");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& MicrowaveTile::getTexture(signed char side, int data) {

@@ -2,14 +2,14 @@
 
 #include <string>
 
-class Tile;
+class Block;
 class ItemInstance;
 #include "../../client/renderer/texture/TextureUVCoordinateSet.h"
 class Entity;
 class Player;
 class Mob;
 class Level;
-class Tile;
+class Block;
 
 class Item {
 public:
@@ -42,8 +42,8 @@ public:
 	virtual void useTimeDepleted(ItemInstance*, Level*, Player*);
 	virtual int getUseAnimation() const;
 	virtual void releaseUsing(ItemInstance*, Player*, int);
-	virtual float getDestroySpeed(ItemInstance*, Tile*);
-	virtual bool canDestroySpecial(const Tile*) const;
+	virtual float getDestroySpeed(ItemInstance*, Block*);
+	virtual bool canDestroySpecial(const Block*) const;
 	virtual void* getLevelDataForAuxValue(int) const;
 	virtual bool isStackedByData() const;
 	virtual int getMaxDamage();
@@ -66,7 +66,7 @@ public:
 	virtual int getAnimationFrameFor(Mob&) const;
 
 	static void initCreativeItems();
-	static void addCreativeItem(Tile*, short);
+	static void addCreativeItem(Block*, short);
 	static void addCreativeItem(Item*, short);
 
 	static Item* items[512];

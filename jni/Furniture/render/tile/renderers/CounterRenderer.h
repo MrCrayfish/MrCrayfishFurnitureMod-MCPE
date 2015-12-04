@@ -5,5 +5,5 @@
 
 class CounterRenderer : public BlockRenderer {
 public:
-	virtual void render(const TilePos&, FurnitureTile*, BlockTessellator*);
+	virtual void render(const BlockPos&, FurnitureTile*, BlockTessellator*);
 };

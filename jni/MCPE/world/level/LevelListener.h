@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TileSourceListener.h"
+#include "BlockSourceListener.h"
 
 class ParticleType;
 class Mob;
@@ -9,7 +9,7 @@ class Entity;
 class LevelChunk;
 class Vec3;
 
-class LevelListener : public TileSourceListener {
+class LevelListener : public BlockSourceListener {
 public:
 	virtual ~LevelListener();
 	virtual void allChanged();

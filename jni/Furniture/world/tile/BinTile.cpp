@@ -2,14 +2,14 @@
 
 int BinTile::_id = 206;
 
-BinTile::BinTile(int id, Material const* material) : FurnitureTile(id, material) {
+BinTile::BinTile(int id, Material const* material) : FurnitureTile("blockBin", id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	
-	setNameId("tileBin");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& BinTile::getTexture(signed char side, int data) {

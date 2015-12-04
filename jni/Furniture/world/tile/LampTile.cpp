@@ -2,14 +2,14 @@
 
 int LampTile::_id = 207;
 
-LampTile::LampTile(int id, Material const* material) : FurnitureTile(id, material) {
+LampTile::LampTile(int id, Material const* material) : FurnitureTile("blockLamp", id, material) {
 	tex = getTextureUVCoordinateSet("obsidian", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 0);
 	
-	setNameId("tileLamp");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& LampTile::getTexture(signed char side, int data) {

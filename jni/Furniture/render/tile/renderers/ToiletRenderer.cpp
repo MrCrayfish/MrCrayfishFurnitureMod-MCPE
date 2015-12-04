@@ -1,6 +1,6 @@
 #include "ToiletRenderer.h"
 
-void ToiletRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void ToiletRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 	int data = tess->region->getData(x, y, z);
 	

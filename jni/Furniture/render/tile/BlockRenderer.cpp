@@ -42,7 +42,7 @@ void BlockRenderer::setRotatedBounds(BlockTessellator* tess, int data, float x1,
 	tess->setRenderBounds(x1, y1, z1, x2, y2, z2);
 }
 
-int BlockRenderer::getRelativeTileId(TileSource* region, int x, int y, int z, int metadata, int rotation)
+int BlockRenderer::getRelativeTileId(BlockSource* region, int x, int y, int z, int metadata, int rotation)
 {
 	switch(rotation)
 	{
@@ -90,7 +90,7 @@ int BlockRenderer::getRelativeTileId(TileSource* region, int x, int y, int z, in
 	return region->getTile(x, y, z).id;
 }
 
-int BlockRenderer::getRelativeRotation(TileSource* region, int x, int y, int z, int metadata, int rotation)
+int BlockRenderer::getRelativeRotation(BlockSource* region, int x, int y, int z, int metadata, int rotation)
 {
 	int blockMetadata = getRelativeMetadata(region, x, y, z, metadata, rotation);
 	if (metadata == 3)
@@ -139,7 +139,7 @@ int BlockRenderer::getRelativeRotation(TileSource* region, int x, int y, int z, 
 	}
 	return 0;
 }
-int BlockRenderer::getRelativeMetadata(TileSource* region, int x, int y, int z, int metadata, int rotation)
+int BlockRenderer::getRelativeMetadata(BlockSource* region, int x, int y, int z, int metadata, int rotation)
 {
 	switch (rotation)
 	{

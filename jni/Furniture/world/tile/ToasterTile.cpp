@@ -2,15 +2,15 @@
 
 int ToasterTile::_id = 209;
 
-ToasterTile::ToasterTile(int id, Material const* material) : RotatableTile(id, material) {
+ToasterTile::ToasterTile(int id, Material const* material) : RotatableTile("blockToaster", id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 15);
 	terciary_tex = getTextureUVCoordinateSet("stone", 0);
 	
-	setNameId("tileToaster");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& ToasterTile::getTexture(signed char side, int data) {

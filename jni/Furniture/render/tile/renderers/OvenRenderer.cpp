@@ -1,6 +1,6 @@
 #include "OvenRenderer.h"
 
-void OvenRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void OvenRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 	int data = tess->region->getData(x, y, z);
 	

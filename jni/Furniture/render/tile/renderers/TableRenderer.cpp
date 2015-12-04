@@ -3,7 +3,7 @@
 #include "../../../world/tile/TableTile.h"
 
 
-void TableRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void TableRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
 	int forwardId = tess->region->getTile(x + 1, y, z).id;

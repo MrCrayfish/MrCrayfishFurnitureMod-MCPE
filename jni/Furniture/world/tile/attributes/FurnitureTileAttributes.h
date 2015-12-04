@@ -1,13 +1,13 @@
 #pragma once
 
-#include "MCPE/world/level/tile/Tile.h"
+#include "MCPE/world/level/tile/Block.h"
 
 struct FurnitureTileAttributes {
-	FurnitureTileAttributes(Material*, std::string, std::string, Tile::SoundType, float);
+	FurnitureTileAttributes(Material*, std::string, std::string, Block::SoundType, float);
 
 	Material* realMaterial;
 	TextureUVCoordinateSet primary_tex;
 	TextureUVCoordinateSet secondary_tex;
-	Tile::SoundType sounds;
+	Block::SoundType sounds;
 	float hardness;
 };

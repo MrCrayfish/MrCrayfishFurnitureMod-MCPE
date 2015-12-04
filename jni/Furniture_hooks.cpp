@@ -8,7 +8,7 @@
 #define  LOG_TAG    "FurnitureMod-MCPE" 
 #define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
-#include "MCPE/world/level/tile/Tile.h"
+#include "MCPE/world/level/tile/Block.h"
 #include "MCPE/world/level/tile/LiquidTileDynamic.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/world/item/Item.h"
@@ -83,8 +83,8 @@ void initMod() {
 	Motive::initCustomMotives();
 }
 
-static void (*_BlockTessellator$tessellateInWorld)(BlockTessellator*, Tile*, const TilePos&, bool);
-static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Tile* tile, const TilePos& pos, bool b) {
+static void (*_BlockTessellator$tessellateInWorld)(BlockTessellator*, Block*, const BlockPos&, bool);
+static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Block* tile, const BlockPos& pos, bool b) {
 	if(!RenderDispatcher::dispatch(tile->id, pos, tile, self))
 		_BlockTessellator$tessellateInWorld(self, tile, pos, b);
 }
@@ -118,8 +118,8 @@ static void (*_Tile$initTiles)();
 static void Tile$initTiles() {
 	_Tile$initTiles();
 	
-	FurnitureTileAttributes woodAttributes(&Material::wood, "planks", "log", Tile::SOUND_WOOD, 1.0F);
-	FurnitureTileAttributes stoneAttributes(&Material::stone, "stone", "cobblestone", Tile::SOUND_STONE, 1.5F);
+	FurnitureTileAttributes woodAttributes(&Material::wood, "planks", "log", Block::SOUND_WOOD, 1.0F);
+	FurnitureTileAttributes stoneAttributes(&Material::stone, "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
 	
 	ALOG("Loading Tiles");
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
@@ -243,9 +243,9 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	return _I18n$get(key, a);
 }
 
-static bool (*_LiquidTileDynamic$_isWaterBlocking)(LiquidTileDynamic*, TileSource*, const TilePos&);
-static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSource* region, const TilePos& pos) {
-	Tile* tile = region->getTilePtr(pos.x, pos.y, pos.z);
+static bool (*_LiquidTileDynamic$_isWaterBlocking)(LiquidTileDynamic*, TileSource*, const BlockPos&);
+static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSource* region, const BlockPos& pos) {
+	Block* tile = region->getTilePtr(pos.x, pos.y, pos.z);
 	if(tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
 		tile == FurnitureTile::tileCoffeeTableWood ||
@@ -282,7 +282,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	
 	MSHookFunction((void*) &BlockTessellator::tessellateInWorld, (void*) &BlockTessellator$tessellateInWorld, (void**) &_BlockTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
-	MSHookFunction((void*) &Tile::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
+	MSHookFunction((void*) &Block::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidTileDynamic::_isWaterBlocking, (void*) &LiquidTileDynamic$_isWaterBlocking, (void**) &_LiquidTileDynamic$_isWaterBlocking);

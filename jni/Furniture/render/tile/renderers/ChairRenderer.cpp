@@ -1,6 +1,6 @@
 #include "ChairRenderer.h"
 
-void ChairRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void ChairRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 	int data = tess->region->getData(x, y, z);
 

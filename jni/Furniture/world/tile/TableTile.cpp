@@ -3,11 +3,11 @@
 int TableTile::_woodId = 200;
 int TableTile::_stoneId = 201;
 
-TableTile::TableTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : FurnitureTile(id, attributes.realMaterial) {
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+TableTile::TableTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : FurnitureTile("blockTable", id, attributes.realMaterial) {
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 
-	setNameId(name);
+	
 	setSoundType(attributes.sounds);
 	setDestroyTime(attributes.hardness);
 	tex = attributes.primary_tex;

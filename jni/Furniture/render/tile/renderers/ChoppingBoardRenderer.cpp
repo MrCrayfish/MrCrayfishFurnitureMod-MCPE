@@ -1,6 +1,6 @@
 #include "ChoppingBoardRenderer.h"
 
-void ChoppingBoardRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void ChoppingBoardRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
 	int data = tess->region->getData(x, y, z);

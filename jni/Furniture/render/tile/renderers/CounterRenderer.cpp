@@ -1,10 +1,10 @@
 #include "CounterRenderer.h"
 
-void CounterRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void CounterRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
 	
-	TileSource* ts = tess->region;
+	BlockSource* ts = tess->region;
 	int data = ts->getData(x, y, z);
 
 	tess->forcedUV = tile->getTexture(0, 0);

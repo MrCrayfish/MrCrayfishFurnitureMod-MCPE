@@ -4,7 +4,7 @@
 #include "../item/CounterItem.h"
 
 #include "MCPE/world/level/Level.h"
-#include "MCPE/world/level/TileSource.h"
+#include "MCPE/world/level/BlockSource.h"
 #include "../../util/CollisionHelper.h"
 
 class CounterTile : public RotatableTile {

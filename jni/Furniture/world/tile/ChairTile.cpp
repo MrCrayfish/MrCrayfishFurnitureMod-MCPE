@@ -3,11 +3,11 @@
 int ChairTile::_woodId = 202;
 int ChairTile::_stoneId = 203;
 
-ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : RotatableTile(id, attributes.realMaterial) {
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : RotatableTile("blockChair", id, attributes.realMaterial) {
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 
-	setNameId(name);
+	
 	setSoundType(attributes.sounds);
 	setDestroyTime(attributes.hardness);
 	tex = attributes.primary_tex;
@@ -15,7 +15,7 @@ ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attribute
 	this->droppedItem = item;
 }
 
-void ChairTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+void ChairTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
 	addAABB(AABB(0.1F, 0.0F, 0.1F, 0.9F, 0.6F, 0.9F).move(x, y, z), posAABB, pool);
 	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.825F, 0.6F, 0.1F, 0.9F, 1.2F, 0.9F).move(x, y, z), posAABB, pool);
 }

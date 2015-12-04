@@ -12,7 +12,7 @@ class Player;
 class Entity;
 class Mob;
 class LevelSettings;
-class TilePos;
+class BlockPos;
 class Vec3;
 class FullTile;
 class LightLayer;
@@ -43,9 +43,9 @@ public:
 public:
 	Level(Minecraft &, std::unique_ptr<LevelStorage>, const std::string &, const LevelSettings &, bool);
 	virtual ~Level();
-	virtual void onSourceCreated(TileSource *);
-	virtual void onSourceDestroyed(TileSource *);
-	virtual void onTileChanged(TileSource *, const TilePos &, FullTile, FullTile, int);
+	virtual void onSourceCreated(BlockSource *);
+	virtual void onSourceDestroyed(BlockSource *);
+	virtual void onTileChanged(BlockSource *, const BlockPos &, FullTile, FullTile, int);
 	virtual void isNaturalDimension();
 	virtual void addEntity(Entity *);
 	virtual void addPlayer(Player *);
@@ -53,7 +53,7 @@ public:
 	virtual void directTickEntities();
 	virtual void updateSleepingPlayerList();
 	virtual void setDifficulty(int);
-	virtual void runLightUpdates(TileSource &, const LightLayer &, const TilePos &, const TilePos &);
+	virtual void runLightUpdates(BlockSource &, const LightLayer &, const BlockPos &, const BlockPos &);
 	virtual void onNewChunkFor(Player &, LevelChunk &);
 	virtual void onChunkLoaded(LevelChunk &);
 	virtual void removeEntity(std::unique_ptr<Entity> &&);
@@ -78,5 +78,5 @@ public:
 	void setTime(long);
 	void setNightMode(bool);
 	void setDayCycleActive(bool);
-	void setDefaultSpawn(const TilePos &);
+	void setDefaultSpawn(const BlockPos &);
 };

@@ -10,7 +10,8 @@ bool PlaceableItem::useOn(ItemInstance* item, Player* player, int x, int y, int 
 	z += Facing::STEP_Z[side];
 
 	if(player->region.getTile(x, y, z).id != 0) return false;
-	player->region.setTileAndData(x, y, z, {placed, Tile::tiles[placed]->getPlacementDataValue(player, x, y, z, side, xx, yy, zz, 0)}, 3);
+	player->region.setTileAndData(x, y, z, {placed, 0}, 3);
+	//player->region.setTileAndData(x, y, z, {placed, Block::mOwnedBlocks[placed]->getPlacementDataValue(player, x, y, z, side, xx, yy, zz, 0)}, 3);
 	item->count--;
 	return true; // return true so that the player swings his arm
 }

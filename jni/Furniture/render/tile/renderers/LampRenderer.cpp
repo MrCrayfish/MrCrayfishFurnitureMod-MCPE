@@ -1,6 +1,6 @@
 #include "LampRenderer.h"
 
-void LampRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void LampRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
 

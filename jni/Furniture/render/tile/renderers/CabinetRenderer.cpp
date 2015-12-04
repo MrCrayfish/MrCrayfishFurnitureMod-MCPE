@@ -1,6 +1,6 @@
 #include "CabinetRenderer.h"
 
-void CabinetRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void CabinetRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	tess->forcedUV = tile->getTexture(0, 0);
 	int x = pos.x, y = pos.y, z = pos.z;

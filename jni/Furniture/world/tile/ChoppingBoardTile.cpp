@@ -2,14 +2,14 @@
 
 int ChoppingBoardTile::_id = 208;
 
-ChoppingBoardTile::ChoppingBoardTile(int id, Material const* material) : RotatableTile(id, material) {
+ChoppingBoardTile::ChoppingBoardTile(int id, Material const* material) : RotatableTile("blockChoppingBoard", id, material) {
 	tex = getTextureUVCoordinateSet("planks", 0);
 	secondary_tex = getTextureUVCoordinateSet("log", 0);
 	
-	setNameId("tileChoppingBoard");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& ChoppingBoardTile::getTexture(signed char side, int data) {
@@ -36,6 +36,6 @@ int ChoppingBoardTile::getResource(int data, Random* rand) {
 	return ChoppingBoardItem::_id;
 }
 
-void ChoppingBoardTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+void ChoppingBoardTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
 	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(x, y, z), 0.25F, 0.0F, 0.0625F, 0.8125F, 0.0625F, 0.9375F).move(x, y, z), posAABB, pool);
 }

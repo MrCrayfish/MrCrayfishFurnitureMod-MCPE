@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 
-class TileSource;
+class BlockSource;
 class Level;
 class Entity;
 class Material;
@@ -27,7 +27,7 @@ public:
 	float y; // 28
 	float z; // 32
 	float chunkPos[3]; // 36
-	TileSource& region; // 48
+	BlockSource& region; // 48
 	int added; // 52
 	Level* level; // 56
 	float oldX; // 60

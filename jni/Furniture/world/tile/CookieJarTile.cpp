@@ -2,13 +2,13 @@
 
 int CookieJarTile::_id = 222;
 
-CookieJarTile::CookieJarTile(int id, Material const* material) : FurnitureTile(id, material) {
+CookieJarTile::CookieJarTile(int id, Material const* material) : FurnitureTile("blockCookieJar", id, material) {
 	init();
-	setNameId("tileCookieJar");
-	setSoundType(Tile::SOUND_GLASS);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
-	renderPass = Tile::glass->renderPass;
+	
+	setSoundType(Block::SOUND_GLASS);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
+	renderPass = Block::mGlass->renderPass;
 }
 
 int CookieJarTile::getResource(int data, Random* rand) {

@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 class Material;
-class BlockEntity;
+class TileEntity;
 struct BlockPos;
 class BlockSource;
 class Entity;
@@ -28,6 +28,7 @@ public:
 		std::string breakSound; // 12
 		std::string placeSound; // 16
 
+		SoundType();
 		SoundType(const std::string&, float, float);
 		SoundType(const std::string&, const std::string&, float, float);
 		SoundType(const std::string&, const std::string&, const std::string&, float, float);
@@ -94,7 +95,7 @@ public:
 	Block(const std::string&, int, const std::string&, const Material&);
 
 	// All parameters for x, y, z have changed to a const BlockPos&
-	// And all TileSource(BlockSource) pointers have changed to a reference
+	// And all BlockSource(BlockSource) pointers have changed to a reference
 	virtual ~Block();
 	virtual void tick(BlockSource&, const BlockPos&, Random&);
 	virtual void animateTick(BlockSource&, const BlockPos&, Random&);

@@ -2,11 +2,11 @@
 
 int CabinetTile::_id = 220;
 
-CabinetTile::CabinetTile(int id, Material const* material) : RotatableTile(id, material) {
-	Tile::lightBlock[id] = 0;
+CabinetTile::CabinetTile(int id, Material const* material) : RotatableTile("blockCabinet", id, material) {
+	Block::mLightBlock[id] = 0;
 	
-	setNameId("tileCabinet");
-	setSoundType(Tile::SOUND_WOOD);
+	
+	setSoundType(Block::SOUND_WOOD);
 	tex = getTextureUVCoordinateSet("planks", 2);
 	secondary_tex = getTextureUVCoordinateSet("planks", 1);
 	terciary_tex = getTextureUVCoordinateSet("iron_block", 0);
@@ -24,6 +24,6 @@ int CabinetTile::getResource(int data, Random* rand) {
 	return CabinetItem::_id;
 }
 
-void CabinetTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+void CabinetTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
 	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(x, y, z), posAABB, pool);
 }

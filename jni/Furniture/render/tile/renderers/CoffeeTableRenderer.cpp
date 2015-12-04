@@ -2,7 +2,7 @@
 
 #include "Furniture/world/tile/CoffeeTableTile.h"
 
-void CoffeeTableRenderer::render(const TilePos& pos, FurnitureTile* tile, BlockTessellator* tess) {
+void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
 	int forwardId = tess->region->getTile(x + 1, y, z).id;

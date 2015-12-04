@@ -1,6 +1,6 @@
 #pragma once
 
-class LiquidTileDynamic : public Tile {
+class LiquidTileDynamic : public Block {
 public:
-	bool _isWaterBlocking(TileSource*, const TilePos&);
+	bool _isWaterBlocking(BlockSource*, const BlockPos&);
 };

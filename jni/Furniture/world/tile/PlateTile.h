@@ -4,7 +4,7 @@
 #include "../item/PlateItem.h"
 
 #include "MCPE/world/level/Level.h"
-#include "MCPE/world/level/TileSource.h"
+#include "MCPE/world/level/BlockSource.h"
 
 class PlateTile: public FurnitureTile {
 public:

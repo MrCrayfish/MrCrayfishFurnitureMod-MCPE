@@ -2,14 +2,14 @@
 
 int DoorbellTile::_id = 219;
 
-DoorbellTile::DoorbellTile(int id, Material const* material) : RotatableTile(id, material) {
+DoorbellTile::DoorbellTile(int id, Material const* material) : RotatableTile("blockDoorbell", id, material) {
 	tex = getTextureUVCoordinateSet("log", 0);
 	secondary_tex = getTextureUVCoordinateSet("iron_block", 0);
 	
-	setNameId("tileDoorbell");
-	setSoundType(Tile::SOUND_WOOD);
-	Tile::solid[id] = false;
-	Tile::lightBlock[id] = 0;
+	
+	setSoundType(Block::SOUND_WOOD);
+	Block::mSolid[id] = false;
+	Block::mLightBlock[id] = 0;
 }
 
 const TextureUVCoordinateSet& DoorbellTile::getTexture(signed char side, int data) {
@@ -33,7 +33,7 @@ int DoorbellTile::getTickDelay() {
 	return 20;
 }
 
-void DoorbellTile::tick(TileSource* region, int x, int y, int z, Random* rand) {
+void DoorbellTile::tick(BlockSource* region, int x, int y, int z, Random* rand) {
 	int data = region->getData(x, y, z);
 	if((data & 8) == 0) return;
 	region->setTileAndData(x, y, z, {this->id, data & 7}, 2);
@@ -43,4 +43,4 @@ int DoorbellTile::getResource(int data, Random* rand) {
 	return DoorbellItem::_id;
 }
 
-void DoorbellTile::addAABBs(TileSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {}
+void DoorbellTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {}

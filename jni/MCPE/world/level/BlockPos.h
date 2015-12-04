@@ -1,6 +1,6 @@
 #pragma once
 
-class TilePos {
+class BlockPos {
 public:
 	int x;
 	int y;

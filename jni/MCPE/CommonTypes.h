@@ -5,26 +5,26 @@
 typedef uint_fast8_t DataID;
 typedef int_fast8_t FacingID;
 
-struct TileID {
+struct BlockID {
     unsigned char value;
 
-    TileID() {
+    BlockID() {
         this->value = 1;
     }
 
-    TileID(unsigned char val) {
+    BlockID(unsigned char val) {
         this->value = val;
     }
 
-    TileID(TileID const& other) {
+    BlockID(BlockID const& other) {
 		this->value = other.value;
 	}
 
-    static const TileID AIR;
+    static const BlockID AIR;
 
     bool operator==(unsigned char);
-    bool operator==(TileID);
-    TileID& operator=(const unsigned char&);
+    bool operator==(BlockID);
+    BlockID& operator=(const unsigned char&);
     operator unsigned char();
 };
 
@@ -32,10 +32,10 @@ class FullTile {
 public:
 	static const FullTile AIR;
 
-	TileID id;
+	BlockID id;
 	DataID data;
 
-	FullTile(TileID, DataID);
+	FullTile(BlockID, DataID);
 };
 
 struct Brightness {

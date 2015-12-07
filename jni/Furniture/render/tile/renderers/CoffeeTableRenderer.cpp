@@ -5,10 +5,10 @@
 void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
-	int forwardId = tess->region->getTile(x + 1, y, z).id;
-	int backId = tess->region->getTile(x - 1, y, z).id;
-	int leftId = tess->region->getTile(x, y, z - 1).id;
-	int rightId = tess->region->getTile(x, y, z + 1).id;
+	int forwardId = tess->region->getBlock(*new BlockPos(x + 1, y, z)).id;
+	int backId = tess->region->getBlock(*new BlockPos(x - 1, y, z)).id;
+	int leftId = tess->region->getBlock(*new BlockPos(x, y, z - 1)).id;
+	int rightId = tess->region->getBlock(*new BlockPos(x, y, z + 1)).id;
 	bool forward = forwardId == CoffeeTableTile::_woodId || forwardId == CoffeeTableTile::_stoneId;
 	bool back = backId == CoffeeTableTile::_woodId || backId == CoffeeTableTile::_stoneId;
 	bool left = leftId == CoffeeTableTile::_woodId || leftId == CoffeeTableTile::_stoneId;
@@ -23,12 +23,12 @@ void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, Block
 		if(!left)
 		{
 			tess->setRenderBounds(0.9, 0.0, 0.0, 1, 0.4, 0.1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 		if(!right)
 		{
 			tess->setRenderBounds(0.9, 0.0, 0.9, 1, 0.4, 1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 	}
 	if(!back)
@@ -36,12 +36,12 @@ void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, Block
 		if(!left)
 		{
 			tess->setRenderBounds(0.0, 0.0, 0.0, 0.1, 0.4, 0.1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 		if(!right)
 		{
 			tess->setRenderBounds(0.0, 0.0, 0.9, 0.1, 0.4, 1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 	}
 	if(!left)
@@ -49,12 +49,12 @@ void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, Block
 		if(!forward)
 		{
 			tess->setRenderBounds(0.9, 0.0, 0.0, 1, 0.4, 0.1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 		if(!back)
 		{
 			tess->setRenderBounds(0.0, 0.0, 0.0, 0.1, 0.4, 0.1);
-			tess->tessellateBlockInWorld(tile, pos);	
+			tess->tessellateBlockInWorld(*tile, pos);	
 		}
 	}
 	if(!right)
@@ -62,19 +62,19 @@ void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, Block
 		if(!forward)
 		{
 			tess->setRenderBounds(0.9, 0.0, 0.9, 1, 0.4, 1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 		if(!back)
 		{
 			tess->setRenderBounds(0.0, 0.0, 0.9, 0.1, 0.4, 1);
-			tess->tessellateBlockInWorld(tile, pos);
+			tess->tessellateBlockInWorld(*tile, pos);
 		}
 	}
 
 	tess->forcedUV = tile->getTexture(1,0);
 
 	tess->setRenderBounds(0.0, 0.4, 0.0, 1, 0.5, 1);
-	tess->tessellateBlockInWorld(tile, pos);
+	tess->tessellateBlockInWorld(*tile, pos);
 
 	tess->useForcedUV = false;
 }

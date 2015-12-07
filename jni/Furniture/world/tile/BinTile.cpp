@@ -2,7 +2,7 @@
 
 int BinTile::_id = 206;
 
-BinTile::BinTile(int id, Material const* material) : FurnitureTile("blockBin", id, material) {
+BinTile::BinTile(int id, Material const& material) : FurnitureTile("blockBin", id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	

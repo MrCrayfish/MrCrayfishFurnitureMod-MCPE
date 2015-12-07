@@ -7,9 +7,10 @@ class Block;
 
 class BlockSource {
 public:
-	FullTile getTile(int, int, int);
-	Block* getTilePtr(int, int, int);
-	DataID getData(int, int, int);
-	bool setTileAndData(int, int, int, FullTile, int);
+	Block getBlock(const BlockPos&);
+	Block* getBlock(int,int,int);
+	FullBlock getBlockID(const BlockPos&);
+	DataID getData(const BlockPos&);
+	bool setBlockAndData(const BlockPos&, FullBlock, int);
 	BlockTickingQueue* getTickQueue(BlockPos const&);
 };

@@ -2,7 +2,6 @@
 
 int CounterItem::_id = 474;
 
-CounterItem::CounterItem(int id) : PlaceableItem(id, CounterTile::_id) {
-	setNameID("counterItem");
+CounterItem::CounterItem(int id) : PlaceableItem("itemCounter", id, CounterTile::_id) {
 	setIcon("itemkitchencounter", 0);
 }

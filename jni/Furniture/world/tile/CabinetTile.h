@@ -7,7 +7,7 @@ class CabinetTile : public RotatableTile {
 public:
 	static int _id;
 	
-	CabinetTile(int, Material const*);
+	CabinetTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

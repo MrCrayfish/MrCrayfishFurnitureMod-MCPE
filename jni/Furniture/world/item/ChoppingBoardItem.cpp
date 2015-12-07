@@ -2,7 +2,6 @@
 
 int ChoppingBoardItem::_id = 468;
 
-ChoppingBoardItem::ChoppingBoardItem(int id) : PlaceableItem(id, ChoppingBoardTile::_id) {
-	setNameID("choppingBoardItem");
+ChoppingBoardItem::ChoppingBoardItem(int id) : PlaceableItem("itemChoppingBoard", id, ChoppingBoardTile::_id) {
 	setIcon("itemchoppingboard", 0);
 }

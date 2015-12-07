@@ -2,7 +2,7 @@
 
 int KitchenCabinetTile::_id = 180;
 
-KitchenCabinetTile::KitchenCabinetTile(int id, Material const* material) : RotatableTile("blockKitchenCabinet", id, material) {
+KitchenCabinetTile::KitchenCabinetTile(int id, Material const& material) : RotatableTile("blockKitchenCabinet", id, material) {
 	Block::mLightBlock[id] = 0;
 	
 	

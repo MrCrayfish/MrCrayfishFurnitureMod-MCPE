@@ -1,6 +1,10 @@
 #pragma once
 
-#include "MCPE/world/item/TileItem.h"
+#include <android/log.h>
+#define  LOG_TAG    "FurnitureMod-MCPE" 
+#define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+
+#include "MCPE/world/item/BlockItem.h"
 #include "MCPE/world/level/tile/Block.h"
 #include "MCPE/world/level/BlockSource.h"
 
@@ -29,5 +33,5 @@ public:
 	static FurnitureTile* tileOven;
 	static FurnitureTile* tilePlate;
 	
-	FurnitureTile(const std::string&, int, Material const*);
+	FurnitureTile(const std::string&, int, Material const&);
 };

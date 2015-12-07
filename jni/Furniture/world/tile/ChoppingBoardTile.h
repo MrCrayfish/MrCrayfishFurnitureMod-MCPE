@@ -11,7 +11,7 @@ class ChoppingBoardTile : public RotatableTile {
 public:
 	static int _id;
 	
-	ChoppingBoardTile(int, Material const*);
+	ChoppingBoardTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

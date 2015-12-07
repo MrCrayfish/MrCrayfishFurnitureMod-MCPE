@@ -11,7 +11,7 @@ class DoorbellTile : public RotatableTile {
 public:
 	static int _id;
 	
-	DoorbellTile(int, Material const*);
+	DoorbellTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

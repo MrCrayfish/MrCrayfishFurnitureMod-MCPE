@@ -2,7 +2,7 @@
 
 int ToasterTile::_id = 209;
 
-ToasterTile::ToasterTile(int id, Material const* material) : RotatableTile("blockToaster", id, material) {
+ToasterTile::ToasterTile(int id, Material const& material) : RotatableTile("blockToaster", id, material) {
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 15);
 	terciary_tex = getTextureUVCoordinateSet("stone", 0);
@@ -18,7 +18,7 @@ const TextureUVCoordinateSet& ToasterTile::getTexture(signed char side, int data
 }
 
 bool ToasterTile::use(Player* player, int x, int y, int z) {
-	int data = player->region.getData(x, y, z);
+	int data = player->region.getData(*new BlockPos(x, y, z));
 	int rot = data & 7;
 	int hasBread = ((data & 8) >> 3) == 0;
 

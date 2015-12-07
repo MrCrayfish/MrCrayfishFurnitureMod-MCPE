@@ -2,7 +2,7 @@
 
 int BarStoolTile::_id = 212;
 
-BarStoolTile::BarStoolTile(int id, Material const* material) : FurnitureTile("blockBarStool", id, material) {
+BarStoolTile::BarStoolTile(int id, Material const& material) : FurnitureTile("blockBarStool", id, material) {
 	tex = getTextureUVCoordinateSet("wool", 0);
 	secondary_tex = getTextureUVCoordinateSet("stained_clay", 9);
 	terciary_tex = getTextureUVCoordinateSet("quartz_block", 0);

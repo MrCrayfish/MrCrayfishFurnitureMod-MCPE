@@ -2,7 +2,6 @@
 
 int KitchenCabinetItem::_id = 477;
 
-KitchenCabinetItem::KitchenCabinetItem(int id) : PlaceableItem(id, KitchenCabinetTile::_id) {
-	setNameID("kitchenCabinetItem");
+KitchenCabinetItem::KitchenCabinetItem(int id) : PlaceableItem("itemKitchenCabinet", id, KitchenCabinetTile::_id) {
 	setIcon("itemkitchencabinet", 0);
 }

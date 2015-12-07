@@ -28,7 +28,7 @@ public:
 		std::string breakSound; // 12
 		std::string placeSound; // 16
 
-		SoundType();
+		SoundType() {};
 		SoundType(const std::string&, float, float);
 		SoundType(const std::string&, const std::string&, float, float);
 		SoundType(const std::string&, const std::string&, const std::string&, float, float);

@@ -3,7 +3,7 @@
 class BlockSource;
 class TileEntity;
 class BlockPos;
-class FullTile;
+class FullBlock;
 
 class BlockSourceListener {
 public:
@@ -12,7 +12,7 @@ public:
 	virtual void onSourceDestroyed(BlockSource *);
 	virtual void onTilesDirty(BlockSource *, int, int, int, int, int, int);
 	virtual void onAreaChanged(BlockSource &, const BlockPos &, const BlockPos &);
-	virtual void onTileChanged(BlockSource *, const BlockPos &, FullTile, FullTile, int);
+	virtual void onTileChanged(BlockSource *, const BlockPos &, FullBlock, FullBlock, int);
 	virtual void onBrightnessChanged(BlockSource &, BlockPos const&);
 	virtual void onTileEntityChanged(BlockSource &, TileEntity &);
 	virtual void onTileEntityRemoved(BlockSource &, std::unique_ptr<TileEntity> &);

@@ -6,5 +6,5 @@ class BlockPos;
 
 class BlockTickingQueue {
 public:
-	void add(BlockSource*, const BlockPos&, BlockID, int);
+	void add(BlockSource&, const BlockPos&, BlockID, int);
 };

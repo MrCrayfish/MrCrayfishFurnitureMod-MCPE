@@ -2,7 +2,7 @@
 
 int DoorbellTile::_id = 219;
 
-DoorbellTile::DoorbellTile(int id, Material const* material) : RotatableTile("blockDoorbell", id, material) {
+DoorbellTile::DoorbellTile(int id, Material const& material) : RotatableTile("blockDoorbell", id, material) {
 	tex = getTextureUVCoordinateSet("log", 0);
 	secondary_tex = getTextureUVCoordinateSet("iron_block", 0);
 	
@@ -17,15 +17,15 @@ const TextureUVCoordinateSet& DoorbellTile::getTexture(signed char side, int dat
 }
 
 bool DoorbellTile::use(Player* player, int x, int y, int z) {
-	int data = player->region.getData(x, y, z);
+	int data = player->region.getData(*new BlockPos(x, y, z));
 	int rot = data & 7;
 	int out = (data & 8) >> 3;
 	bool isClicked = out == 0;
 
 	if(isClicked) return true;
 	//player->level->playSound("fire.fire", x, y, z, 100, 100); //Cant add its own sounds!
-	player->region.setTileAndData(x, y, z, {this->id, rot + out}, 2);
-	player->region.getTickQueue({x, y, z})->add(&player->region, {x, y, z}, this->id, 0);
+	player->region.setBlockAndData(*new BlockPos(x, y, z), {this->id, rot + out}, 2);
+	player->region.getTickQueue({x, y, z})->add(player->region, {x, y, z}, this->id, 0);
 	return true;
 }
 
@@ -34,9 +34,9 @@ int DoorbellTile::getTickDelay() {
 }
 
 void DoorbellTile::tick(BlockSource* region, int x, int y, int z, Random* rand) {
-	int data = region->getData(x, y, z);
+	int data = region->getData(*new BlockPos(x, y, z));
 	if((data & 8) == 0) return;
-	region->setTileAndData(x, y, z, {this->id, data & 7}, 2);
+	region->setBlockAndData({x, y, z}, {this->id, data & 7}, 2);
 }
 
 int DoorbellTile::getResource(int data, Random* rand) {

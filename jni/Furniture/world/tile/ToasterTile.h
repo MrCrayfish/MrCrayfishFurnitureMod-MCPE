@@ -11,7 +11,7 @@ class ToasterTile : public RotatableTile {
 public:
 	static int _id;
 	
-	ToasterTile(int, Material const*);
+	ToasterTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

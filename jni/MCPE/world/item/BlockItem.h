@@ -2,9 +2,9 @@
 
 #include "Item.h"
 
-class TileItem : public Item {
+class BlockItem : public Item {
 public:
 	char filler_tileitem[12];
 
-	TileItem(int);
+	BlockItem(std::string const&, int);
 };

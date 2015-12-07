@@ -30,10 +30,10 @@ public:
     Tessellator* tessellator_inst;
     AABB bounds;
 
-    bool tessellateInWorld(Block*, BlockPos const&, bool);
-    bool tessellateBlockInWorld(Block*, BlockPos const&);
-    void renderFaceUp(Block*, const Vec3&, const TextureUVCoordinateSet&);
-    void tessellateTorch(Block*, float, float, float, float, float);
+    bool tessellateInWorld(Block&, const BlockPos&, unsigned char, bool);
+    bool tessellateBlockInWorld(Block&, const BlockPos&);
+    void renderFaceUp(Block&, const Vec3&, const TextureUVCoordinateSet&);
+    void tessellateTorch(Block&, Vec3 const&, float, float);
     void tex1(unsigned int);
     DataID getData(BlockPos const&) const;
     unsigned int getLightColor(BlockPos const&);

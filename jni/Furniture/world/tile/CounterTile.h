@@ -11,7 +11,7 @@ class CounterTile : public RotatableTile {
 public:
 	static int _id;
 	
-	CounterTile(int, Material const*);
+	CounterTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

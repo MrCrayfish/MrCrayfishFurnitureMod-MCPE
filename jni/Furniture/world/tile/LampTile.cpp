@@ -2,7 +2,7 @@
 
 int LampTile::_id = 207;
 
-LampTile::LampTile(int id, Material const* material) : FurnitureTile("blockLamp", id, material) {
+LampTile::LampTile(int id, Material const& material) : FurnitureTile("blockLamp", id, material) {
 	tex = getTextureUVCoordinateSet("obsidian", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 0);
 	

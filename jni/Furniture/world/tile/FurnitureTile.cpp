@@ -21,9 +21,10 @@ FurnitureTile* FurnitureTile::tileCookieJar = NULL;
 FurnitureTile* FurnitureTile::tileOven = NULL;
 FurnitureTile* FurnitureTile::tilePlate = NULL;
 
-FurnitureTile::FurnitureTile(const std::string& name, int id, Material const* material) : Block(name, id, material) {
-	init();
+FurnitureTile::FurnitureTile(const std::string& name, int id, Material const& material) : Block(name, id, material) {
+	ALOG("Loading FurnitureTile");
 	category = 1;
 	
-	new TileItem(id - 256);
+	new BlockItem("tile_" + name, id - 256);
+	ALOG("Loaded FurnitureTile");
 }

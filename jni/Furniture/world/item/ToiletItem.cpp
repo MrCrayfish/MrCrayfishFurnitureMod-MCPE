@@ -2,7 +2,6 @@
 
 int ToiletItem::_id = 470;
 
-ToiletItem::ToiletItem(int id) : PlaceableItem(id, ToiletTile::_id) {
-	setNameID("toiletItem");
+ToiletItem::ToiletItem(int id) : PlaceableItem("itemToilet", id, ToiletTile::_id) {
 	setIcon("itemtoilet", 0);
 }

@@ -2,7 +2,6 @@
 
 int KnifeItem::_id = 472;
 
-KnifeItem::KnifeItem(int id) : FurnitureItem(id) {
-	setNameID("knifeItem");
+KnifeItem::KnifeItem(int id) : FurnitureItem("itemKnife", id) {
 	setIcon("itemknife", 0);
 }

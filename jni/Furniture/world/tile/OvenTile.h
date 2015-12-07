@@ -7,7 +7,7 @@ class OvenTile : public RotatableTile {
 public:
 	static int _id;
 
-	OvenTile(int, Material const*);
+	OvenTile(int, Material const&);
 
 	virtual int getResource(int, Random*);
 	virtual bool use(Player*, int, int, int);

@@ -14,7 +14,7 @@ class Mob;
 class LevelSettings;
 class BlockPos;
 class Vec3;
-class FullTile;
+class FullBlock;
 class LightLayer;
 
 typedef struct AdventureSettings
@@ -45,7 +45,7 @@ public:
 	virtual ~Level();
 	virtual void onSourceCreated(BlockSource *);
 	virtual void onSourceDestroyed(BlockSource *);
-	virtual void onTileChanged(BlockSource *, const BlockPos &, FullTile, FullTile, int);
+	virtual void onTileChanged(BlockSource *, const BlockPos &, FullBlock, FullBlock, int);
 	virtual void isNaturalDimension();
 	virtual void addEntity(Entity *);
 	virtual void addPlayer(Player *);

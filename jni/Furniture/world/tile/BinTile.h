@@ -7,7 +7,7 @@ class BinTile : public FurnitureTile {
 public:
 	static int _id;
 	
-	BinTile(int, Material const*);
+	BinTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

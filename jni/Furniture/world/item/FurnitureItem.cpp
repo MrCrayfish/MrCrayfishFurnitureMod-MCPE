@@ -22,6 +22,6 @@ FurnitureItem* FurnitureItem::itemCookieJar = NULL;
 FurnitureItem* FurnitureItem::itemOven = NULL;
 FurnitureItem* FurnitureItem::itemPlate = NULL;
 
-FurnitureItem::FurnitureItem(int id) : Item(id - 256) {
+FurnitureItem::FurnitureItem(const std::string& name, int id) : Item(name, id - 256) {
 	creativeCategory = 4;
 }

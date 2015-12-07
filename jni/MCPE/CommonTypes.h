@@ -28,14 +28,14 @@ struct BlockID {
     operator unsigned char();
 };
 
-class FullTile {
+class FullBlock {
 public:
-	static const FullTile AIR;
+	static const FullBlock AIR;
 
 	BlockID id;
 	DataID data;
 
-	FullTile(BlockID, DataID);
+	FullBlock(BlockID, DataID);
 };
 
 struct Brightness {

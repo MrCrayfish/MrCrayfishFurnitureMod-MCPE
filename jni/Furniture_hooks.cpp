@@ -9,7 +9,7 @@
 #define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 #include "MCPE/world/level/tile/Block.h"
-#include "MCPE/world/level/tile/LiquidTileDynamic.h"
+#include "MCPE/world/level/tile/LiquidBlockDynamic.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/world/item/Item.h"
 #include "MCPE/client/renderer/block/BlockTessellator.h"
@@ -114,34 +114,35 @@ void initRenderers() {
 	ALOG("Finished Loading Renders");
 }
 
-static void (*_Tile$initTiles)();
-static void Tile$initTiles() {
-	_Tile$initTiles();
+static void (*_Tile$initBlocks)();
+static void Tile$initBlocks() {
+	_Tile$initBlocks();
 	
-	FurnitureTileAttributes woodAttributes(&Material::wood, "planks", "log", Block::SOUND_WOOD, 1.0F);
-	FurnitureTileAttributes stoneAttributes(&Material::stone, "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
+	FurnitureTileAttributes woodAttributes(Material::getMaterial(MaterialType::WOOD), "planks", "log", Block::SOUND_WOOD, 1.0F);
+	FurnitureTileAttributes stoneAttributes(Material::getMaterial(MaterialType::STONE), "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
 	
 	ALOG("Loading Tiles");
 	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
+	ALOG("Loaded first tile");
 	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
 	FurnitureTile::tileCoffeeTableWood = new CoffeeTableTile(CoffeeTableTile::_woodId, "woodCoffeeTableTile", woodAttributes, CoffeeTableItem::_woodId);
 	FurnitureTile::tileCoffeeTableStone = new CoffeeTableTile(CoffeeTableTile::_stoneId, "stoneCoffeeTableTile", stoneAttributes, CoffeeTableItem::_stoneId);
 	FurnitureTile::tileChairWood = new ChairTile(ChairTile::_woodId, "woodChairTile", woodAttributes, ChairItem::_woodId);
 	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
-	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, &Material::stone);
-	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, &Material::wood);
-	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, &Material::stone);
-	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, &Material::wood);
-	FurnitureTile::tileBin = new BinTile(BinTile::_id, &Material::metal); 
-	FurnitureTile::tileLamp = new LampTile(LampTile::_id, &Material::stone);
-	FurnitureTile::tileChoppingBoard = new ChoppingBoardTile(ChoppingBoardTile::_id, &Material::wood);
-	FurnitureTile::tileToaster = new ToasterTile(ToasterTile::_id, &Material::metal); 
-	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, &Material::metal);
-	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, &Material::stone);
-	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, &Material::stone);
-	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, &Material::glass);
-	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, &Material::stone);
-	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, &Material::glass);
+	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureTile::tileBin = new BinTile(BinTile::_id, Material::getMaterial(MaterialType::IRON)); 
+	FurnitureTile::tileLamp = new LampTile(LampTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tileChoppingBoard = new ChoppingBoardTile(ChoppingBoardTile::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureTile::tileToaster = new ToasterTile(ToasterTile::_id, Material::getMaterial(MaterialType::IRON)); 
+	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, Material::getMaterial(MaterialType::IRON));
+	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, Material::getMaterial(MaterialType::DECORATION));
+	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, Material::getMaterial(MaterialType::DECORATION));
 	ALOG("Finished Loading Tiles");
 	
 	initRenderers();
@@ -243,9 +244,9 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 	return _I18n$get(key, a);
 }
 
-static bool (*_LiquidTileDynamic$_isWaterBlocking)(LiquidTileDynamic*, TileSource*, const BlockPos&);
-static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSource* region, const BlockPos& pos) {
-	Block* tile = region->getTilePtr(pos.x, pos.y, pos.z);
+static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
+static bool LiquidBlockDynamic$_isWaterBlocking(LiquidBlockDynamic* self, BlockSource& region, const BlockPos& pos) {
+	Block* tile = region.getBlock(pos.x, pos.y, pos.z);
 	if(tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
 		tile == FurnitureTile::tileCoffeeTableWood ||
@@ -266,7 +267,7 @@ static bool LiquidTileDynamic$_isWaterBlocking(LiquidTileDynamic* self, TileSour
 		tile == FurnitureTile::tilePlate)
 			return true;
 	
-	return _LiquidTileDynamic$_isWaterBlocking(self, region, pos);
+	return _LiquidBlockDynamic$_isWaterBlocking(self, region, pos);
 }
 
 static std::vector<const Motive*> (*_Motive$getAllMotivesAsList)();
@@ -282,10 +283,10 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	
 	MSHookFunction((void*) &BlockTessellator::tessellateInWorld, (void*) &BlockTessellator$tessellateInWorld, (void**) &_BlockTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
-	MSHookFunction((void*) &Block::initTiles, (void*) &Tile$initTiles, (void**) &_Tile$initTiles);
+	MSHookFunction((void*) &Block::initBlocks, (void*) &Tile$initBlocks, (void**) &_Tile$initBlocks);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
-	MSHookFunction((void*) &LiquidTileDynamic::_isWaterBlocking, (void*) &LiquidTileDynamic$_isWaterBlocking, (void**) &_LiquidTileDynamic$_isWaterBlocking);
+	MSHookFunction((void*) &LiquidBlockDynamic::_isWaterBlocking, (void*) &LiquidBlockDynamic$_isWaterBlocking, (void**) &_LiquidBlockDynamic$_isWaterBlocking);
 	MSHookFunction((void*) &Motive::getAllMotivesAsList, (void*) &Motive$getAllMotivesAsList, (void**) &_Motive$getAllMotivesAsList);
 
 	return JNI_VERSION_1_2;

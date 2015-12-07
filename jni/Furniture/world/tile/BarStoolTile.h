@@ -11,7 +11,7 @@ class BarStoolTile : public FurnitureTile {
 public:
 	static int _id;
 	
-	BarStoolTile(int, Material const*);
+	BarStoolTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

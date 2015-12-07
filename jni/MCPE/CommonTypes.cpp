@@ -19,7 +19,7 @@ BlockID::operator unsigned char() {
     return this->value;
 }
 
-FullTile::FullTile(BlockID tile, DataID dat) {
+FullBlock::FullBlock(BlockID tile, DataID dat) {
 	this->id = tile;
 	this->data = dat;
 }

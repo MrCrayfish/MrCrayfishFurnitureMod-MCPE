@@ -26,5 +26,5 @@ public:
 	static FurnitureItem* itemOven;
 	static FurnitureItem* itemPlate;
 	
-	FurnitureItem(int);
+	FurnitureItem(const std::string&, int);
 };

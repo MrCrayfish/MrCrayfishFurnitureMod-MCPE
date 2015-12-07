@@ -2,7 +2,7 @@
 
 int OvenTile::_id = 221;
 
-OvenTile::OvenTile(int id, Material const* material) : RotatableTile("blockOven", id, material) {
+OvenTile::OvenTile(int id, Material const& material) : RotatableTile("blockOven", id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	
 	init();

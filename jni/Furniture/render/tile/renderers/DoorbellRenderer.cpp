@@ -3,7 +3,7 @@
 void DoorbellRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	tess->useForcedUV = true;
 	int x = pos.x, y = pos.y, z = pos.z;
-	int data = tess->region->getData(x, y, z);
+	int data = tess->region->getData(*new BlockPos(x, y, z));
 	
 	int temp = data;
 	
@@ -17,12 +17,12 @@ void DoorbellRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTes
 	//Base
 	tess->forcedUV = tile->getTexture(0, 0);
 	this->setRotatedBounds(tess, data, 0.9F, 0.3F, 0.4F, 1.0F, 0.7F, 0.6F);
-	tess->tessellateBlockInWorld(tile, {x, y, z});
+	tess->tessellateBlockInWorld(*tile, {x, y, z});
 	
 	//Button
 	tess->forcedUV = tile->getTexture(1, 0);
 	this->setRotatedBounds(tess, data, (isPressed)? 0.89F : 0.85F, 0.45F, 0.45F, 0.9F, 0.55F, 0.55F);
-	tess->tessellateBlockInWorld(tile, {x, y, z});
+	tess->tessellateBlockInWorld(*tile, {x, y, z});
 	
 	tess->useForcedUV = false;
 }

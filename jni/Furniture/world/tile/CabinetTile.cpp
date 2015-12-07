@@ -2,7 +2,7 @@
 
 int CabinetTile::_id = 220;
 
-CabinetTile::CabinetTile(int id, Material const* material) : RotatableTile("blockCabinet", id, material) {
+CabinetTile::CabinetTile(int id, Material const& material) : RotatableTile("blockCabinet", id, material) {
 	Block::mLightBlock[id] = 0;
 	
 	

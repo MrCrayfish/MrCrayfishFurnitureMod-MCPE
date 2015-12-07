@@ -1,6 +1,6 @@
 #include "RotatableTile.h"
 
-RotatableTile::RotatableTile(const std::string& name, int id, const Material* material) : FurnitureTile(name, id, material) {
+RotatableTile::RotatableTile(const std::string& name, int id, const Material& material) : FurnitureTile(name, id, material) {
 }
 
 int RotatableTile::getPlacementDataValue(Mob* mob, int x, int y, int z, signed char side, float xx, float yy, float zz, int data) {

@@ -11,7 +11,7 @@ class MicrowaveTile : public RotatableTile {
 public:
 	static int _id;
 	
-	MicrowaveTile(int, Material const*);
+	MicrowaveTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(int, Random*);

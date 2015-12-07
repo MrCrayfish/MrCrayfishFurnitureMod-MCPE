@@ -7,7 +7,7 @@ class ToiletTile : public RotatableTile {
 public:
 	static int _id;
 
-	ToiletTile(int, Material const*);
+	ToiletTile(int, Material const&);
 
 	virtual int getResource(int, Random*);
 	virtual bool use(Player*, int, int, int);

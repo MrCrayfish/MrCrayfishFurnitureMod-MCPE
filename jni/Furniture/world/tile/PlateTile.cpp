@@ -2,7 +2,7 @@
 
 int PlateTile::_id = 223;
 
-PlateTile::PlateTile(int id, Material const* material) : FurnitureTile("blockPlate", id, material) {
+PlateTile::PlateTile(int id, Material const& material) : FurnitureTile("blockPlate", id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	
 	

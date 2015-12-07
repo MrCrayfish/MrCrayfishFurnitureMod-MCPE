@@ -3,7 +3,7 @@
 #include "MCPE/world/level/tile/Block.h"
 
 struct FurnitureTileAttributes {
-	FurnitureTileAttributes(Material*, std::string, std::string, Block::SoundType, float);
+	FurnitureTileAttributes(Material const&, std::string, std::string, const Block::SoundType&, float);
 
 	Material* realMaterial;
 	TextureUVCoordinateSet primary_tex;

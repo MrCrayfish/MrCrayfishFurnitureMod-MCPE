@@ -10,7 +10,7 @@
 
 class PlaceableItem : public FurnitureItem {
 public:
-	PlaceableItem(int, int);
+	PlaceableItem(const std::string&, int, int);
 
 	virtual bool useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 

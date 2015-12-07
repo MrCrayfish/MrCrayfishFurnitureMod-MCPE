@@ -2,7 +2,7 @@
 
 int CounterTile::_id = 213;
 
-CounterTile::CounterTile(int id, Material const* material) : RotatableTile("blockCounter", id, material) {
+CounterTile::CounterTile(int id, Material const& material) : RotatableTile("blockCounter", id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stained_clay", 9);
 

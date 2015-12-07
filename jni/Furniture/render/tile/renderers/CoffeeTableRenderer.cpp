@@ -5,10 +5,10 @@
 void CoffeeTableRenderer::render(const BlockPos& pos, FurnitureTile* tile, BlockTessellator* tess) {
 	int x = pos.x, y = pos.y, z = pos.z;
 
-	int forwardId = tess->region->getBlock(*new BlockPos(x + 1, y, z)).id;
-	int backId = tess->region->getBlock(*new BlockPos(x - 1, y, z)).id;
-	int leftId = tess->region->getBlock(*new BlockPos(x, y, z - 1)).id;
-	int rightId = tess->region->getBlock(*new BlockPos(x, y, z + 1)).id;
+	int forwardId = tess->region->getBlockID({x + 1, y, z}).id;
+	int backId = tess->region->getBlockID({x - 1, y, z}).id;
+	int leftId = tess->region->getBlockID({x, y, z - 1}).id;
+	int rightId = tess->region->getBlockID({x, y, z + 1}).id;
 	bool forward = forwardId == CoffeeTableTile::_woodId || forwardId == CoffeeTableTile::_stoneId;
 	bool back = backId == CoffeeTableTile::_woodId || backId == CoffeeTableTile::_stoneId;
 	bool left = leftId == CoffeeTableTile::_woodId || leftId == CoffeeTableTile::_stoneId;

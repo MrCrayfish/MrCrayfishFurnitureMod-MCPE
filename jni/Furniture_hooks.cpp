@@ -83,10 +83,10 @@ void initMod() {
 	Motive::initCustomMotives();
 }
 
-static void (*_BlockTessellator$tessellateInWorld)(BlockTessellator*, Block*, const BlockPos&, bool);
-static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Block* tile, const BlockPos& pos, bool b) {
-	if(!RenderDispatcher::dispatch(tile->id, pos, tile, self))
-		_BlockTessellator$tessellateInWorld(self, tile, pos, b);
+static void (*_BlockTessellator$tessellateInWorld)(BlockTessellator*, Block&, const BlockPos&, unsigned char, bool);
+static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Block& tile, const BlockPos& pos, unsigned char c, bool b) {
+	if(!RenderDispatcher::dispatch(tile.id, pos, tile, self))
+		_BlockTessellator$tessellateInWorld(self, tile, pos, c, b);
 }
 
 void initRenderers() {
@@ -114,9 +114,9 @@ void initRenderers() {
 	ALOG("Finished Loading Renders");
 }
 
-static void (*_Tile$initBlocks)();
-static void Tile$initBlocks() {
-	_Tile$initBlocks();
+static void (*_Block$initBlocks)();
+static void Block$initBlocks() {
+	_Block$initBlocks();
 	
 	FurnitureTileAttributes woodAttributes(Material::getMaterial(MaterialType::WOOD), "planks", "log", Block::SOUND_WOOD, 1.0F);
 	FurnitureTileAttributes stoneAttributes(Material::getMaterial(MaterialType::STONE), "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
@@ -144,6 +144,8 @@ static void Tile$initBlocks() {
 	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, Material::getMaterial(MaterialType::STONE));
 	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, Material::getMaterial(MaterialType::DECORATION));
 	ALOG("Finished Loading Tiles");
+
+	FurnitureTile::registerBlocks();
 	
 	initRenderers();
 }
@@ -173,6 +175,8 @@ static void Item$initItems() {
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
 	ALOG("Finished Loading Items");
+
+	FurnitureItem::registerItems();
 	
 	_Item$initItems();
 }
@@ -246,7 +250,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 
 static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
 static bool LiquidBlockDynamic$_isWaterBlocking(LiquidBlockDynamic* self, BlockSource& region, const BlockPos& pos) {
-	Block* tile = region.getBlock(pos.x, pos.y, pos.z);
+	Block* tile = region.getBlock(pos);
 	if(tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
 		tile == FurnitureTile::tileCoffeeTableWood ||
@@ -283,7 +287,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	
 	MSHookFunction((void*) &BlockTessellator::tessellateInWorld, (void*) &BlockTessellator$tessellateInWorld, (void**) &_BlockTessellator$tessellateInWorld);
 	MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems);
-	MSHookFunction((void*) &Block::initBlocks, (void*) &Tile$initBlocks, (void**) &_Tile$initBlocks);
+	MSHookFunction((void*) &Block::initBlocks, (void*) &Block$initBlocks, (void**) &_Block$initBlocks);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems);
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidBlockDynamic::_isWaterBlocking, (void*) &LiquidBlockDynamic$_isWaterBlocking, (void**) &_LiquidBlockDynamic$_isWaterBlocking);

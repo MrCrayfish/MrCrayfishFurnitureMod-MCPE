@@ -8,5 +8,5 @@ public:
 	static int _id;
 	
 	CookieJarTile(int, Material const&);
-	virtual int getResource(int, Random*);	
+	virtual int getResource(Random&, int, int);	
 };

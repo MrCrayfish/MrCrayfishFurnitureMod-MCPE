@@ -62,7 +62,7 @@ public:
 	bool heavy; // 96
 	float destroyTime; // 100
 	float explosionResistance; // 104
-	int category; // 108
+	int creativeCategory; // 108
 	AABB hitbox; // 112
 
 

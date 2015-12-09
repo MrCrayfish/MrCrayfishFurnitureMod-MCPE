@@ -10,9 +10,9 @@ public:
 	CabinetTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
-	virtual void addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool);
-	virtual bool use(Player*, int, int, int);
+	virtual int getResource(Random&, int, int);
+	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
+	virtual bool use(Player&, const BlockPos&);
 	
 private:
 	TextureUVCoordinateSet secondary_tex;

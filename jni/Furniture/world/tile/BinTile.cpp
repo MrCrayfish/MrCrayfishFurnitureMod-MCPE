@@ -16,6 +16,6 @@ const TextureUVCoordinateSet& BinTile::getTexture(signed char side, int data) {
 	return side == 0 ? tex : secondary_tex;
 }
 
-int BinTile::getResource(int data, Random* rand) {
+int BinTile::getResource(Random& rand, int data, int idk) {
 	return BinItem::_id;
 }

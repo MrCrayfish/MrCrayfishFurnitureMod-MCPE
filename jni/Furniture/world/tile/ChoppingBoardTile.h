@@ -14,9 +14,9 @@ public:
 	ChoppingBoardTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
-	virtual bool use(Player*, int, int, int);
-	virtual void addAABBs(BlockSource*, int, int, int, AABB const*, std::vector<AABB, std::allocator<AABB>>&);
+	virtual int getResource(Random&, int, int);
+	virtual bool use(Player&, const BlockPos&);
+	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
 
 private:
 	TextureUVCoordinateSet secondary_tex;

@@ -19,7 +19,7 @@ public:
     BlockSource* region;
     TextureUVCoordinateSet forcedUV;
     bool useForcedUV;
-    char filler[84];
+    char filler[88];
     int rotBottom;
     int rotTop;
     int rotEast;

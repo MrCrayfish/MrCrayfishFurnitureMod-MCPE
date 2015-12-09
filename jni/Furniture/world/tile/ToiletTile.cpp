@@ -12,15 +12,15 @@ ToiletTile::ToiletTile(int id, Material const& material) : RotatableTile("blockT
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 }
 
-void ToiletTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F).move(x, y, z), posAABB, pool);
-	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(*new BlockPos(x, y, z)), 0.65F, 0.5F, 0.0F, 1.0F, 1.1F, 1.0F).move(x, y, z), posAABB, pool);
+void ToiletTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F).move(pos.x, pos.y, pos.z), posAABB, pool);
+	addAABB(CollisionHelper::getRotatedCollisionBox(region.getData(pos), 0.65F, 0.5F, 0.0F, 1.0F, 1.1F, 1.0F).move(pos.x, pos.y, pos.z), posAABB, pool);
 }
 
-bool ToiletTile::use(Player* player, int x, int y, int z) {
+bool ToiletTile::use(Player& player, const BlockPos& pos) {
 	return false;
 }
 
-int ToiletTile::getResource(int data, Random* rand) {
+int ToiletTile::getResource(Random& rand, int data, int idk) {
 	return ToiletItem::_id;
 }

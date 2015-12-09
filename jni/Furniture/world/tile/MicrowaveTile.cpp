@@ -17,8 +17,8 @@ const TextureUVCoordinateSet& MicrowaveTile::getTexture(signed char side, int da
 	return side == 0 ? tex : side == 1 ? secondary_tex : terciary_tex;
 }
 
-bool MicrowaveTile::use(Player* player, int x, int y, int z) {
-	int data = player->region.getData(*new BlockPos(x, y, z));
+bool MicrowaveTile::use(Player& player, const BlockPos& pos) {
+	int data = player.region.getData(pos);
 	int rot = data & 7;
 	int hasBread = ((data & 8) >> 3) == 0;
 
@@ -33,6 +33,6 @@ bool MicrowaveTile::use(Player* player, int x, int y, int z) {
 	return true;
 }
 
-int MicrowaveTile::getResource(int data, Random* rand) {
+int MicrowaveTile::getResource(Random& rand, int data, int idk) {
 	return MicrowaveItem::_id;
 }

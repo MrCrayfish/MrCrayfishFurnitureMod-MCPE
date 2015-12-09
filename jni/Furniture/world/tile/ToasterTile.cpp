@@ -17,8 +17,8 @@ const TextureUVCoordinateSet& ToasterTile::getTexture(signed char side, int data
 	return side == 0 ? tex : side == 1 ? secondary_tex : terciary_tex;
 }
 
-bool ToasterTile::use(Player* player, int x, int y, int z) {
-	int data = player->region.getData(*new BlockPos(x, y, z));
+bool ToasterTile::use(Player& player, const BlockPos& pos) {
+	int data = player.region.getData(pos);
 	int rot = data & 7;
 	int hasBread = ((data & 8) >> 3) == 0;
 
@@ -33,6 +33,6 @@ bool ToasterTile::use(Player* player, int x, int y, int z) {
 	return true;
 }
 
-int ToasterTile::getResource(int data, Random* rand) {
+int ToasterTile::getResource(Random& rand, int data, int idk) {
 	return ToasterItem::_id;
 }

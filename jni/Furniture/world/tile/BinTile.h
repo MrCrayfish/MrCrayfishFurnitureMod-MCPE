@@ -10,7 +10,7 @@ public:
 	BinTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
+	virtual int getResource(Random&, int, int);
 	
 private:
 	TextureUVCoordinateSet secondary_tex;

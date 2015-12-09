@@ -11,6 +11,6 @@ CookieJarTile::CookieJarTile(int id, Material const& material) : FurnitureTile("
 	renderPass = Block::mGlass->renderPass;
 }
 
-int CookieJarTile::getResource(int data, Random* rand) {
+int CookieJarTile::getResource(Random& rand, int data, int idk) {
 	return CookieJarItem::_id;
 }

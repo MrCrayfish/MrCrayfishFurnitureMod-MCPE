@@ -1,6 +1,6 @@
 #include "PlateItem.h"
 
-int PlateItem::_id = 480;
+int PlateItem::_id = 490;
 
 PlateItem::PlateItem(int id) : PlaceableItem("itemPlate", id, PlateTile::_id) {
 	setIcon("itemplate", 0);

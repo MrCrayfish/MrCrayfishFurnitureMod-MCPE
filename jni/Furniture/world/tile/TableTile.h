@@ -11,8 +11,7 @@ public:
 	TableTile(int, std::string, FurnitureTileAttributes, int);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
-	virtual bool use(Player*, int, int, int);
+	virtual int getResource(Random&, int, int);
 
 private:
 	TextureUVCoordinateSet secondary_tex;

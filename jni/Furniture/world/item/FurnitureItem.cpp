@@ -25,3 +25,31 @@ FurnitureItem* FurnitureItem::itemPlate = NULL;
 FurnitureItem::FurnitureItem(const std::string& name, int id) : Item(name, id - 256) {
 	creativeCategory = 4;
 }
+
+void FurnitureItem::registerItems() {
+	registerItem(itemTableWood);
+	registerItem(itemTableStone);
+	registerItem(itemCoffeeTableWood);
+	registerItem(itemCoffeeTableStone);
+	registerItem(itemChairWood);
+	registerItem(itemChairStone);
+	registerItem(itemToilet);
+	registerItem(itemCabinet);
+	registerItem(itemKitchenCabinet);
+	registerItem(itemDoorbell);
+	registerItem(itemBin);
+	registerItem(itemLamp);
+	registerItem(itemChoppingBoard);
+	registerItem(itemToaster);
+	registerItem(itemMicrowave);
+	registerItem(itemKnife);
+	registerItem(itemBarStool);
+	registerItem(itemCounter);
+	registerItem(itemCookieJar);
+	registerItem(itemOven);
+	registerItem(itemPlate);
+}
+
+void FurnitureItem::registerItem(Item* item) {
+	Item::mItems[item->itemId] = item;
+}

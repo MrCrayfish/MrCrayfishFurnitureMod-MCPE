@@ -19,10 +19,10 @@ const TextureUVCoordinateSet& CoffeeTableTile::getTexture(signed char side, int 
 	return (side == 0)? tex : secondary_tex;
 }
 
-bool CoffeeTableTile::use(Player* player, int x, int y, int z) {
+bool CoffeeTableTile::use(Player&, const BlockPos&) {
 	return false;
 }
 
-int CoffeeTableTile::getResource(int data, Random* rand) {
+int CoffeeTableTile::getResource(Random& rand, int data, int idk) {
 	return droppedItem;
 }

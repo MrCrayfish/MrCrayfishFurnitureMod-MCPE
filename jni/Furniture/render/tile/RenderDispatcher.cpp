@@ -8,9 +8,9 @@ void RenderDispatcher::registerRenderer(int id, BlockRenderer* renderer) {
 	rendererMap[id] = renderer;
 }
 
-bool RenderDispatcher::dispatch(int id, const BlockPos& pos, Block* tile, BlockTessellator* tess) {
+bool RenderDispatcher::dispatch(int id, const BlockPos& pos, Block& tile, BlockTessellator* tess) {
 	if(rendererMap.find(id) != rendererMap.end()) {
-		rendererMap[id]->render(pos, (FurnitureTile*)tile, tess);
+		rendererMap[id]->render(pos, (FurnitureTile&)tile, tess);
 		return true;
 	}
 	return false;

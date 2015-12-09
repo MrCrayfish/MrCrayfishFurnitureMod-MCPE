@@ -8,7 +8,7 @@ struct SeedItemComponent;
 class Block;
 class CreativeItemCategory;
 class ItemInstance;
-class Player;
+#include "../entity/player/Player.h"
 class Mob;
 class Level;
 class BlockID;

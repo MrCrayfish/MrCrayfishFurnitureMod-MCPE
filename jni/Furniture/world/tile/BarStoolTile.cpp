@@ -18,10 +18,10 @@ const TextureUVCoordinateSet& BarStoolTile::getTexture(signed char side, int dat
 	return side == 0 ? tex : side == 1 ? secondary_tex : side == 2 ? terciary_tex : quartenary_tex;
 }
 
-bool BarStoolTile::use(Player* player, int x, int y, int z) {
+bool BarStoolTile::use(Player& player, const BlockPos& pos) {
 	return true;
 }
 
-int BarStoolTile::getResource(int data, Random* rand) {
+int BarStoolTile::getResource(Random& rand, int data, int idk) {
 	return BarStoolItem::_id;
 }

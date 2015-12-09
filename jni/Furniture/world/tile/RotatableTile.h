@@ -10,5 +10,5 @@ class RotatableTile : public FurnitureTile {
 public:
 	RotatableTile(const std::string&, int, const Material&);
 	
-	virtual int getPlacementDataValue(Mob*, int, int, int, signed char, float, float, float, int);
+	static int getPlayerFacing(Player&);
 };

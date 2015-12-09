@@ -4,5 +4,5 @@
 
 class DoorbellRenderer : public BlockRenderer {
 public:
-	virtual void render(const BlockPos&, FurnitureTile*, BlockTessellator*);
+	virtual void render(const BlockPos&, FurnitureTile&, BlockTessellator*);
 };

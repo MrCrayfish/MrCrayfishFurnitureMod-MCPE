@@ -15,19 +15,19 @@ ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attribute
 	this->droppedItem = item;
 }
 
-void ChairTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	addAABB(AABB(0.1F, 0.0F, 0.1F, 0.9F, 0.6F, 0.9F).move(x, y, z), posAABB, pool);
-	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(*new BlockPos(x, y, z)), 0.825F, 0.6F, 0.1F, 0.9F, 1.2F, 0.9F).move(x, y, z), posAABB, pool);
+void ChairTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(AABB(0.1F, 0.0F, 0.1F, 0.9F, 0.6F, 0.9F).move(pos.x, pos.y, pos.z), posAABB, pool);
+	addAABB(CollisionHelper::getRotatedCollisionBox(region.getData(pos), 0.825F, 0.6F, 0.1F, 0.9F, 1.2F, 0.9F).move(pos.x, pos.y, pos.z), posAABB, pool);
 }
 
 const TextureUVCoordinateSet& ChairTile::getTexture(signed char side, int data) {
 	return (side == 0)? tex : secondary_tex;
 }
 
-bool ChairTile::use(Player* player, int x, int y, int z) {
+bool ChairTile::use(Player& player, const BlockPos& pos) {
 	return false;
 }
 
-int ChairTile::getResource(int data, Random* rand) {
+int ChairTile::getResource(Random& rand, int data, int idk) {
 	return droppedItem;
 }

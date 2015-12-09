@@ -34,4 +34,9 @@ public:
 	static FurnitureTile* tilePlate;
 	
 	FurnitureTile(const std::string&, int, Material const&);
+
+	static void registerBlocks();
+
+private:
+	static void registerBlock(Block*);
 };

@@ -16,14 +16,14 @@ const TextureUVCoordinateSet& KitchenCabinetTile::getTexture(signed char side, i
 	return side == 0 ? tex : (side == 1 ? secondary_tex : terciary_tex);
 }
 
-bool KitchenCabinetTile::use(Player* player, int x, int y, int z) {
+bool KitchenCabinetTile::use(Player& player, const BlockPos& pos) {
 	return true;
 }
 
-int KitchenCabinetTile::getResource(int data, Random* rand) {
+int KitchenCabinetTile::getResource(Random& rand, int data, int idk) {
 	return KitchenCabinetItem::_id;
 }
 
-void KitchenCabinetTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(x, y, z), posAABB, pool);
+void KitchenCabinetTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(pos.x, pos.y, pos.z), posAABB, pool);
 }

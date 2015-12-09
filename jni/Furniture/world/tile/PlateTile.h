@@ -12,6 +12,6 @@ public:
 	
 	PlateTile(int, Material const&);
 	
-	virtual int getResource(int, Random*);
-	virtual bool use(Player*, int, int, int);
+	virtual int getResource(Random&, int, int);
+	virtual bool use(Player&, const BlockPos&);
 };

@@ -2,6 +2,7 @@
 
 #include "FurnitureItem.h"
 
+#include "../tile/RotatableTile.h";
 #include "MCPE/world/level/tile/Block.h"
 #include "MCPE/world/Facing.h"
 #include "MCPE/world/entity/player/Player.h"

@@ -11,10 +11,10 @@ PlateTile::PlateTile(int id, Material const& material) : FurnitureTile("blockPla
 	Block::mLightBlock[id] = 0;
 }
 
-bool PlateTile::use(Player* player, int x, int y, int z) {
+bool PlateTile::use(Player& player, const BlockPos& pos) {
 	return true;
 }
 
-int PlateTile::getResource(int data, Random* rand) {
+int PlateTile::getResource(Random& rand, int data, int idk) {
 	return PlateItem::_id;
 }

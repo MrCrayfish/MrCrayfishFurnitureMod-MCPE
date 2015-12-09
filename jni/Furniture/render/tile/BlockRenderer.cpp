@@ -48,46 +48,46 @@ int BlockRenderer::getRelativeTileId(BlockSource* region, int x, int y, int z, i
 	{
 		case UP:
 			if(metadata == 3)
-				return region->getBlock(*new BlockPos(x + 1, y, z)).id;
+				return region->getBlockID({x + 1, y, z}).id;
 			if(metadata == 1)
-				return region->getBlock(*new BlockPos(x - 1, y, z)).id;
+				return region->getBlockID({x - 1, y, z}).id;
 			if(metadata == 2)
-				return region->getBlock(*new BlockPos(x, y, z - 1)).id;
+				return region->getBlockID({x, y, z - 1}).id;
 			if(metadata == 0)
-				return region->getBlock(*new BlockPos(x, y, z + 1)).id;
+				return region->getBlockID({x, y, z + 1}).id;
 			break;
 		case DOWN:
 			if(metadata == 3)
-				return region->getBlock(*new BlockPos(x - 1, y, z)).id;
+				return region->getBlockID({x - 1, y, z}).id;
 			if(metadata == 1)
-				return region->getBlock(*new BlockPos(x + 1, y, z)).id;
+				return region->getBlockID({x + 1, y, z}).id;
 			if(metadata == 2)
-				return region->getBlock(*new BlockPos(x, y, z + 1)).id;
+				return region->getBlockID({x, y, z + 1}).id;
 			if(metadata == 0)
-				return region->getBlock(*new BlockPos(x, y, z - 1)).id;
+				return region->getBlockID({x, y, z - 1}).id;
 			break;
 		case LEFT:
 			if(metadata == 3)
-				return region->getBlock(*new BlockPos(x, y, z - 1)).id;
+				return region->getBlockID({x, y, z - 1}).id;
 			if(metadata == 1)
-				return region->getBlock(*new BlockPos(x, y, z + 1)).id;
+				return region->getBlockID({x, y, z + 1}).id;
 			if(metadata == 2)
-				return region->getBlock(*new BlockPos(x - 1, y, z)).id;
+				return region->getBlockID({x - 1, y, z}).id;
 			if(metadata == 0)
-				return region->getBlock(*new BlockPos(x + 1, y, z)).id;
+				return region->getBlockID({x + 1, y, z}).id;
 			break;
 		case RIGHT:
 			if(metadata == 3)
-				return region->getBlock(*new BlockPos(x, y, z + 1)).id;
+				return region->getBlockID({x, y, z + 1}).id;
 			if(metadata == 1)
-				return region->getBlock(*new BlockPos(x, y, z - 1)).id;
+				return region->getBlockID({x, y, z - 1}).id;
 			if(metadata == 2)
-				return region->getBlock(*new BlockPos(x + 1, y, z)).id;
+				return region->getBlockID({x + 1, y, z}).id;
 			if(metadata == 0)
-				return region->getBlock(*new BlockPos(x - 1, y, z)).id;
+				return region->getBlockID({x - 1, y, z}).id;
 			break;		
 	}
-	return region->getBlock(*new BlockPos(x, y, z)).id;
+	return region->getBlockID({x, y, z}).id;
 }
 
 int BlockRenderer::getRelativeRotation(BlockSource* region, int x, int y, int z, int metadata, int rotation)
@@ -145,43 +145,43 @@ int BlockRenderer::getRelativeMetadata(BlockSource* region, int x, int y, int z,
 	{
 	case UP:
 		if (metadata == 3)
-			return region->getData(*new BlockPos(x + 1, y, z));
+			return region->getData({x + 1, y, z});
 		if (metadata == 1)
-			return region->getData(*new BlockPos(x - 1, y, z));
+			return region->getData({x - 1, y, z});
 		if (metadata == 2)
-			return region->getData(*new BlockPos(x, y, z - 1));
+			return region->getData({x, y, z - 1});
 		if (metadata == 0)
-			return region->getData(*new BlockPos(x, y, z + 1));
+			return region->getData({x, y, z + 1});
 		break;
 	case DOWN:
 		if (metadata == 3)
-			return region->getData(*new BlockPos(x - 1, y, z));
+			return region->getData({x - 1, y, z});
 		if (metadata == 1)
-			return region->getData(*new BlockPos(x + 1, y, z));
+			return region->getData({x + 1, y, z});
 		if (metadata == 2)
-			return region->getData(*new BlockPos(x, y, z + 1));
+			return region->getData({x, y, z + 1});
 		if (metadata == 0)
-			return region->getData(*new BlockPos(x, y, z - 1));
+			return region->getData({x, y, z - 1});
 		break;
 	case LEFT:
 		if (metadata == 2)
-			return region->getData(*new BlockPos(x - 1, y, z));
+			return region->getData({x - 1, y, z});
 		if (metadata == 0)
-			return region->getData(*new BlockPos(x + 1, y, z));
+			return region->getData({x + 1, y, z});
 		if (metadata == 3)
-			return region->getData(*new BlockPos(x, y, z - 1));
+			return region->getData({x, y, z - 1});
 		if (metadata == 1)
-			return region->getData(*new BlockPos(x, y, z + 1));
+			return region->getData({x, y, z + 1});
 		break;
 	case RIGHT:
 		if (metadata == 2)
-			return region->getData(*new BlockPos(x + 1, y, z));
+			return region->getData({x + 1, y, z});
 		if (metadata == 0)
-			return region->getData(*new BlockPos(x - 1, y, z));
+			return region->getData({x - 1, y, z});
 		if (metadata == 3)
-			return region->getData(*new BlockPos(x, y, z + 1));
+			return region->getData({x, y, z + 1});
 		if (metadata == 1)
-			return region->getData(*new BlockPos(x, y, z - 1));
+			return region->getData({x, y, z - 1});
 		break;
 	}
 	return 0;

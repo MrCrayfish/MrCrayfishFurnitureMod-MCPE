@@ -14,8 +14,8 @@ public:
 	BarStoolTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
-	virtual bool use(Player*, int, int, int);
+	virtual int getResource(Random&, int, int);
+	virtual bool use(Player&, const BlockPos&);
 
 private:
 	TextureUVCoordinateSet secondary_tex;

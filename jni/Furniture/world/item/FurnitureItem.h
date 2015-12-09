@@ -27,4 +27,9 @@ public:
 	static FurnitureItem* itemPlate;
 	
 	FurnitureItem(const std::string&, int);
+
+	static void registerItems();
+
+private:
+	static void registerItem(Item* item);
 };

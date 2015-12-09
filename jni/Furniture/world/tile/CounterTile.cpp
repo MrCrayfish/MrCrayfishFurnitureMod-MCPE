@@ -16,6 +16,6 @@ const TextureUVCoordinateSet& CounterTile::getTexture(signed char side, int data
 	return side == 0 ? tex : secondary_tex;
 }
 
-int CounterTile::getResource(int data, Random* rand) {
+int CounterTile::getResource(Random& rand, int data, int idk) {
 	return CounterItem::_id;
 }

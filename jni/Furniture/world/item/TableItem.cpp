@@ -1,7 +1,7 @@
 #include "TableItem.h"
 
-int TableItem::_woodId = 460;
-int TableItem::_stoneId = 461;
+int TableItem::_woodId = 470;
+int TableItem::_stoneId = 471;
 
 TableItem::TableItem(int id, std::string texture, ItemMaterial mat, int tileId) : PlaceableItem(texture, id, tileId) {
 	setIcon(texture, 0);

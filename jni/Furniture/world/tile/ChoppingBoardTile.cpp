@@ -16,8 +16,8 @@ const TextureUVCoordinateSet& ChoppingBoardTile::getTexture(signed char side, in
 	return side == 0 ? tex : secondary_tex;
 }
 
-bool ChoppingBoardTile::use(Player* player, int x, int y, int z) {
-	int data = player->region.getData(*new BlockPos(x, y, z));
+bool ChoppingBoardTile::use(Player& player, const BlockPos& pos) {
+	int data = player.region.getData(pos);
 	int rot = data & 7;
 	int hasBread = ((data & 8) >> 3) == 0;
 
@@ -32,10 +32,10 @@ bool ChoppingBoardTile::use(Player* player, int x, int y, int z) {
 	return true;
 }
 
-int ChoppingBoardTile::getResource(int data, Random* rand) {
+int ChoppingBoardTile::getResource(Random& rand, int data, int idk) {
 	return ChoppingBoardItem::_id;
 }
 
-void ChoppingBoardTile::addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
-	addAABB(CollisionHelper::getRotatedCollisionBox(region->getData(*new BlockPos(x, y, z)), 0.25F, 0.0F, 0.0625F, 0.8125F, 0.0625F, 0.9375F).move(x, y, z), posAABB, pool);
+void ChoppingBoardTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+	addAABB(CollisionHelper::getRotatedCollisionBox(region.getData(pos), 0.25F, 0.0F, 0.0625F, 0.8125F, 0.0625F, 0.9375F).move(pos.x, pos.y, pos.z), posAABB, pool);
 }

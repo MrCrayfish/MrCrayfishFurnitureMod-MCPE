@@ -14,11 +14,11 @@ public:
 	DoorbellTile(int, Material const&);
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
-	virtual int getResource(int, Random*);
-	virtual bool use(Player*, int, int, int);
+	virtual int getResource(Random&, int, int);
+	virtual bool use(Player&, const BlockPos&);
 	virtual int getTickDelay();
-	virtual void tick(BlockSource*, int, int, int, Random*);
-	virtual void addAABBs(BlockSource* region, int x, int y, int z, AABB const* posAABB, std::vector<AABB, std::allocator<AABB>>&);
+	virtual void tick(BlockSource&, const BlockPos&, Random&);
+	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
 
 private:
 	TextureUVCoordinateSet secondary_tex;

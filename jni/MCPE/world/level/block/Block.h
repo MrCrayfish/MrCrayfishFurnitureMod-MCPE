@@ -95,7 +95,7 @@ public:
 	Block(const std::string&, int, const std::string&, const Material&);
 
 	// All parameters for x, y, z have changed to a const BlockPos&
-	// And all BlockSource(BlockSource) pointers have changed to a reference
+	// And all TileSource(BlockSource) pointers have changed to a reference
 	virtual ~Block();
 	virtual void tick(BlockSource&, const BlockPos&, Random&);
 	virtual void animateTick(BlockSource&, const BlockPos&, Random&);

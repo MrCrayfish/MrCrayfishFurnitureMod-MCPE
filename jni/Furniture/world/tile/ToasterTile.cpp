@@ -6,11 +6,9 @@ ToasterTile::ToasterTile(int id, Material const& material) : RotatableTile("bloc
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 15);
 	terciary_tex = getTextureUVCoordinateSet("stone", 0);
-	
-	
+
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& ToasterTile::getTexture(signed char side, int data) {

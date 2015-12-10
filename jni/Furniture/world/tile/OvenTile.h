@@ -11,5 +11,5 @@ public:
 
 	virtual int getResource(Random&, int, int);
 	virtual bool use(Player&, const BlockPos&);
-	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
+	virtual bool addCollisionShapes(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&, Entity*);
 };

@@ -6,10 +6,8 @@ BinTile::BinTile(int id, Material const& material) : FurnitureTile("blockBin", i
 	tex = getTextureUVCoordinateSet("iron_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	
-	
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& BinTile::getTexture(signed char side, int data) {

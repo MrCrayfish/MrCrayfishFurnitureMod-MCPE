@@ -6,10 +6,8 @@ DoorbellTile::DoorbellTile(int id, Material const& material) : RotatableTile("bl
 	tex = getTextureUVCoordinateSet("log", 0);
 	secondary_tex = getTextureUVCoordinateSet("iron_block", 0);
 	
-	
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& DoorbellTile::getTexture(signed char side, int data) {
@@ -43,4 +41,6 @@ int DoorbellTile::getResource(Random& rand, int data, int idk) {
 	return DoorbellItem::_id;
 }
 
-void DoorbellTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {}
+bool DoorbellTile::addCollisionShapes(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool, Entity* entity) {
+	return true;
+}

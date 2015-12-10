@@ -6,10 +6,8 @@ LampTile::LampTile(int id, Material const& material) : FurnitureTile("blockLamp"
 	tex = getTextureUVCoordinateSet("obsidian", 0);
 	secondary_tex = getTextureUVCoordinateSet("wool", 0);
 	
-	
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& LampTile::getTexture(signed char side, int data) {

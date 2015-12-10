@@ -18,7 +18,7 @@ public:
 	virtual bool use(Player&, const BlockPos&);
 	virtual int getTickDelay();
 	virtual void tick(BlockSource&, const BlockPos&, Random&);
-	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
+	virtual bool addCollisionShapes(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&, Entity*);
 
 private:
 	TextureUVCoordinateSet secondary_tex;

@@ -4,10 +4,8 @@ int CoffeeTableTile::_woodId = 204;
 int CoffeeTableTile::_stoneId = 205;
 
 CoffeeTableTile::CoffeeTableTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : FurnitureTile("blockCoffeeTable", id, attributes.realMaterial) {
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 
-	
 	setSoundType(attributes.sounds);
 	setDestroyTime(attributes.hardness);
 	tex = attributes.primary_tex;

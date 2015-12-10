@@ -5,7 +5,6 @@ int KitchenCabinetTile::_id = 180;
 KitchenCabinetTile::KitchenCabinetTile(int id, Material const& material) : RotatableTile("blockKitchenCabinet", id, material) {
 	Block::mLightBlock[id] = 0;
 	
-	
 	setSoundType(Block::SOUND_WOOD);
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	secondary_tex = getTextureUVCoordinateSet("stained_clay", 9);
@@ -24,6 +23,7 @@ int KitchenCabinetTile::getResource(Random& rand, int data, int idk) {
 	return KitchenCabinetItem::_id;
 }
 
-void KitchenCabinetTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+bool KitchenCabinetTile::addCollisionShapes(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool, Entity* entity) {
 	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(pos.x, pos.y, pos.z), posAABB, pool);
+	return true;
 }

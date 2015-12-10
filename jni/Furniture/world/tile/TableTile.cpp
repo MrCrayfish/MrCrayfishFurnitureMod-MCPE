@@ -4,11 +4,10 @@ int TableTile::_woodId = 200;
 int TableTile::_stoneId = 201;
 
 TableTile::TableTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : FurnitureTile("blockTable", id, attributes.realMaterial) {
+	setSolid(false);
+
 	setSoundType(attributes.sounds);
 	setDestroyTime(attributes.hardness);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
-
 	tex = attributes.primary_tex;
 	secondary_tex = attributes.secondary_tex;
 	droppedItem = item;

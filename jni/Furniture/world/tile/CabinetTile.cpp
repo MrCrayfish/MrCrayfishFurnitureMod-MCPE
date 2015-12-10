@@ -5,7 +5,6 @@ int CabinetTile::_id = 220;
 CabinetTile::CabinetTile(int id, Material const& material) : RotatableTile("blockCabinet", id, material) {
 	Block::mLightBlock[id] = 0;
 	
-	
 	setSoundType(Block::SOUND_WOOD);
 	tex = getTextureUVCoordinateSet("planks", 2);
 	secondary_tex = getTextureUVCoordinateSet("planks", 1);
@@ -24,6 +23,7 @@ int CabinetTile::getResource(Random& rand, int data, int idk) {
 	return CabinetItem::_id;
 }
 
-void CabinetTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+bool CabinetTile::addCollisionShapes(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool, Entity* entity) {
 	addAABB(AABB(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).move(pos.x, pos.y, pos.z), posAABB, pool);
+	return true;
 }

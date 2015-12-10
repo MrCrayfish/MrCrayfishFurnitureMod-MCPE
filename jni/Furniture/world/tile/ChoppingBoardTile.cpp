@@ -6,10 +6,8 @@ ChoppingBoardTile::ChoppingBoardTile(int id, Material const& material) : Rotatab
 	tex = getTextureUVCoordinateSet("planks", 0);
 	secondary_tex = getTextureUVCoordinateSet("log", 0);
 	
-	
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& ChoppingBoardTile::getTexture(signed char side, int data) {
@@ -36,6 +34,7 @@ int ChoppingBoardTile::getResource(Random& rand, int data, int idk) {
 	return ChoppingBoardItem::_id;
 }
 
-void ChoppingBoardTile::addAABBs(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool) {
+bool ChoppingBoardTile::addCollisionShapes(BlockSource& region, const BlockPos& pos, const AABB* posAABB, std::vector<AABB, std::allocator<AABB>>& pool, Entity* entity) {
 	addAABB(CollisionHelper::getRotatedCollisionBox(region.getData(pos), 0.25F, 0.0F, 0.0625F, 0.8125F, 0.0625F, 0.9375F).move(pos.x, pos.y, pos.z), posAABB, pool);
+	return true;
 }

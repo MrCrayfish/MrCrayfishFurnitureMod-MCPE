@@ -11,7 +11,7 @@ public:
 
 	virtual const TextureUVCoordinateSet& getTexture(signed char, int);
 	virtual int getResource(Random&, int, int);
-	virtual void addAABBs(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
+	virtual bool addCollisionShapes(BlockSource&, const BlockPos&, const AABB*, std::vector<AABB, std::allocator<AABB>>&, Entity*);
 	virtual bool use(Player&, const BlockPos&);
 	
 private:

@@ -7,10 +7,8 @@ MicrowaveTile::MicrowaveTile(int id, Material const& material) : RotatableTile("
 	secondary_tex = getTextureUVCoordinateSet("stone", 0);
 	terciary_tex = getTextureUVCoordinateSet("wool", 15);
 
-	
 	setSoundType(Block::SOUND_WOOD);
-	Block::mSolid[id] = false;
-	Block::mLightBlock[id] = 0;
+	setSolid(false);
 }
 
 const TextureUVCoordinateSet& MicrowaveTile::getTexture(signed char side, int data) {

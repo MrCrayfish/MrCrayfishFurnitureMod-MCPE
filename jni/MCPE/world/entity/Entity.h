@@ -29,10 +29,10 @@ public:
 	Vec3 oldPos; // 20
 	Vec3 chunkPos; // 32
 	Vec3 velocity; // 44
-	float yaw; // 56
-	float pitch; // 60
-	float lastYaw; // 64
-	float lastPitch; // 68
+	float pitch; // 56
+	float yaw; // 60
+	float lastPitch; // 64
+	float lastYaw; // 68
 	char filler[44]; // 72
 	Level& level; // 116
 	char filler2[68]; // 120

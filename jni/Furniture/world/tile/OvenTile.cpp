@@ -5,8 +5,6 @@ int OvenTile::_id = 221;
 OvenTile::OvenTile(int id, Material const& material) : RotatableTile("blockOven", id, material) {
 	tex = getTextureUVCoordinateSet("quartz_block", 0);
 	
-	init();
-	
 	setSoundType(Block::SOUND_STONE);
 	setDestroyTime(1.0F);
 	

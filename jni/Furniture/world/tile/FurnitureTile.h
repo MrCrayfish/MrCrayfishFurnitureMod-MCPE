@@ -5,7 +5,7 @@
 #define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 #include "MCPE/world/item/BlockItem.h"
-#include "MCPE/world/level/tile/Block.h"
+#include "MCPE/world/level/block/Block.h"
 #include "MCPE/world/level/BlockSource.h"
 
 #include "../../util/CollisionHelper.h"

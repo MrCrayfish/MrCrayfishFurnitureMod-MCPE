@@ -1,7 +1,8 @@
 #pragma once
 
 enum class MaterialType : int {
-	DIRT = 1,
+	AIR,
+	DIRT,
 	WOOD,
 	STONE,
 	IRON,

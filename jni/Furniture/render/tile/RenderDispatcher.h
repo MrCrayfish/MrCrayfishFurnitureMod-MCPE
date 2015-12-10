@@ -2,7 +2,7 @@
 
 #include "BlockRenderer.h"
 
-#include "MCPE/world/level/tile/Block.h"
+#include "MCPE/world/level/block/Block.h"
 #include "MCPE/world/level/BlockSource.h"
 #include "MCPE/client/renderer/block/BlockTessellator.h"
 #include "MCPE/world/level/BlockPos.h"

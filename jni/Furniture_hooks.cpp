@@ -8,8 +8,8 @@
 #define  LOG_TAG    "FurnitureMod-MCPE" 
 #define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
-#include "MCPE/world/level/tile/Block.h"
-#include "MCPE/world/level/tile/LiquidBlockDynamic.h"
+#include "MCPE/world/level/block/Block.h"
+#include "MCPE/world/level/block/LiquidBlockDynamic.h"
 #include "MCPE/world/material/Material.h"
 #include "MCPE/world/item/Item.h"
 #include "MCPE/client/renderer/block/BlockTessellator.h"
@@ -35,7 +35,7 @@
 #include "Furniture/render/tile/renderers/OvenRenderer.h"
 #include "Furniture/render/tile/renderers/PlateRenderer.h"
 
-/* Tiles */
+/* Blocks */
 #include "Furniture/world/tile/FurnitureTile.h"
 #include "Furniture/world/tile/TableTile.h"
 #include "Furniture/world/tile/CoffeeTableTile.h"
@@ -251,7 +251,7 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
 static bool LiquidBlockDynamic$_isWaterBlocking(LiquidBlockDynamic* self, BlockSource& region, const BlockPos& pos) {
 	Block* tile = region.getBlock(pos);
-	if(tile == FurnitureTile::tileTableWood ||
+	return (tile == FurnitureTile::tileTableWood ||
      	tile == FurnitureTile::tileTableStone ||
 		tile == FurnitureTile::tileCoffeeTableWood ||
      	tile == FurnitureTile::tileCoffeeTableStone ||
@@ -268,10 +268,9 @@ static bool LiquidBlockDynamic$_isWaterBlocking(LiquidBlockDynamic* self, BlockS
 		tile == FurnitureTile::tileCookieJar ||
 		tile == FurnitureTile::tileOven ||
 		tile == FurnitureTile::tileCounter ||
-		tile == FurnitureTile::tilePlate)
-			return true;
-	
-	return _LiquidBlockDynamic$_isWaterBlocking(self, region, pos);
+		tile == FurnitureTile::tilePlate)?
+			true :
+			_LiquidBlockDynamic$_isWaterBlocking(self, region, pos);
 }
 
 static std::vector<const Motive*> (*_Motive$getAllMotivesAsList)();

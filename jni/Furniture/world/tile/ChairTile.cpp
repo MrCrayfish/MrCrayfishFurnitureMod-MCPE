@@ -3,7 +3,7 @@
 int ChairTile::_woodId = 202;
 int ChairTile::_stoneId = 203;
 
-ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : RotatableTile("blockChair", id, *attributes.realMaterial) {
+ChairTile::ChairTile(int id, std::string name, FurnitureTileAttributes attributes, int item) : RotatableTile("blockChair", id, attributes.realMaterial) {
 	Block::mSolid[id] = false;
 	Block::mLightBlock[id] = 0;
 

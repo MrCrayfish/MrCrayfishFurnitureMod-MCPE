@@ -3,8 +3,6 @@
 int CookieJarTile::_id = 222;
 
 CookieJarTile::CookieJarTile(int id, Material const& material) : FurnitureTile("blockCookieJar", id, material) {
-	init();
-	
 	setSoundType(Block::SOUND_GLASS);
 	Block::mSolid[id] = false;
 	Block::mLightBlock[id] = 0;

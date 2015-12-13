@@ -1,3 +1,5 @@
+#include "MCPE/world/level/BlockSource.h"
+
 #include "SittableEntity.h"
 
 SittableEntity::SittableEntity(BlockSource& region):
@@ -47,8 +49,9 @@ float SittableEntity::getRideHeight() const {
 	return 0.0F;
 }
 
-void SittableEntity::rideTick() {
-	
+void SittableEntity::baseTick() {
+	if(riders.empty() || region.getBlockID(blockPosition).id == 0)
+		remove();
 }
 
 EntityType SittableEntity::getEntityTypeId() const {

@@ -39,7 +39,8 @@ public:
 	float heightOffset; // 188
 	char filler3[52]; // 192
 	int rendererId; // 244
-	char filler4[82]; // 248
+	std::vector<Entity*> riders; // 248
+	char filler4[70]; // 260
 	bool wasInWater; // 330
 	char dud[5]; // 331
 	BlockSource& region; // 336

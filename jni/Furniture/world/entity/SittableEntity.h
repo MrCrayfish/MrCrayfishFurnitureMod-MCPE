@@ -13,7 +13,7 @@ public:
 	SittableEntity(BlockSource&, float, float, float, float, int, float);
 	
 	virtual float getRideHeight() const;
-	virtual void rideTick();
+	virtual void baseTick();
 	virtual EntityType getEntityTypeId() const;
 	virtual void readAdditionalSaveData(const CompoundTag*);
 	virtual void addAdditionalSaveData(CompoundTag*);

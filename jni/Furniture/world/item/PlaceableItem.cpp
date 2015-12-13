@@ -11,9 +11,9 @@ bool PlaceableItem::useOn(ItemInstance* item, Player* player, int x, int y, int 
 
 	int data = 0;
 
-	if((RotatableTile*)Block::mBlocks[placed])
+	if((RotatableBlock*)Block::mBlocks[placed])
 	{	
-		data = RotatableTile::getPlayerFacing(*player);
+		data = RotatableBlock::getPlayerFacing(*player);
 	}
 
 	if(player->region.getBlockID({x, y, z}).id != 0) 

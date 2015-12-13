@@ -2,6 +2,6 @@
 
 int LampItem::_id = 477;
 
-LampItem::LampItem(int id) : PlaceableItem("itemLamp", id, LampTile::_id) {
+LampItem::LampItem(int id) : PlaceableItem("itemLamp", id, LampBlock::_id) {
 	setIcon("itemlamp", 0);
 }

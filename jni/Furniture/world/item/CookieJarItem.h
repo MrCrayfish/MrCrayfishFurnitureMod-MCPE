@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/CookieJarTile.h"
+#include "../block/CookieJarBlock.h"
 
 class CookieJarItem: public PlaceableItem {
 public:

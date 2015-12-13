@@ -2,6 +2,6 @@
 
 int DoorbellItem::_id = 485;
 
-DoorbellItem::DoorbellItem(int id) : PlaceableItem("itemDoorbell", id, DoorbellTile::_id) {
+DoorbellItem::DoorbellItem(int id) : PlaceableItem("itemDoorbell", id, DoorbellBlock::_id) {
 	setIcon("itemdoorbell", 0);
 }

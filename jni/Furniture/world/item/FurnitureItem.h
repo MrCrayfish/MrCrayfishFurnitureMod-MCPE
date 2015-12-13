@@ -25,6 +25,7 @@ public:
 	static FurnitureItem* itemCookieJar;
 	static FurnitureItem* itemOven;
 	static FurnitureItem* itemPlate;
+     static FurnitureItem* itemTv;
 	
 	FurnitureItem(const std::string&, int);
 

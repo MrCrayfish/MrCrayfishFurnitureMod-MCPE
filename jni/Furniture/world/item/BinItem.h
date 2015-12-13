@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/BinTile.h"
+#include "../block/BinBlock.h"
 
 class BinItem: public PlaceableItem {
 public:

@@ -1,3 +1,5 @@
+#include "../../util/SitOnBlockUtil.h"
+
 #include "ChairBlock.h"
 
 int ChairBlock::_woodId = 202;
@@ -24,7 +26,7 @@ const TextureUVCoordinateSet& ChairBlock::getTexture(signed char side, int data)
 }
 
 bool ChairBlock::use(Player& player, const BlockPos& pos) {
-	return false;
+	return SitOnBlockUtil::sit(player.region, pos, player, 7 * 0.0625);
 }
 
 int ChairBlock::getResource(Random& rand, int data, int idk) {

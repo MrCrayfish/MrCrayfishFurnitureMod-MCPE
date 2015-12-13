@@ -1,24 +1,23 @@
 #pragma once
-
 #include "BlockSourceListener.h"
-
-class ParticleType;
-class Mob;
-class Player;
-class Entity;
-class LevelChunk;
+#include <string>
 class Vec3;
+class LevelChunk;
+class LevelEvent;
+class Entity;
+class Player;
+class ParticleType;
 
 class LevelListener : public BlockSourceListener {
 public:
 	virtual ~LevelListener();
 	virtual void allChanged();
-	virtual bool addParticle(ParticleType, const Vec3 &, float, float, float, int);
-	virtual void playSound(const std::string &, float, float, float, float, float);
-	virtual void playMusic(const std::string &, float, float, float, float);
-	virtual void playStreamingMusic(const std::string &, int, int, int);
-	virtual void onEntityAdded(Entity &);
-	virtual void onEntityRemoved(Entity &);
-	virtual void onNewChunkFor(Player &, LevelChunk &);
-	virtual void levelEvent(Mob *, int, int, int, int, int);
+	virtual void addParticle(ParticleType, const Vec3&, const Vec3&, int);
+	virtual void playSound(const std::string&, const Vec3&, float, float);
+	virtual void playMusic(const std::string&, const Vec3&, float);
+	virtual void playStreamingMusic(const std::string&, int, int, int);
+	virtual void onEntityAdded(Entity&);
+	virtual void onEntityRemoved(Entity&);
+	virtual void onNewChunkFor(Player&, LevelChunk&);
+	virtual void levelEvent(LevelEvent, const Vec3&, int);
 };

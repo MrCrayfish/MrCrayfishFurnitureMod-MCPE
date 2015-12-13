@@ -15,6 +15,7 @@
 #include "MCPE/client/renderer/block/BlockTessellator.h"
 #include "MCPE/locale/I18n.h"
 #include "MCPE/world/entity/Motive.h"
+#include "MCPE/client/renderer/entity/EntityRenderDispatcher.h"
 
 /* Renders */
 #include "Furniture/render/block/RenderDispatcher.h"
@@ -80,6 +81,9 @@
 
 #include "Furniture/world/item/material/ItemMaterial.h"
 #include "Furniture/world/block/attributes/FurnitureBlockAttributes.h"
+#include "Furniture/render/entity/FurnitureEntityRenderDispatcher.h"
+
+#include "tinyhook.h"
 
 void initMod() {
 	Motive::initCustomMotives();
@@ -113,7 +117,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(CookieJarBlock::_id, new CookieJarRenderer());
 	RenderDispatcher::registerRenderer(OvenBlock::_id, new OvenRenderer());
 	RenderDispatcher::registerRenderer(PlateBlock::_id, new PlateRenderer());
-     RenderDispatcher::registerRenderer(TvBlock::_id, new TvRenderer());
+	RenderDispatcher::registerRenderer(TvBlock::_id, new TvRenderer());
 	ALOG("Finished Loading Renders");
 }
 
@@ -146,7 +150,7 @@ static void Block$initBlocks() {
 	FurnitureBlock::blockCookieJar = new CounterBlock(CookieJarBlock::_id, Material::getMaterial(MaterialType::DECORATION));
 	FurnitureBlock::blockOven = new OvenBlock(OvenBlock::_id, Material::getMaterial(MaterialType::STONE));
 	FurnitureBlock::blockPlate = new PlateBlock(PlateBlock::_id, Material::getMaterial(MaterialType::DECORATION));
-     FurnitureBlock::blockTv = new TvBlock(TvBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockTv = new TvBlock(TvBlock::_id, Material::getMaterial(MaterialType::STONE));
 	ALOG("Finished Loading Blocks");
 
 	FurnitureBlock::registerBlocks();
@@ -178,7 +182,7 @@ static void Item$initItems() {
 	FurnitureItem::itemCookieJar = new CookieJarItem(CookieJarItem::_id);
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
-     FurnitureItem::itemTv = new TvItem(TvItem::_id);
+	FurnitureItem::itemTv = new TvItem(TvItem::_id);
 	ALOG("Finished Loading Items");
 
 	FurnitureItem::registerItems();
@@ -212,7 +216,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
-     Item::addCreativeItem(FurnitureItem::itemOven, 0);
+	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	ALOG("Finished Adding Creative Items");
 }
 
@@ -286,6 +290,14 @@ static std::vector<const Motive*> Motive$getAllMotivesAsList() {
 	return retval;
 }
 
+EntityRenderer* EntityRenderDispatcher$getRenderer(EntityRenderDispatcher* self, int rendererId) {
+	EntityRenderer* retval = FurnitureEntityRenderDispatcher::getRenderer(self, rendererId);
+	if(!retval)
+		return self->renderers[rendererId].get();
+
+	return retval;
+}
+
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	initMod();
@@ -297,6 +309,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidBlockDynamic::_isWaterBlocking, (void*) &LiquidBlockDynamic$_isWaterBlocking, (void**) &_LiquidBlockDynamic$_isWaterBlocking);
 	MSHookFunction((void*) &Motive::getAllMotivesAsList, (void*) &Motive$getAllMotivesAsList, (void**) &_Motive$getAllMotivesAsList);
+	tiny_hook((uint32_t*)(void*) &EntityRenderDispatcher::getRenderer, (uint32_t) &EntityRenderDispatcher$getRenderer);
 
 	return JNI_VERSION_1_2;
 }

@@ -18,7 +18,7 @@ class ItemInstance;
 class DimensionId;
 class ChangeDimensionPacket;
 struct AABB;
-class EntityType;
+#include "type.h"
 #include "../material/Material.h"
 #include "../phys/Vec3.h"
 
@@ -167,3 +167,4 @@ public:
 };
 
 typedef std::vector<Entity*> EntityList;
+

@@ -49,7 +49,7 @@ void FurnitureTile::registerBlocks() {
 	registerBlock(tileCookieJar);
 	registerBlock(tileOven);
 	registerBlock(tilePlate);
-     registerBlock(tileTv);
+       registerBlock(tileTv);
 	ALOG("Finished Registering Blocks");
 }
 

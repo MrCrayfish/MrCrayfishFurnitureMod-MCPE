@@ -32,7 +32,7 @@ public:
 	static FurnitureTile* tileCookieJar;
 	static FurnitureTile* tileOven;
 	static FurnitureTile* tilePlate;
-     static FurnitureTile* tileTv;
+       static FurnitureTile* tileTv;
 	
 	FurnitureTile(const std::string&, int, Material const&);
 

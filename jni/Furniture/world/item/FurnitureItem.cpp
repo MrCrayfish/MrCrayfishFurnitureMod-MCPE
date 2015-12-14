@@ -49,7 +49,7 @@ void FurnitureItem::registerItems() {
 	registerItem(itemCookieJar);
 	registerItem(itemOven);
 	registerItem(itemPlate);
-     registerItem(itemTv);
+       registerItem(itemTv);
 }
 
 void FurnitureItem::registerItem(Item* item) {

@@ -20,6 +20,7 @@ FurnitureTile* FurnitureTile::tileCounter = NULL;
 FurnitureTile* FurnitureTile::tileCookieJar = NULL;
 FurnitureTile* FurnitureTile::tileOven = NULL;
 FurnitureTile* FurnitureTile::tilePlate = NULL;
+FurnitureTile* FurnitureTile::tileTv = NULL;
 
 FurnitureTile::FurnitureTile(const std::string& name, int id, Material const& material) : Block(name, id, material) {
 	ALOG("Loaded FurnitureTile");
@@ -48,6 +49,7 @@ void FurnitureTile::registerBlocks() {
 	registerBlock(tileCookieJar);
 	registerBlock(tileOven);
 	registerBlock(tilePlate);
+     registerBlock(tileTv);
 	ALOG("Finished Registering Blocks");
 }
 

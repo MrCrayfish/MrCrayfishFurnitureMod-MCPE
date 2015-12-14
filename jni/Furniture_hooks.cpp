@@ -113,7 +113,7 @@ void initRenderers() {
 	RenderDispatcher::registerRenderer(CookieJarTile::_id, new CookieJarRenderer());
 	RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
 	RenderDispatcher::registerRenderer(PlateTile::_id, new PlateRenderer());
-      RenderDispatcher::registerRenderer(TvTile::_id, new TvRenderer());
+       RenderDispatcher::registerRenderer(TvTile::_id, new TvRenderer());
 	ALOG("Finished Loading Renders");
 }
 
@@ -146,7 +146,7 @@ static void Block$initBlocks() {
 	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, Material::getMaterial(MaterialType::DECORATION));
 	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, Material::getMaterial(MaterialType::STONE));
 	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, Material::getMaterial(MaterialType::DECORATION));
-      FurnitureTile::tileTv = new TvTile(TvTile::_id, Material::getMaterial(MaterialType::STONE));
+       FurnitureTile::tileTv = new TvTile(TvTile::_id, Material::getMaterial(MaterialType::STONE));
 	ALOG("Finished Loading Tiles");
 
 	FurnitureTile::registerBlocks();
@@ -178,7 +178,7 @@ static void Item$initItems() {
 	FurnitureItem::itemCookieJar = new CookieJarItem(CookieJarItem::_id);
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
-      FurnitureItem::itemTv = new TvItem(TvItem::_id);
+       FurnitureItem::itemTv = new TvItem(TvItem::_id);
 	ALOG("Finished Loading Items");
 
 	FurnitureItem::registerItems();
@@ -212,7 +212,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
-      Item::addCreativeItem(FurnitureItem::itemOven, 0);
+       Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	ALOG("Finished Adding Creative Items");
 }
 

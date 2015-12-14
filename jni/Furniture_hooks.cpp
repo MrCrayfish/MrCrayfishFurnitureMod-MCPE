@@ -17,44 +17,44 @@
 #include "MCPE/world/entity/Motive.h"
 
 /* Renders */
-#include "Furniture/render/tile/RenderDispatcher.h"
-#include "Furniture/render/tile/renderers/ChairRenderer.h"
-#include "Furniture/render/tile/renderers/TableRenderer.h"
-#include "Furniture/render/tile/renderers/CoffeeTableRenderer.h"
-#include "Furniture/render/tile/renderers/ToiletRenderer.h"
-#include "Furniture/render/tile/renderers/CabinetRenderer.h"
-#include "Furniture/render/tile/renderers/DoorbellRenderer.h"
-#include "Furniture/render/tile/renderers/BinRenderer.h"
-#include "Furniture/render/tile/renderers/LampRenderer.h"
-#include "Furniture/render/tile/renderers/ChoppingBoardRenderer.h"
-#include "Furniture/render/tile/renderers/ToasterRenderer.h"
-#include "Furniture/render/tile/renderers/MicrowaveRenderer.h"
-#include "Furniture/render/tile/renderers/BarStoolRenderer.h"
-#include "Furniture/render/tile/renderers/CounterRenderer.h"
-#include "Furniture/render/tile/renderers/CookieJarRenderer.h"
-#include "Furniture/render/tile/renderers/OvenRenderer.h"
-#include "Furniture/render/tile/renderers/PlateRenderer.h"
-#include "Furniture/render/tile/renderers/TvRenderer.h"
+#include "Furniture/render/block/RenderDispatcher.h"
+#include "Furniture/render/block/renderers/ChairRenderer.h"
+#include "Furniture/render/block/renderers/TableRenderer.h"
+#include "Furniture/render/block/renderers/CoffeeTableRenderer.h"
+#include "Furniture/render/block/renderers/ToiletRenderer.h"
+#include "Furniture/render/block/renderers/CabinetRenderer.h"
+#include "Furniture/render/block/renderers/DoorbellRenderer.h"
+#include "Furniture/render/block/renderers/BinRenderer.h"
+#include "Furniture/render/block/renderers/LampRenderer.h"
+#include "Furniture/render/block/renderers/ChoppingBoardRenderer.h"
+#include "Furniture/render/block/renderers/ToasterRenderer.h"
+#include "Furniture/render/block/renderers/MicrowaveRenderer.h"
+#include "Furniture/render/block/renderers/BarStoolRenderer.h"
+#include "Furniture/render/block/renderers/CounterRenderer.h"
+#include "Furniture/render/block/renderers/CookieJarRenderer.h"
+#include "Furniture/render/block/renderers/OvenRenderer.h"
+#include "Furniture/render/block/renderers/PlateRenderer.h"
+#include "Furniture/render/block/renderers/TvRenderer.h"
 
 /* Blocks */
-#include "Furniture/world/tile/FurnitureTile.h"
-#include "Furniture/world/tile/TableTile.h"
-#include "Furniture/world/tile/CoffeeTableTile.h"
-#include "Furniture/world/tile/ChairTile.h"
-#include "Furniture/world/tile/ToiletTile.h"
-#include "Furniture/world/tile/CabinetTile.h"
-#include "Furniture/world/tile/KitchenCabinetTile.h"
-#include "Furniture/world/tile/DoorbellTile.h"
-#include "Furniture/world/tile/BinTile.h"
-#include "Furniture/world/tile/LampTile.h"
-#include "Furniture/world/tile/ChoppingBoardTile.h"
-#include "Furniture/world/tile/ToasterTile.h"
-#include "Furniture/world/tile/MicrowaveTile.h"
-#include "Furniture/world/tile/BarStoolTile.h"
-#include "Furniture/world/tile/CounterTile.h"
-#include "Furniture/world/tile/CookieJarTile.h"
-#include "Furniture/world/tile/OvenTile.h"
-#include "Furniture/world/tile/PlateTile.h"
+#include "Furniture/world/block/FurnitureBlock.h"
+#include "Furniture/world/block/TableBlock.h"
+#include "Furniture/world/block/CoffeeTableBlock.h"
+#include "Furniture/world/block/ChairBlock.h"
+#include "Furniture/world/block/ToiletBlock.h"
+#include "Furniture/world/block/CabinetBlock.h"
+#include "Furniture/world/block/KitchenCabinetBlock.h"
+#include "Furniture/world/block/DoorbellBlock.h"
+#include "Furniture/world/block/BinBlock.h"
+#include "Furniture/world/block/LampBlock.h"
+#include "Furniture/world/block/ChoppingBoardBlock.h"
+#include "Furniture/world/block/ToasterBlock.h"
+#include "Furniture/world/block/MicrowaveBlock.h"
+#include "Furniture/world/block/BarStoolBlock.h"
+#include "Furniture/world/block/CounterBlock.h"
+#include "Furniture/world/block/CookieJarBlock.h"
+#include "Furniture/world/block/OvenBlock.h"
+#include "Furniture/world/block/PlateBlock.h"
 
 /* Items */
 #include "Furniture/world/item/FurnitureItem.h"
@@ -79,7 +79,7 @@
 #include "Furniture/world/item/TvItem.h"
 
 #include "Furniture/world/item/material/ItemMaterial.h"
-#include "Furniture/world/tile/attributes/FurnitureTileAttributes.h"
+#include "Furniture/world/block/attributes/FurnitureBlockAttributes.h"
 
 void initMod() {
 	Motive::initCustomMotives();
@@ -93,27 +93,27 @@ static void BlockTessellator$tessellateInWorld(BlockTessellator* self, Block& ti
 
 void initRenderers() {
 	ALOG("Loading Renders");
-	RenderDispatcher::registerRenderer(TableTile::_woodId, new TableRenderer());
-	RenderDispatcher::registerRenderer(TableTile::_stoneId, new TableRenderer());
-	RenderDispatcher::registerRenderer(CoffeeTableTile::_woodId, new CoffeeTableRenderer());
-	RenderDispatcher::registerRenderer(CoffeeTableTile::_stoneId, new CoffeeTableRenderer());
-	RenderDispatcher::registerRenderer(ChairTile::_woodId, new ChairRenderer());
-	RenderDispatcher::registerRenderer(ChairTile::_stoneId, new ChairRenderer());
-	RenderDispatcher::registerRenderer(ToiletTile::_id, new ToiletRenderer());
-	RenderDispatcher::registerRenderer(CabinetTile::_id, new CabinetRenderer());
-	RenderDispatcher::registerRenderer(KitchenCabinetTile::_id, new CabinetRenderer());
-	RenderDispatcher::registerRenderer(DoorbellTile::_id, new DoorbellRenderer());
-	RenderDispatcher::registerRenderer(BinTile::_id, new BinRenderer());
-	RenderDispatcher::registerRenderer(LampTile::_id, new LampRenderer());
-	RenderDispatcher::registerRenderer(ChoppingBoardTile::_id, new ChoppingBoardRenderer());
-	RenderDispatcher::registerRenderer(ToasterTile::_id, new ToasterRenderer());
-	RenderDispatcher::registerRenderer(MicrowaveTile::_id, new MicrowaveRenderer());
-	RenderDispatcher::registerRenderer(BarStoolTile::_id, new BarStoolRenderer());
-	RenderDispatcher::registerRenderer(CounterTile::_id, new CounterRenderer());
-	RenderDispatcher::registerRenderer(CookieJarTile::_id, new CookieJarRenderer());
-	RenderDispatcher::registerRenderer(OvenTile::_id, new OvenRenderer());
-	RenderDispatcher::registerRenderer(PlateTile::_id, new PlateRenderer());
-       RenderDispatcher::registerRenderer(TvTile::_id, new TvRenderer());
+	RenderDispatcher::registerRenderer(TableBlock::_woodId, new TableRenderer());
+	RenderDispatcher::registerRenderer(TableBlock::_stoneId, new TableRenderer());
+	RenderDispatcher::registerRenderer(CoffeeTableBlock::_woodId, new CoffeeTableRenderer());
+	RenderDispatcher::registerRenderer(CoffeeTableBlock::_stoneId, new CoffeeTableRenderer());
+	RenderDispatcher::registerRenderer(ChairBlock::_woodId, new ChairRenderer());
+	RenderDispatcher::registerRenderer(ChairBlock::_stoneId, new ChairRenderer());
+	RenderDispatcher::registerRenderer(ToiletBlock::_id, new ToiletRenderer());
+	RenderDispatcher::registerRenderer(CabinetBlock::_id, new CabinetRenderer());
+	RenderDispatcher::registerRenderer(KitchenCabinetBlock::_id, new CabinetRenderer());
+	RenderDispatcher::registerRenderer(DoorbellBlock::_id, new DoorbellRenderer());
+	RenderDispatcher::registerRenderer(BinBlock::_id, new BinRenderer());
+	RenderDispatcher::registerRenderer(LampBlock::_id, new LampRenderer());
+	RenderDispatcher::registerRenderer(ChoppingBoardBlock::_id, new ChoppingBoardRenderer());
+	RenderDispatcher::registerRenderer(ToasterBlock::_id, new ToasterRenderer());
+	RenderDispatcher::registerRenderer(MicrowaveBlock::_id, new MicrowaveRenderer());
+	RenderDispatcher::registerRenderer(BarStoolBlock::_id, new BarStoolRenderer());
+	RenderDispatcher::registerRenderer(CounterBlock::_id, new CounterRenderer());
+	RenderDispatcher::registerRenderer(CookieJarBlock::_id, new CookieJarRenderer());
+	RenderDispatcher::registerRenderer(OvenBlock::_id, new OvenRenderer());
+	RenderDispatcher::registerRenderer(PlateBlock::_id, new PlateRenderer());
+     RenderDispatcher::registerRenderer(TvBlock::_id, new TvRenderer());
 	ALOG("Finished Loading Renders");
 }
 
@@ -121,35 +121,35 @@ static void (*_Block$initBlocks)();
 static void Block$initBlocks() {
 	_Block$initBlocks();
 	
-	FurnitureTileAttributes woodAttributes(Material::getMaterial(MaterialType::WOOD), "planks", "log", Block::SOUND_WOOD, 1.0F);
-	FurnitureTileAttributes stoneAttributes(Material::getMaterial(MaterialType::STONE), "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
+	FurnitureBlockAttributes woodAttributes(Material::getMaterial(MaterialType::WOOD), "planks", "log", Block::SOUND_WOOD, 1.0F);
+	FurnitureBlockAttributes stoneAttributes(Material::getMaterial(MaterialType::STONE), "stone", "cobblestone", Block::SOUND_STONE, 1.5F);
 	
-	ALOG("Loading Tiles");
-	FurnitureTile::tileTableWood = new TableTile(TableTile::_woodId, "woodTableTile", woodAttributes, TableItem::_woodId);
-	ALOG("Loaded first tile");
-	FurnitureTile::tileTableStone = new TableTile(TableTile::_stoneId, "stoneTableTile", stoneAttributes, TableItem::_stoneId);
-	FurnitureTile::tileCoffeeTableWood = new CoffeeTableTile(CoffeeTableTile::_woodId, "woodCoffeeTableTile", woodAttributes, CoffeeTableItem::_woodId);
-	FurnitureTile::tileCoffeeTableStone = new CoffeeTableTile(CoffeeTableTile::_stoneId, "stoneCoffeeTableTile", stoneAttributes, CoffeeTableItem::_stoneId);
-	FurnitureTile::tileChairWood = new ChairTile(ChairTile::_woodId, "woodChairTile", woodAttributes, ChairItem::_woodId);
-	FurnitureTile::tileChairStone = new ChairTile(ChairTile::_stoneId, "stoneChairTile", stoneAttributes, ChairItem::_stoneId);
-	FurnitureTile::tileToilet = new ToiletTile(ToiletTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tileCabinet = new CabinetTile(CabinetTile::_id, Material::getMaterial(MaterialType::WOOD));
-	FurnitureTile::tileKitchenCabinet = new KitchenCabinetTile(KitchenCabinetTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tileDoorbell = new DoorbellTile(DoorbellTile::_id, Material::getMaterial(MaterialType::WOOD));
-	FurnitureTile::tileBin = new BinTile(BinTile::_id, Material::getMaterial(MaterialType::IRON)); 
-	FurnitureTile::tileLamp = new LampTile(LampTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tileChoppingBoard = new ChoppingBoardTile(ChoppingBoardTile::_id, Material::getMaterial(MaterialType::WOOD));
-	FurnitureTile::tileToaster = new ToasterTile(ToasterTile::_id, Material::getMaterial(MaterialType::IRON)); 
-	FurnitureTile::tileMicrowave = new MicrowaveTile(MicrowaveTile::_id, Material::getMaterial(MaterialType::IRON));
-	FurnitureTile::tileBarStool = new BarStoolTile(BarStoolTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tileCounter = new CounterTile(CounterTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tileCookieJar = new CounterTile(CookieJarTile::_id, Material::getMaterial(MaterialType::DECORATION));
-	FurnitureTile::tileOven = new OvenTile(OvenTile::_id, Material::getMaterial(MaterialType::STONE));
-	FurnitureTile::tilePlate = new PlateTile(PlateTile::_id, Material::getMaterial(MaterialType::DECORATION));
-       FurnitureTile::tileTv = new TvTile(TvTile::_id, Material::getMaterial(MaterialType::STONE));
-	ALOG("Finished Loading Tiles");
+	ALOG("Loading Block");
+	FurnitureBlock::blockTableWood = new TableBlock(TableBlock::_woodId, "woodTableBlock", woodAttributes, TableBlock::_woodId);
+	ALOG("Loaded first block");
+	FurnitureBlock::blockTableStone = new TableBlock(TableBlock::_stoneId, "stoneTableBlock", stoneAttributes, TableItem::_stoneId);
+	FurnitureBlock::blockCoffeeTableWood = new CoffeeTableBlock(CoffeeTableBlock::_woodId, "woodCoffeeTableBlock", woodAttributes, CoffeeTableItem::_woodId);
+	FurnitureBlock::blockCoffeeTableStone = new CoffeeTableBlock(CoffeeTableBlock::_stoneId, "stoneCoffeeTableBlock", stoneAttributes, CoffeeTableItem::_stoneId);
+	FurnitureBlock::blockChairWood = new ChairBlock(ChairBlock::_woodId, "woodChairBlock", woodAttributes, ChairItem::_woodId);
+	FurnitureBlock::blockChairStone = new ChairBlock(ChairBlock::_stoneId, "stoneChairBlock", stoneAttributes, ChairItem::_stoneId);
+	FurnitureBlock::blockToilet = new ToiletBlock(ToiletBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockCabinet = new CabinetBlock(CabinetBlock::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureBlock::blockKitchenCabinet = new KitchenCabinetBlock(KitchenCabinetBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockDoorbell = new DoorbellBlock(DoorbellBlock::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureBlock::blockBin = new BinBlock(BinBlock::_id, Material::getMaterial(MaterialType::IRON)); 
+	FurnitureBlock::blockLamp = new LampBlock(LampBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockChoppingBoard = new ChoppingBoardBlock(ChoppingBoardBlock::_id, Material::getMaterial(MaterialType::WOOD));
+	FurnitureBlock::blockToaster = new ToasterBlock(ToasterBlock::_id, Material::getMaterial(MaterialType::IRON)); 
+	FurnitureBlock::blockMicrowave = new MicrowaveBlock(MicrowaveBlock::_id, Material::getMaterial(MaterialType::IRON));
+	FurnitureBlock::blockBarStool = new BarStoolBlock(BarStoolBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockCounter = new CounterBlock(CounterBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockCookieJar = new CounterBlock(CookieJarBlock::_id, Material::getMaterial(MaterialType::DECORATION));
+	FurnitureBlock::blockOven = new OvenBlock(OvenBlock::_id, Material::getMaterial(MaterialType::STONE));
+	FurnitureBlock::blockPlate = new PlateBlock(PlateBlock::_id, Material::getMaterial(MaterialType::DECORATION));
+     FurnitureBlock::blockTv = new TvBlock(TvBlock::_id, Material::getMaterial(MaterialType::STONE));
+	ALOG("Finished Loading Blocks");
 
-	FurnitureTile::registerBlocks();
+	FurnitureBlock::registerBlocks();
 	
 	initRenderers();
 }
@@ -157,12 +157,12 @@ static void Block$initBlocks() {
 static void (*_Item$initItems)();
 static void Item$initItems() {
 	ALOG("Loading Items");
-	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "itemtablewood", ItemMaterial::WOOD, TableTile::_woodId);
-	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "itemtablestone", ItemMaterial::STONE, TableTile::_stoneId);
-	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "itemcoffeetablewood", ItemMaterial::WOOD, CoffeeTableTile::_woodId);
-	FurnitureItem::itemCoffeeTableStone = new CoffeeTableItem(CoffeeTableItem::_stoneId, "itemcoffeetablestone", ItemMaterial::STONE, CoffeeTableTile::_stoneId);
-	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "itemchairwood", ItemMaterial::WOOD, ChairTile::_woodId);
-	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemchairstone", ItemMaterial::STONE, ChairTile::_stoneId);
+	FurnitureItem::itemTableWood = new TableItem(TableItem::_woodId, "itemtablewood", ItemMaterial::WOOD, TableBlock::_woodId);
+	FurnitureItem::itemTableStone = new TableItem(TableItem::_stoneId, "itemtablestone", ItemMaterial::STONE, TableBlock::_stoneId);
+	FurnitureItem::itemCoffeeTableWood = new CoffeeTableItem(CoffeeTableItem::_woodId, "itemcoffeetablewood", ItemMaterial::WOOD, CoffeeTableBlock::_woodId);
+	FurnitureItem::itemCoffeeTableStone = new CoffeeTableItem(CoffeeTableItem::_stoneId, "itemcoffeetablestone", ItemMaterial::STONE, CoffeeTableBlock::_stoneId);
+	FurnitureItem::itemChairWood = new ChairItem(ChairItem::_woodId, "itemchairwood", ItemMaterial::WOOD, ChairBlock::_woodId);
+	FurnitureItem::itemChairStone = new ChairItem(ChairItem::_stoneId, "itemchairstone", ItemMaterial::STONE, ChairBlock::_stoneId);
 	FurnitureItem::itemToilet = new ToiletItem(ToiletItem::_id);
 	FurnitureItem::itemCabinet = new CabinetItem(CabinetItem::_id);
 	FurnitureItem::itemKitchenCabinet = new KitchenCabinetItem(KitchenCabinetItem::_id);
@@ -178,7 +178,7 @@ static void Item$initItems() {
 	FurnitureItem::itemCookieJar = new CookieJarItem(CookieJarItem::_id);
 	FurnitureItem::itemOven = new OvenItem(OvenItem::_id);
 	FurnitureItem::itemPlate = new PlateItem(PlateItem::_id);
-       FurnitureItem::itemTv = new TvItem(TvItem::_id);
+     FurnitureItem::itemTv = new TvItem(TvItem::_id);
 	ALOG("Finished Loading Items");
 
 	FurnitureItem::registerItems();
@@ -212,7 +212,7 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
-       Item::addCreativeItem(FurnitureItem::itemOven, 0);
+     Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	ALOG("Finished Adding Creative Items");
 }
 
@@ -257,24 +257,24 @@ static std::string I18n$get(std::string const& key, std::vector<std::string, std
 static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
 static bool LiquidBlockDynamic$_isWaterBlocking(LiquidBlockDynamic* self, BlockSource& region, const BlockPos& pos) {
 	Block* tile = region.getBlock(pos);
-	return (tile == FurnitureTile::tileTableWood ||
-     	tile == FurnitureTile::tileTableStone ||
-		tile == FurnitureTile::tileCoffeeTableWood ||
-     	tile == FurnitureTile::tileCoffeeTableStone ||
-		tile == FurnitureTile::tileChairWood ||
-		tile == FurnitureTile::tileChairStone ||
-		tile == FurnitureTile::tileToilet ||
-		tile == FurnitureTile::tileCabinet ||
-		tile == FurnitureTile::tileDoorbell ||
-		tile == FurnitureTile::tileBin ||
-		tile == FurnitureTile::tileLamp ||
-		tile == FurnitureTile::tileChoppingBoard ||
-		tile == FurnitureTile::tileToaster ||
-		tile == FurnitureTile::tileMicrowave ||
-		tile == FurnitureTile::tileCookieJar ||
-		tile == FurnitureTile::tileOven ||
-		tile == FurnitureTile::tileCounter ||
-		tile == FurnitureTile::tilePlate)?
+	return (tile == FurnitureBlock::blockTableWood ||
+     	tile == FurnitureBlock::blockTableStone ||
+		tile == FurnitureBlock::blockCoffeeTableWood ||
+     	tile == FurnitureBlock::blockCoffeeTableStone ||
+		tile == FurnitureBlock::blockChairWood ||
+		tile == FurnitureBlock::blockChairStone ||
+		tile == FurnitureBlock::blockToilet ||
+		tile == FurnitureBlock::blockCabinet ||
+		tile == FurnitureBlock::blockDoorbell ||
+		tile == FurnitureBlock::blockBin ||
+		tile == FurnitureBlock::blockLamp ||
+		tile == FurnitureBlock::blockChoppingBoard ||
+		tile == FurnitureBlock::blockToaster ||
+		tile == FurnitureBlock::blockMicrowave ||
+		tile == FurnitureBlock::blockCookieJar ||
+		tile == FurnitureBlock::blockOven ||
+		tile == FurnitureBlock::blockCounter ||
+		tile == FurnitureBlock::blockPlate)?
 			true :
 			_LiquidBlockDynamic$_isWaterBlocking(self, region, pos);
 }

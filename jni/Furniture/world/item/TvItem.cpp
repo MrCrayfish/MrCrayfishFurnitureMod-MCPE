@@ -2,6 +2,6 @@
 
 int TvItem::_id = 478;
 
-TvItem::TvItem(int id) : PlaceableItem("itemTv", id, TvTile::_id) {
+TvItem::TvItem(int id) : PlaceableItem("itemTv", id, TvBlock::_id) {
 	setIcon("itemtv", 0);
 }

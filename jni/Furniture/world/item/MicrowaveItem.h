@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PlaceableItem.h"
-#include "../tile/MicrowaveTile.h"
+#include "../block/MicrowaveBlock.h"
 
 class MicrowaveItem : public PlaceableItem {
 public:

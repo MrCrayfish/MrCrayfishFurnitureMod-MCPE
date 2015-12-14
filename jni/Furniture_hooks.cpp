@@ -16,6 +16,7 @@
 #include "MCPE/locale/I18n.h"
 #include "MCPE/world/entity/Motive.h"
 #include "MCPE/client/renderer/entity/EntityRenderDispatcher.h"
+#include "MCPE/world/entity/Entity.h"
 
 /* Renders */
 #include "Furniture/render/block/RenderDispatcher.h"
@@ -254,7 +255,18 @@ static std::string I18n$get(std::string const& key) {
 	if(key == "item.itemPlate.name") return "Plate";
 	if(key == "item.itemKitchenCabinet.name") return "Kitchen Cabinet";
 	
+	if(key == "action.hint.exit.sittable") return "Tap jump to stand up";
+	
 	return _I18n$get(key);
+}
+
+std::string _getTypeString(const Entity&);
+std::string (*_$_getTypeString)(const Entity&);
+std::string $_getTypeString(const Entity& entity) {
+	if(entity.getEntityTypeId() == EntityType::SITTABLE)
+		return "sittable";
+		
+	return _$_getTypeString(entity);
 }
 
 static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
@@ -308,6 +320,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get);
 	MSHookFunction((void*) &LiquidBlockDynamic::_isWaterBlocking, (void*) &LiquidBlockDynamic$_isWaterBlocking, (void**) &_LiquidBlockDynamic$_isWaterBlocking);
 	MSHookFunction((void*) &Motive::getAllMotivesAsList, (void*) &Motive$getAllMotivesAsList, (void**) &_Motive$getAllMotivesAsList);
+	MSHookFunction((void*) &_getTypeString, (void*) &$_getTypeString, (void**) &_$_getTypeString);
 	tiny_hook((uint32_t*)(void*) &EntityRenderDispatcher::getRenderer, (uint32_t) &EntityRenderDispatcher$getRenderer);
 
 	return JNI_VERSION_1_2;

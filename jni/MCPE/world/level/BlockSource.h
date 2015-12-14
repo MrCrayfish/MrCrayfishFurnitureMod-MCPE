@@ -1,8 +1,8 @@
 #pragma once
-
-#include "MCPE/CommonTypes.h"
+#include "../../CommonTypes.h"
 #include "BlockTickingQueue.h"
 #include "BlockPos.h"
+#include "../entity/Entity.h"
 class Block;
 class BlockEntity;
 class Level;
@@ -19,4 +19,5 @@ public:
 	void removeBlock(const BlockPos&);
 	BlockEntity* getBlockEntity(const BlockPos&);
 	BlockTickingQueue* getTickQueue(BlockPos const&);
+	EntityList& getEntities(Entity*, const AABB&);
 };

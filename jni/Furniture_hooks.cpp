@@ -216,46 +216,45 @@ static void Item$initCreativeItems() {
 	Item::addCreativeItem(FurnitureItem::itemCookieJar, 0);
 	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	Item::addCreativeItem(FurnitureItem::itemPlate, 0);
-	Item::addCreativeItem(FurnitureItem::itemOven, 0);
 	ALOG("Finished Adding Creative Items");
 }
 
-static std::string (*_I18n$get)(std::string const&, std::vector<std::string, std::allocator<std::string>> const&);
-static std::string I18n$get(std::string const& key, std::vector<std::string, std::allocator<std::string>> const& a) {
-	if(key == "item.woodTableItem.name") return "Wooden Table";
-	if(key == "item.stoneTableItem.name") return "Stone Table";
-	if(key == "item.woodCoffeeTableItem.name") return "Wooden Coffee Table";
-	if(key == "item.stoneCoffeeTableItem.name") return "Stone Coffee Table";
-	if(key == "item.woodChairItem.name") return "Wooden Chair";
-	if(key == "item.stoneChairItem.name") return "Stone Chair";
-	if(key == "item.toiletItem.name") return "Toilet";
-	if(key == "item.bathItem.name") return "Bath";
-	if(key == "item.showerItem.name") return "Shower";
-	if(key == "item.showerHeadItem.name") return "Shower Head";
-	if(key == "item.cabinetItem.name") return "Cabinet";
-	if(key == "item.doorbellItem.name") return "Doorbell";
-	if(key == "item.bedsideCabinetItem.name") return "Bedside Cabinet";
-	if(key == "item.tvItem.name") return "TV";
-	if(key == "item.fridgeItem.name") return "Fridge";
-	if(key == "item.ovenItem.name") return "Oven";
-	if(key == "item.blenderItem.name") return "Blender";
-	if(key == "item.choppingBoardItem.name") return "Chopping Board";
-	if(key == "item.toasterItem.name") return "Toaster";
-	if(key == "item.microwaveItem.name") return "Microwave";
-	if(key == "item.counterItem.name") return "Counter";
-	if(key == "item.sinkCounterItem.name") return "Counter (Sink)";
-	if(key == "item.lampItem.name") return "Lamp";
-	if(key == "item.binItem.name") return "Bin";
-	if(key == "item.barStoolItem.name") return "Bar Stool";
-	if(key == "item.dishwasherItem.name") return "Dishwasher";
-	if(key == "item.basinItem.name") return "Basin";
-	if(key == "item.cupItem.name") return "Cup";
-	if(key == "item.knifeItem.name") return "Knife";
-	if(key == "item.cookieJarItem.name") return "Cookie Jar";
-	if(key == "item.ovenItem.name") return "Oven";
-	if(key == "item.plateItem.name") return "Plate";
+static std::string (*_I18n$get)(std::string const&);
+static std::string I18n$get(std::string const& key) {
+	if(key == "item.itemtablewood.name") return "Wooden Table";
+	if(key == "item.itemtablestone.name") return "Stone Table";
+	if(key == "item.itemcoffeetablewood.name") return "Wooden Coffee Table";
+	if(key == "item.itemcoffeetablestone.name") return "Stone Coffee Table";
+	if(key == "item.itemchairwood.name") return "Wooden Chair";
+	if(key == "item.itemchairstone.name") return "Stone Chair";
+	if(key == "item.itemToilet.name") return "Toilet";
+	if(key == "item.itemBath.name") return "Bath";
+	if(key == "item.itemShower.name") return "Shower";
+	if(key == "item.itemShowerHead.name") return "Shower Head";
+	if(key == "item.itemCabinet.name") return "Cabinet";
+	if(key == "item.itemDoorbell.name") return "Doorbell";
+	if(key == "item.itemBedsideCabinet.name") return "Bedside Cabinet";
+	if(key == "item.itemTV.name") return "TV";
+	if(key == "item.itemFridge.name") return "Fridge";
+	if(key == "item.itemOven.name") return "Oven";
+	if(key == "item.itemBlender.name") return "Blender";
+	if(key == "item.itemCoppingBoard.name") return "Chopping Board";
+	if(key == "item.itemToaster.name") return "Toaster";
+	if(key == "item.itemMicrowave.name") return "Microwave";
+	if(key == "item.itemCounter.name") return "Counter";
+	if(key == "item.itemSinkCounter.name") return "Counter (Sink)";
+	if(key == "item.itemLamp.name") return "Lamp";
+	if(key == "item.itemBin.name") return "Bin";
+	if(key == "item.itemBarstool.name") return "Bar Stool";
+	if(key == "item.itemDishwasher.name") return "Dishwasher";
+	if(key == "item.itemBasin.name") return "Basin";
+	if(key == "item.itemCup.name") return "Cup";
+	if(key == "item.itemKnife.name") return "Knife";
+	if(key == "item.itemCookieJar.name") return "Cookie Jar";
+	if(key == "item.itemPlate.name") return "Plate";
+	if(key == "item.itemKitchenCabinet.name") return "Kitchen Cabinet";
 	
-	return _I18n$get(key, a);
+	return _I18n$get(key);
 }
 
 static bool (*_LiquidBlockDynamic$_isWaterBlocking)(LiquidBlockDynamic*, BlockSource&, const BlockPos&);
